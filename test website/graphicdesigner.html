@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Morgan | Premium Graphic Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-text: #f5f5f5;
+            --color-accent: #d4af37; /* Gold */
+            --color-muted: #737373;
+        }
+        
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-accent);
+        }
+
+        /* Grain Overlay */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Utilities */
+        .text-gold { color: var(--color-accent); }
+        .bg-gold { background-color: var(--color-accent); }
+        .border-gold { border-color: var(--color-accent); }
+        
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color-accent);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Image Hover Zoom */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Magnetic Button Effect */
+        .magnetic-btn {
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #0a0a0a;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .loader-text {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-yellow-900 selection:text-white">
+
+    <!-- Grain Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-text text-gold font-serif italic">AM.</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 left-0 px-6 py-6 flex justify-between items-center mix-blend-difference text-white">
+        <a href="#" class="text-2xl font-serif font-bold tracking-tighter z-50 relative group">
+            AM.
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        
+        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
+            <a href="#about" class="hover-underline-animation">About</a>
+            <a href="#services" class="hover-underline-animation">Services</a>
+            <a href="#work" class="hover-underline-animation">Work</a>
+            <a href="#process" class="hover-underline-animation">Process</a>
+        </div>
+
+        <button onclick="scrollToContact()" class="hidden md:block px-6 py-2 border border-white/30 rounded-full hover:bg-white hover:text-black transition-all duration-300 text-xs uppercase tracking-widest">
+            Let's Talk
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden z-50">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-40 transform translate-x-full transition-transform duration-500 flex flex-col justify-center items-center space-y-8 text-2xl font-serif">
+        <a href="#about" class="mobile-link hover:text-gold transition-colors">About</a>
+        <a href="#services" class="mobile-link hover:text-gold transition-colors">Services</a>
+        <a href="#work" class="mobile-link hover:text-gold transition-colors">Work</a>
+        <a href="#process" class="mobile-link hover:text-gold transition-colors">Process</a>
+        <a href="#contact" class="mobile-link hover:text-gold transition-colors">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col justify-center px-6 md:px-20 pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-neutral-900/20 to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-7 space-y-8 hero-content">
+                <div class="flex items-center space-x-4 text-gold text-sm tracking-[0.3em] uppercase mb-4 opacity-0 reveal-text">
+                    <span>Premium Design Studio</span>
+                    <span class="w-12 h-[1px] bg-gold"></span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight opacity-0 reveal-text">
+                    Design That <br>
+                    <span class="font-serif italic font-light text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500">Moves Brands</span><br>
+                    Forward.
+                </h1>
+                
+                <p class="text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed opacity-0 reveal-text">
+                    Premium brand identity and visual design for businesses that want to stand out, scale, and dominate their market.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 pt-4 opacity-0 reveal-text">
+                    <button onclick="scrollToSection('work')" class="magnetic-btn px-8 py-4 bg-white text-black font-bold uppercase tracking-widest text-xs hover:bg-gold hover:text-white transition-colors duration-300">
+                        View Portfolio
+                    </button>
+                    <button onclick="scrollToContact()" class="magnetic-btn px-8 py-4 border border-white/20 text-white font-bold uppercase tracking-widest text-xs hover:border-gold hover:text-gold transition-colors duration-300">
+                        Book Consultation
+                    </button>
+                </div>
+
+                <div class="flex flex-wrap gap-8 pt-12 text-xs uppercase tracking-widest text-gray-500 opacity-0 reveal-text">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-gold"></i> Brand Identity
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-gold"></i> Social Media
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-gold"></i> Marketing Materials
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-gold"></i> Packaging
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image/Visual -->
+            <div class="lg:col-span-5 relative opacity-0 reveal-image">
+                <div class="relative aspect-[3/4] w-full max-w-md mx-auto lg:ml-auto">
+                    <div class="absolute inset-0 border border-white/10 translate-x-4 translate-y-4"></div>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Creative Director" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-neutral-900 border border-white/10 p-6 backdrop-blur-sm">
+                        <div class="text-4xl font-serif text-gold mb-1">8+</div>
+                        <div class="text-xs uppercase tracking-widest text-gray-400">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="arrow-down" class="w-6 h-6 text-white/30"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-6 md:px-20 bg-neutral-900/30 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8 scroll-reveal">
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+                        More Than A Designer — <br>
+                        <span class="font-serif italic text-gold font-light">A Strategic Creative Partner.</span>
+                    </h2>
+                </div>
+                <div class="space-y-8 scroll-reveal">
+                    <p class="text-xl text-gray-300 leading-relaxed font-light">
+                        "I help businesses elevate their visual presence through thoughtful, strategic, and premium design solutions. Every project is built with clarity, intention, and brand positioning in mind."
+                    </p>
+                    <div class="grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-2">150+</div>
+                            <div class="text-xs uppercase tracking-widest text-gray-500">Projects Done</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-2">40+</div>
+                            <div class="text-xs uppercase tracking-widest text-gray-500">Industries</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-2">100%</div>
+                            <div class="text-xs uppercase tracking-widest text-gray-500">Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 px-6 md:px-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 scroll-reveal">
+                <div>
+                    <span class="text-gold text-sm tracking-[0.2em] uppercase block mb-4">Expertise</span>
+                    <h2 class="text-4xl md:text-5xl font-bold">Premium Services</h2>
+                </div>
+                <p class="text-gray-400 max-w-md mt-6 md:mt-0 text-right hidden md:block">
+                    Comprehensive design solutions tailored to elevate your brand's market position.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
+                <!-- Service 1 -->
+                <div class="group bg-black p-10 hover:bg-neutral-900 transition-colors duration-500 relative overflow-hidden service-card">
+                    <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 text-gold"></i>
+                    </div>
+                    <div class="mb-8">
+                        <i data-lucide="hexagon" class="w-10 h-10 text-gray-600 group-hover:text-gold transition-colors duration-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition-colors">Brand Identity</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Logo, typography, color systems, and comprehensive brand guidelines that define your visual language.
+                    </p>
+                    <button class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 group-hover:border-gold transition-colors">Request Proposal</button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group bg-black p-10 hover:bg-neutral-900 transition-colors duration-500 relative overflow-hidden service-card">
+                    <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 text-gold"></i>
+                    </div>
+                    <div class="mb-8">
+                        <i data-lucide="smartphone" class="w-10 h-10 text-gray-600 group-hover:text-gold transition-colors duration-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition-colors">Social Media</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Content templates, feed strategy, and campaign visuals designed for engagement and conversion.
+                    </p>
+                    <button class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 group-hover:border-gold transition-colors">Request Proposal</button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group bg-black p-10 hover:bg-neutral-900 transition-colors duration-500 relative overflow-hidden service-card">
+                    <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 text-gold"></i>
+                    </div>
+                    <div class="mb-8">
+                        <i data-lucide="layout" class="w-10 h-10 text-gray-600 group-hover:text-gold transition-colors duration-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition-colors">Marketing Collateral</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Brochures, flyers, business cards, and posters that communicate value and professionalism.
+                    </p>
+                    <button class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 group-hover:border-gold transition-colors">Request Proposal</button>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group bg-black p-10 hover:bg-neutral-900 transition-colors duration-500 relative overflow-hidden service-card">
+                    <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 text-gold"></i>
+                    </div>
+                    <div class="mb-8">
+                        <i data-lucide="package" class="w-10 h-10 text-gray-600 group-hover:text-gold transition-colors duration-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition-colors">Packaging Design</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Product packaging and labels that stand out on the shelf and enhance the unboxing experience.
+                    </p>
+                    <button class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 group-hover:border-gold transition-colors">Request Proposal</button>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="group bg-black p-10 hover:bg-neutral-900 transition-colors duration-500 relative overflow-hidden service-card md:col-span-2 lg:col-span-2">
+                    <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 text-gold"></i>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-center gap-8">
+                        <div class="md:w-1/2">
+                            <div class="mb-8">
+                                <i data-lucide="monitor" class="w-10 h-10 text-gray-600 group-hover:text-gold transition-colors duration-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition-colors">Website Visual Design</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                                High-fidelity UI layouts and landing page designs focused on user experience and aesthetic excellence.
+                            </p>
+                            <button class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 group-hover:border-gold transition-colors">Request Proposal</button>
+                        </div>
+                        <div class="md:w-1/2 h-48 bg-neutral-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-500" alt="Web Design">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Work Section -->
+    <section id="work" class="py-32 px-6 md:px-20 bg-neutral-900/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20 scroll-reveal">
+                <span class="text-gold text-sm tracking-[0.2em] uppercase block mb-4">Selected Works</span>
+                <h2 class="text-4xl md:text-6xl font-bold">Featured Projects</h2>
+            </div>
+
+            <!-- Case Study 1 -->
+            <div class="group mb-32 scroll-reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 order-2 lg:order-1">
+                        <div class="flex items-center gap-4 text-sm text-gold uppercase tracking-widest">
+                            <span>Brand Identity</span>
+                            <span class="w-2 h-2 rounded-full bg-gold"></span>
+                            <span>F&B Industry</span>
+                        </div>
+                        <h3 class="text-4xl font-serif italic">Lumière Coffee</h3>
+                        <div class="space-y-4 text-gray-400">
+                            <p><strong class="text-white">The Problem:</strong> A local coffee roaster struggling to differentiate in a saturated market with generic branding.</p>
+                            <p><strong class="text-white">The Solution:</strong> Developed a sophisticated, minimalist identity system inspired by the golden hour, utilizing warm earth tones and elegant serif typography to convey premium quality.</p>
+                        </div>
+                        <button class="mt-4 px-6 py-3 border border-white/20 hover:bg-white hover:text-black transition-all duration-300 text-xs uppercase tracking-widest">
+                            View Full Case Study
+                        </button>
+                    </div>
+                    <div class="order-1 lg:order-2 img-zoom-container relative aspect-[4/3] bg-neutral-800">
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1000&auto=format&fit=crop" alt="Coffee Branding" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div class="group mb-32 scroll-reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="img-zoom-container relative aspect-[4/3] bg-neutral-800">
+                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop" alt="Real Estate Branding" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 text-sm text-gold uppercase tracking-widest">
+                            <span>Visual Identity</span>
+                            <span class="w-2 h-2 rounded-full bg-gold"></span>
+                            <span>Real Estate</span>
+                        </div>
+                        <h3 class="text-4xl font-serif italic">Apex Properties</h3>
+                        <div class="space-y-4 text-gray-400">
+                            <p><strong class="text-white">The Problem:</strong> Corporate real estate firm needed to shed an outdated image to attract high-net-worth millennial investors.</p>
+                            <p><strong class="text-white">The Solution:</strong> Bold geometric logo mark, monochromatic palette with gold accents, and sharp, architectural layout systems.</p>
+                        </div>
+                        <button class="mt-4 px-6 py-3 border border-white/20 hover:bg-white hover:text-black transition-all duration-300 text-xs uppercase tracking-widest">
+                            View Full Case Study
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Case Study 3 -->
+             <div class="group scroll-reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 order-2 lg:order-1">
+                        <div class="flex items-center gap-4 text-sm text-gold uppercase tracking-widest">
+                            <span>Packaging</span>
+                            <span class="w-2 h-2 rounded-full bg-gold"></span>
+                            <span>Beauty & Skincare</span>
+                        </div>
+                        <h3 class="text-4xl font-serif italic">Noir Botanicals</h3>
+                        <div class="space-y-4 text-gray-400">
+                            <p><strong class="text-white">The Problem:</strong> Launching a luxury skincare line requiring packaging that justified a premium price point.</p>
+                            <p><strong class="text-white">The Solution:</strong> Matte black glass, embossed serif logotypes, and minimalist botanical illustrations creating a sense of dark, natural luxury.</p>
+                        </div>
+                        <button class="mt-4 px-6 py-3 border border-white/20 hover:bg-white hover:text-black transition-all duration-300 text-xs uppercase tracking-widest">
+                            View Full Case Study
+                        </button>
+                    </div>
+                    <div class="order-1 lg:order-2 img-zoom-container relative aspect-[4/3] bg-neutral-800">
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000&auto=format&fit=crop" alt="Skincare Packaging" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-32 px-6 md:px-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-20 scroll-reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">A Clear Process.<br><span class="font-serif italic text-gold font-light">Premium Results.</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">My structured approach ensures transparency, efficiency, and outcomes that exceed expectations.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+                <!-- Step 1 -->
+                <div class="relative p-6 border border-white/5 bg-white/5 hover:border-gold/50 transition-colors duration-300 group scroll-reveal">
+                    <div class="text-5xl font-serif text-white/10 absolute top-4 right-4 group-hover:text-gold/20 transition-colors">01</div>
+                    <div class="h-12 w-12 rounded-full border border-gold/30 flex items-center justify-center mb-6 text-gold">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Discovery</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Deep dive into your brand, audience, and competitive landscape.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative p-6 border border-white/5 bg-white/5 hover:border-gold/50 transition-colors duration-300 group scroll-reveal">
+                    <div class="text-5xl font-serif text-white/10 absolute top-4 right-4 group-hover:text-gold/20 transition-colors">02</div>
+                    <div class="h-12 w-12 rounded-full border border-gold/30 flex items-center justify-center mb-6 text-gold">
+                        <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Strategy</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Defining the creative direction and strategic positioning.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative p-6 border border-white/5 bg-white/5 hover:border-gold/50 transition-colors duration-300 group scroll-reveal">
+                    <div class="text-5xl font-serif text-white/10 absolute top-4 right-4 group-hover:text-gold/20 transition-colors">03</div>
+                    <div class="h-12 w-12 rounded-full border border-gold/30 flex items-center justify-center mb-6 text-gold">
+                        <i data-lucide="pen-tool" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Design</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Crafting the visual identity with meticulous attention to detail.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative p-6 border border-white/5 bg-white/5 hover:border-gold/50 transition-colors duration-300 group scroll-reveal">
+                    <div class="text-5xl font-serif text-white/10 absolute top-4 right-4 group-hover:text-gold/20 transition-colors">04</div>
+                    <div class="h-12 w-12 rounded-full border border-gold/30 flex items-center justify-center mb-6 text-gold">
+                        <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Refine</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Collaborative revisions to perfect every pixel.</p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative p-6 border border-white/5 bg-white/5 hover:border-gold/50 transition-colors duration-300 group scroll-reveal">
+                    <div class="text-5xl font-serif text-white/10 absolute top-4 right-4 group-hover:text-gold/20 transition-colors">05</div>
+                    <div class="h-12 w-12 rounded-full border border-gold/30 flex items-center justify-center mb-6 text-gold">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Deliver</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Final assets packaged with guidelines for seamless implementation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 px-6 md:px-20 bg-neutral-900">
+        <div class="max-w-4xl mx-auto text-center scroll-reveal">
+            <i data-lucide="quote" class="w-12 h-12 text-gold/30 mx-auto mb-8"></i>
+            <h3 class="text-2xl md:text-4xl font-serif italic leading-relaxed mb-8">
+                "Alex didn't just design a logo; he architected an entire brand experience. Our visual identity now perfectly reflects the premium quality of our services."
+            </h3>
+            <div class="flex items-center justify-center gap-4">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Client" class="w-12 h-12 rounded-full object-cover grayscale">
+                <div class="text-left">
+                    <div class="font-bold text-sm">Sarah Jenkins</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-widest">CEO, Lumière Coffee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment / Pricing Teaser -->
+    <section class="py-20 px-6 border-b border-white/10">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-2">Investment</h3>
+                <p class="text-gray-400 text-sm">Transparent pricing for serious businesses.</p>
+            </div>
+            <div class="text-right">
+                <div class="text-3xl font-serif text-gold">Brand Identity Packages</div>
+                <div class="text-sm text-gray-400 mt-1">Starting at $5,000 USD</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-32 px-6 md:px-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gold/5 pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10 scroll-reveal">
+            <h2 class="text-5xl md:text-7xl font-bold mb-8 tracking-tight">Ready to Elevate<br>Your Brand?</h2>
+            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+                Let's create a visual identity that positions your business at a higher level. Limited availability for Q4 2023.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button class="magnetic-btn px-10 py-5 bg-gold text-black font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                    Book a Discovery Call
+                </button>
+                <button class="magnetic-btn px-10 py-5 border border-white/20 text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-300">
+                    Get a Quote
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 md:px-20 border-t border-white/10 bg-black">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-2xl font-serif font-bold">AM.</div>
+            <div class="text-gray-500 text-xs uppercase tracking-widest">
+                &copy; 2023 Alex Morgan Design. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            gsap.to(loader, {
+                opacity: 0,
+                duration: 1,
+                delay: 0.5,
+                onComplete: () => {
+                    loader.style.display = 'none';
+                    initAnimations();
+                }
+            });
+        });
+
+        // GSAP Animations
+        function initAnimations() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero Animations
+            const tl = gsap.timeline();
+            tl.to('.reveal-text', {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power3.out"
+            })
+            .to('.reveal-image', {
+                opacity: 1,
+                x: 0,
+                duration: 1.2,
+                ease: "power3.out"
+            }, "-=0.5");
+
+            // Scroll Reveals
+            gsap.utils.toArray('.scroll-reveal').forEach(element => {
+                gsap.fromTo(element, 
+                    { y: 50, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 1,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Service Cards Stagger
+            gsap.from('.service-card', {
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#services",
+                    start: "top 70%"
+                }
+            });
+        }
+
+        // Navigation Functions
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-8 h-8"></i>';
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+            }
+            lucide.createIcons();
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+                lucide.createIcons();
+            });
+        });
+
+        // Magnetic Button Effect
+        const magneticBtns = document.querySelectorAll('.magnetic-btn');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0px, 0px)';
+            });
+        });
+
+        // Navbar Scroll Effect
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-black/80', 'backdrop-blur-md', 'py-4');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('bg-black/80', 'backdrop-blur-md', 'py-4');
+                nav.classList.add('py-6');
+            }
+        });
+    </script>
+</body>
+</html>

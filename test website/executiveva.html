@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Virtual Assistant | Strategic Business Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E4BC;
+            --navy: #0F172A;
+            --navy-light: #1E293B;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--navy);
+            color: #F8FAFC;
+        }
+        
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .gold-text {
+            color: var(--gold);
+        }
+        
+        .gold-bg {
+            background-color: var(--gold);
+        }
+        
+        .gold-border {
+            border-color: var(--gold);
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4E4BC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .process-line {
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--navy);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+        
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 50;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            50% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+        }
+        
+        .service-icon {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+        }
+        
+        .number-badge {
+            background: linear-gradient(135deg, var(--gold) 0%, #B8941F 100%);
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 bg-slate-900/90 backdrop-blur-md border-b border-amber-500/20 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 gold-bg rounded-lg flex items-center justify-center">
+                        <i data-lucide="crown" class="text-slate-900 w-6 h-6"></i>
+                    </div>
+                    <span class="text-xl font-serif font-bold tracking-wide">Executive<span class="gold-text">VA</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-slate-300 hover:text-amber-400 transition-colors text-sm uppercase tracking-wider">About</a>
+                    <a href="#services" class="text-slate-300 hover:text-amber-400 transition-colors text-sm uppercase tracking-wider">Services</a>
+                    <a href="#results" class="text-slate-300 hover:text-amber-400 transition-colors text-sm uppercase tracking-wider">Results</a>
+                    <a href="#process" class="text-slate-300 hover:text-amber-400 transition-colors text-sm uppercase tracking-wider">Process</a>
+                    <a href="#pricing" class="text-slate-300 hover:text-amber-400 transition-colors text-sm uppercase tracking-wider">Investment</a>
+                </div>
+                
+                <button onclick="openCalendly()" class="hidden md:flex items-center space-x-2 gold-bg text-slate-900 px-6 py-2.5 rounded-full font-semibold hover:bg-amber-300 transition-all transform hover:scale-105">
+                    <span>Book Call</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+                
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900 border-t border-amber-500/20">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#about" class="block text-slate-300 hover:text-amber-400">About</a>
+                <a href="#services" class="block text-slate-300 hover:text-amber-400">Services</a>
+                <a href="#results" class="block text-slate-300 hover:text-amber-400">Results</a>
+                <a href="#process" class="block text-slate-300 hover:text-amber-400">Process</a>
+                <button onclick="openCalendly()" class="w-full gold-bg text-slate-900 py-3 rounded-lg font-semibold">Book Discovery Call</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-amber-500/5 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in space-y-8">
+                    <div class="inline-flex items-center space-x-2 gold-bg/10 border border-amber-500/30 rounded-full px-4 py-2">
+                        <span class="w-2 h-2 gold-bg rounded-full animate-pulse"></span>
+                        <span class="text-amber-400 text-sm font-medium tracking-wider uppercase">Now Accepting 3 New Clients</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-serif font-bold leading-tight">
+                        Your Strategic <span class="gradient-text">Virtual Assistant</span> for Business Growth.
+                    </h1>
+                    
+                    <p class="text-xl text-slate-300 leading-relaxed max-w-lg">
+                        Helping entrepreneurs reclaim <span class="gold-text font-semibold">20+ hours per week</span> through smart systems and executive-level support.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="openCalendly()" class="gold-bg text-slate-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-amber-300 transition-all transform hover:scale-105 flex items-center justify-center space-x-2 group">
+                            <span>Book Free Consultation</span>
+                            <i data-lucide="calendar" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
+                        </button>
+                        <a href="#services" class="border-2 border-amber-500/50 text-amber-400 px-8 py-4 rounded-full font-semibold hover:bg-amber-500/10 transition-all flex items-center justify-center space-x-2">
+                            <span>View Services</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-6 pt-4">
+                        <div class="flex -space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-slate-700 border-2 border-slate-900 flex items-center justify-center text-xs font-bold">JD</div>
+                            <div class="w-12 h-12 rounded-full bg-slate-600 border-2 border-slate-900 flex items-center justify-center text-xs font-bold">MK</div>
+                            <div class="w-12 h-12 rounded-full bg-slate-500 border-2 border-slate-900 flex items-center justify-center text-xs font-bold">SL</div>
+                            <div class="w-12 h-12 rounded-full gold-bg border-2 border-slate-900 flex items-center justify-center text-xs font-bold text-slate-900">+27</div>
+                        </div>
+                        <div class="text-sm text-slate-400">
+                            <span class="gold-text font-bold text-lg">30+</span> Businesses Trusted
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in relative">
+                    <div class="relative w-full aspect-[4/5] max-w-md mx-auto">
+                        <div class="absolute inset-0 gold-bg rounded-2xl rotate-3 opacity-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent rounded-2xl z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80" alt="Professional Executive Assistant" class="w-full h-full object-cover rounded-2xl shadow-2xl relative z-0 grayscale hover:grayscale-0 transition-all duration-700">
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-xl z-20 animate-bounce" style="animation-duration: 3s;">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 gold-bg rounded-full flex items-center justify-center">
+                                    <i data-lucide="trending-up" class="text-slate-900 w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold gold-text">60%</p>
+                                    <p class="text-xs text-slate-400">Faster Response Time</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in order-2 lg:order-1">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop&q=80" alt="Working Professional" class="rounded-2xl shadow-2xl w-full">
+                        <div class="absolute -bottom-8 -right-8 glass-card p-6 rounded-xl max-w-xs hidden lg:block">
+                            <p class="text-amber-400 font-serif text-lg italic">"I don't just manage tasks — I create systems that scale your business."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in order-1 lg:order-2 space-y-6">
+                    <h2 class="text-4xl lg:text-5xl font-serif font-bold">More Than a VA — <span class="gradient-text">A Strategic Partner.</span></h2>
+                    
+                    <p class="text-slate-300 text-lg leading-relaxed">
+                        With over <span class="gold-text font-semibold">7 years</span> of experience supporting 6 and 7-figure entrepreneurs, I specialize in transforming chaotic backends into streamlined operations.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 py-6">
+                        <div class="space-y-2">
+                            <h4 class="gold-text font-bold text-3xl font-serif">7+</h4>
+                            <p class="text-slate-400 text-sm">Years Experience</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="gold-text font-bold text-3xl font-serif">30+</h4>
+                            <p class="text-slate-400 text-sm">Clients Served</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="gold-text font-bold text-3xl font-serif">15+</h4>
+                            <p class="text-slate-400 text-sm">Tools Mastered</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="gold-text font-bold text-3xl font-serif">100%</h4>
+                            <p class="text-slate-400 text-sm">Client Retention</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 gold-text flex-shrink-0 mt-1"></i>
+                            <p class="text-slate-300">Industries: Coaching, E-commerce, Real Estate, SaaS, Agencies</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 gold-text flex-shrink-0 mt-1"></i>
+                            <p class="text-slate-300">Philosophy: Proactive support, not reactive task completion</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 gold-text flex-shrink-0 mt-1"></i>
+                            <p class="text-slate-300">Focus: ROI-driven outcomes, not hourly tasks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-slate-800/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-serif font-bold mb-6">Executive <span class="gradient-text">Services</span></h2>
+                <p class="text-slate-300 text-lg">Comprehensive backend support designed to free your time and scale your operations.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-2xl hover-lift group fade-in cursor-pointer" onclick="showServiceDetail('admin')">
+                    <div class="service-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="briefcase" class="w-8 h-8 gold-text"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Executive Admin Support</h3>
+                    <p class="text-slate-400 text-sm mb-4">Inbox & calendar management, CRM organization, client follow-ups, travel coordination.</p>
+                    <div class="flex items-center text-amber-400 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-2xl hover-lift group fade-in cursor-pointer" onclick="showServiceDetail('social')">
+                    <div class="service-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="share-2" class="w-8 h-8 gold-text"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Social Media Management</h3>
+                    <p class="text-slate-400 text-sm mb-4">Content scheduling, DM management, community engagement, basic analytics reporting.</p>
+                    <div class="flex items-center text-amber-400 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-2xl hover-lift group fade-in cursor-pointer" onclick="showServiceDetail('automation')">
+                    <div class="service-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="cpu" class="w-8 h-8 gold-text"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Automation & Systems</h3>
+                    <p class="text-slate-400 text-sm mb-4">Workflow setup, email automation, CRM integration, SOP documentation.</p>
+                    <div class="flex items-center text-amber-400 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="glass-card p-8 rounded-2xl hover-lift group fade-in cursor-pointer" onclick="showServiceDetail('project')">
+                    <div class="service-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="target" class="w-8 h-8 gold-text"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Project Management</h3>
+                    <p class="text-slate-400 text-sm mb-4">Team coordination, task delegation, deadline tracking, launch management.</p>
+                    <div class="flex items-center text-amber-400 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-serif font-bold mb-6">Real <span class="gradient-text">Results</span> for Real Businesses</h2>
+                <p class="text-slate-300 text-lg">Measurable impact that drives growth and efficiency.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="glass-card p-8 rounded-2xl text-center fade-in hover-lift">
+                    <div class="text-5xl font-serif font-bold gold-text mb-2 counter" data-target="60">0%</div>
+                    <p class="text-slate-300 font-semibold mb-2">Faster Response Time</p>
+                    <p class="text-slate-400 text-sm">To client inquiries and opportunities</p>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl text-center fade-in hover-lift">
+                    <div class="text-5xl font-serif font-bold gold-text mb-2 counter" data-target="15">0</div>
+                    <p class="text-slate-300 font-semibold mb-2">Hours Saved Weekly</p>
+                    <p class="text-slate-400 text-sm">Average admin workload reduction</p>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl text-center fade-in hover-lift">
+                    <div class="text-5xl font-serif font-bold gold-text mb-2 counter" data-target="40">0%</div>
+                    <p class="text-slate-300 font-semibold mb-2">CRM Efficiency</p>
+                    <p class="text-slate-400 text-sm">Improvement in lead management</p>
+                </div>
+            </div>
+            
+            <!-- Case Study Preview -->
+            <div class="glass-card rounded-2xl p-8 lg:p-12 fade-in">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-amber-400 text-sm font-semibold tracking-wider uppercase">Case Study</span>
+                        <h3 class="text-3xl font-serif font-bold mt-2 mb-4">How I Helped a 7-Figure Coach Reclaim 20 Hours/Week</h3>
+                        <p class="text-slate-300 mb-6 leading-relaxed">
+                            A high-ticket business coach was drowning in admin tasks, missing opportunities, and spending weekends catching up on emails. Within 30 days of implementing my systems:
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center space-x-3">
+                                <i data-lucide="check" class="w-5 h-5 gold-text"></i>
+                                <span class="text-slate-300">Inbox zero achieved daily</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i data-lucide="check" class="w-5 h-5 gold-text"></i>
+                                <span class="text-slate-300">Calendar automated with booking links</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i data-lucide="check" class="w-5 h-5 gold-text"></i>
+                                <span class="text-slate-300">Client onboarding streamlined (saved 5 hrs/week)</span>
+                            </li>
+                        </ul>
+                        <button onclick="openCaseStudy()" class="text-amber-400 font-semibold hover:text-amber-300 transition-colors flex items-center space-x-2">
+                            <span>Read Full Case Study</span>
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute inset-0 gold-bg rounded-2xl rotate-2 opacity-10"></div>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=80" alt="Case Study" class="rounded-2xl shadow-xl relative z-10 w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="py-24 bg-slate-800/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-serif font-bold mb-4">Tools I <span class="gradient-text">Work With</span></h2>
+                <p class="text-slate-400">Certified expert in industry-leading platforms</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 fade-in">
+                <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center hover-lift group cursor-pointer">
+                    <div class="w-12 h-12 mb-2 grayscale group-hover:grayscale-0 transition-all flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-white">N</div>
+                    <span class="text-xs text-slate-400 group-hover:text-amber-400 transition-colors">Notion</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center hover-lift group cursor-pointer">
+                    <div class="w-12 h-12 mb-2 grayscale group-hover:grayscale-0 transition-all flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-blue-400">T</div>
+                    <span class="text-xs text-slate-400 group-hover:text-amber-400 transition-colors">Trello</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center hover-lift group cursor-pointer">
+                    <div class="w-12 h-12 mb-2 grayscale group-hover:grayscale-0 transition-all flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-pink-500">A</div>
+                    <span class="text-xs text-slate-400 group-hover:text-amber-400 transition-colors">Asana</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center hover-lift group cursor-pointer">
+                    <div class="w-12 h-12 mb-2 grayscale group-hover:grayscale-0 transition-all flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-purple-500">S</div>
+                    <span class="text-xs text-slate-400 group-hover:text-amber-400 transition-colors">Slack</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center hover-lift group cursor-pointer">
+                    <div class="w-12 h-12 mb-2 grayscale group-hover:grayscale-0 transition-all flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-orange-500">C</div>
+                    <span class="text-xs text-slate-400 group-hover:text-amber-400 transition-colors">ClickUp</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center hover-lift group cursor-pointer">
+                    <div class="w-12 h-12 mb-2 grayscale group-hover:grayscale-0 transition-all flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-green-500">G</div>
+                    <span class="text-xs text-slate-400 group-hover:text-amber-400 transition-colors">Workspace</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center hover-lift group cursor-pointer">
+                    <div class="w-12 h-12 mb-2 grayscale group-hover:grayscale-0 transition-all flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-blue-600">M</div>
+                    <span class="text-xs text-slate-400 group-hover:text-amber-400 transition-colors">Meta</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center hover-lift group cursor-pointer">
+                    <div class="w-12 h-12 mb-2 grayscale group-hover:grayscale-0 transition-all flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-green-600">S</div>
+                    <span class="text-xs text-slate-400 group-hover:text-amber-400 transition-colors">Shopify</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-serif font-bold mb-4">Client <span class="gradient-text">Success Stories</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card p-8 rounded-2xl fade-in hover-lift relative">
+                    <i data-lucide="quote" class="w-10 h-10 gold-text/20 absolute top-6 right-6"></i>
+                    <p class="text-slate-300 mb-6 italic leading-relaxed">"Working with her completely transformed my workflow. I went from working 60-hour weeks to having actual weekends off. She's not just an assistant; she's a business partner."</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-slate-900 font-bold">JD</div>
+                        <div>
+                            <p class="font-semibold text-white">Jessica Davis</p>
+                            <p class="text-sm text-slate-400">Business Coach, 7-Figure Entrepreneur</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-2xl fade-in hover-lift relative">
+                    <i data-lucide="quote" class="w-10 h-10 gold-text/20 absolute top-6 right-6"></i>
+                    <p class="text-slate-300 mb-6 italic leading-relaxed">"The systems she built saved us 15 hours a week immediately. Our client response time improved by 60%, and we closed 3 more deals in the first month."</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-slate-900 font-bold">MK</div>
+                        <div>
+                            <p class="font-semibold text-white">Michael Chen</p>
+                            <p class="text-sm text-slate-400">Real Estate Agency Owner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-2xl fade-in hover-lift relative">
+                    <i data-lucide="quote" class="w-10 h-10 gold-text/20 absolute top-6 right-6"></i>
+                    <p class="text-slate-300 mb-6 italic leading-relaxed">"Finally, someone who thinks proactively! She anticipates needs before I even voice them. My business runs smoother than ever."</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-slate-900 font-bold">SL</div>
+                        <div>
+                            <p class="font-semibold text-white">Sarah Lopez</p>
+                            <p class="text-sm text-slate-400">E-commerce Brand Founder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-24 bg-slate-800/30">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-serif font-bold mb-4">Simple & Efficient <span class="gradient-text">Onboarding</span></h2>
+                <p class="text-slate-400">A streamlined process to get you supported quickly</p>
+            </div>
+            
+            <div class="relative">
+                <div class="absolute left-8 top-0 bottom-0 w-0.5 process-line hidden md:block"></div>
+                
+                <div class="space-y-12">
+                    <div class="fade-in relative flex flex-col md:flex-row items-start md:items-center gap-8">
+                        <div class="number-badge w-16 h-16 rounded-full flex items-center justify-center text-slate-900 font-bold text-2xl flex-shrink-0 z-10 shadow-lg shadow-amber-500/20">1</div>
+                        <div class="glass-card p-6 rounded-xl flex-1 md:ml-8">
+                            <h3 class="text-xl font-serif font-bold mb-2 gold-text">Discovery Call</h3>
+                            <p class="text-slate-300">We discuss your pain points, goals, and current systems. This 30-minute call helps me understand exactly what you need.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in relative flex flex-col md:flex-row items-start md:items-center gap-8">
+                        <div class="number-badge w-16 h-16 rounded-full flex items-center justify-center text-slate-900 font-bold text-2xl flex-shrink-0 z-10 shadow-lg shadow-amber-500/20">2</div>
+                        <div class="glass-card p-6 rounded-xl flex-1 md:ml-8">
+                            <h3 class="text-xl font-serif font-bold mb-2 gold-text">Strategy Plan</h3>
+                            <p class="text-slate-300">I create a customized support plan outlining systems, tools, and workflows tailored specifically to your business needs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in relative flex flex-col md:flex-row items-start md:items-center gap-8">
+                        <div class="number-badge w-16 h-16 rounded-full flex items-center justify-center text-slate-900 font-bold text-2xl flex-shrink-0 z-10 shadow-lg shadow-amber-500/20">3</div>
+                        <div class="glass-card p-6 rounded-xl flex-1 md:ml-8">
+                            <h3 class="text-xl font-serif font-bold mb-2 gold-text">Implementation</h3>
+                            <p class="text-slate-300">We set up integrations, migrate data, and establish workflows. Training provided for seamless handoff.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in relative flex flex-col md:flex-row items-start md:items-center gap-8">
+                        <div class="number-badge w-16 h-16 rounded-full flex items-center justify-center text-slate-900 font-bold text-2xl flex-shrink-0 z-10 shadow-lg shadow-amber-500/20">4</div>
+                        <div class="glass-card p-6 rounded-xl flex-1 md:ml-8">
+                            <h3 class="text-xl font-serif font-bold mb-2 gold-text">Ongoing Support</h3>
+                            <p class="text-slate-300">Regular check-ins, monthly strategy reviews, and continuous optimization of your systems as you scale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-serif font-bold mb-4">Investment <span class="gradient-text">Options</span></h2>
+                <p class="text-slate-400">Transparent pricing for serious business owners</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Starter -->
+                <div class="glass-card rounded-2xl p-8 fade-in hover-lift flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-serif font-bold mb-2">Starter Support</h3>
+                        <p class="text-slate-400 text-sm">Perfect for solopreneurs needing basic admin relief</p>
+                    </div>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold gold-text">$1,500</span>
+                        <span class="text-slate-400">/month</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>20 hours/month support</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Email & calendar management</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Basic CRM upkeep</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Weekly check-ins</span>
+                        </li>
+                    </ul>
+                    <button onclick="openCalendly()" class="w-full border-2 border-amber-500/50 text-amber-400 py-3 rounded-full font-semibold hover:bg-amber-500/10 transition-all">
+                        Get Started
+                    </button>
+                </div>
+                
+                <!-- Growth -->
+                <div class="glass-card rounded-2xl p-8 fade-in hover-lift flex flex-col relative border-2 border-amber-500/50 transform md:-translate-y-4">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 gold-bg text-slate-900 px-4 py-1 rounded-full text-sm font-bold">
+                        Most Popular
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-xl font-serif font-bold mb-2">Growth Partner</h3>
+                        <p class="text-slate-400 text-sm">For scaling businesses ready for systems</p>
+                    </div>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold gold-text">$3,000</span>
+                        <span class="text-slate-400">/month</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>40 hours/month support</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Everything in Starter, plus:</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Automation setup & workflows</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Social media management</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Bi-weekly strategy calls</span>
+                        </li>
+                    </ul>
+                    <button onclick="openCalendly()" class="w-full gold-bg text-slate-900 py-3 rounded-full font-bold hover:bg-amber-300 transition-all">
+                        Scale Your Business
+                    </button>
+                </div>
+                
+                <!-- Executive -->
+                <div class="glass-card rounded-2xl p-8 fade-in hover-lift flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-serif font-bold mb-2">Executive Package</h3>
+                        <p class="text-slate-400 text-sm">Full backend management for 7-figure brands</p>
+                    </div>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold gold-text">Custom</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Full-time dedicated support</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Everything in Growth, plus:</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Project management</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Team coordination</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 gold-text flex-shrink-0"></i>
+                            <span>Priority support & access</span>
+                        </li>
+                    </ul>
+                    <button onclick="openCalendly()" class="w-full border-2 border-amber-500/50 text-amber-400 py-3 rounded-full font-semibold hover:bg-amber-500/10 transition-all">
+                        Discuss Custom Plan
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in">
+                <p class="text-slate-400 mb-4">Need something specific? All packages can be customized.</p>
+                <button onclick="downloadCapabilityStatement()" class="text-amber-400 hover:text-amber-300 transition-colors flex items-center justify-center space-x-2 mx-auto">
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                    <span>Download Capability Statement (PDF)</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-slate-800/30">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-serif font-bold mb-4">Frequently Asked <span class="gradient-text">Questions</span></h2>
+            </div>
+            
+            <div class="space-y-4 fade-in" id="faqContainer">
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">How quickly can we get started?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 gold-text transform transition-transform"></i>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-slate-300">
+                        Typically, we can begin within 3-5 business days after our discovery call. The onboarding process takes about one week to fully integrate with your systems.
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">What time zones do you work in?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 gold-text transform transition-transform"></i>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-slate-300">
+                        I work primarily during US business hours (EST/PST) but offer flexibility for international clients. We can discuss specific availability during our call.
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">Do you require long-term contracts?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 gold-text transform transition-transform"></i>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-slate-300">
+                        No long-term contracts required. I operate on a month-to-month basis with a 30-day notice period. However, most clients see the best results with a minimum 3-month commitment.
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">How do we communicate and track tasks?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 gold-text transform transition-transform"></i>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-slate-300">
+                        I use your preferred project management tool (Asana, ClickUp, Trello) for task tracking and Slack or email for daily communication. Weekly strategy calls keep us aligned.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 gold-bg/5"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10 fade-in">
+            <h2 class="text-4xl lg:text-6xl font-serif font-bold mb-6">Let's Build Systems That <span class="gradient-text">Free Your Time</span></h2>
+            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                Stop drowning in admin work. Start focusing on what actually grows your business.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openCalendly()" class="gold-bg text-slate-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-amber-300 transition-all transform hover:scale-105 shadow-lg shadow-amber-500/25 flex items-center justify-center space-x-2">
+                    <span>Schedule Strategy Call</span>
+                    <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                </button>
+                <a href="mailto:hello@executiveva.com" class="border-2 border-amber-500/50 text-amber-400 px-10 py-5 rounded-full font-semibold hover:bg-amber-500/10 transition-all flex items-center justify-center space-x-2">
+                    <span>Send Inquiry</span>
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                </a>
+            </div>
+            
+            <p class="mt-8 text-slate-400 text-sm">Limited availability: Currently accepting 3 new clients for Q1 2026</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-amber-500/20 py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 gold-bg rounded-lg flex items-center justify-center">
+                            <i data-lucide="crown" class="text-slate-900 w-5 h-5"></i>
+                        </div>
+                        <span class="text-lg font-serif font-bold">Executive<span class="gold-text">VA</span></span>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-sm">
+                        Strategic virtual assistance for entrepreneurs ready to scale. Based in the US, serving clients worldwide.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 gold-text">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#about" class="hover:text-amber-400 transition-colors">About</a></li>
+                        <li><a href="#services" class="hover:text-amber-400 transition-colors">Services</a></li>
+                        <li><a href="#pricing" class="hover:text-amber-400 transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors" onclick="openCaseStudy()">Case Studies</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 gold-text">Connect</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="mailto:hello@executiveva.com" class="hover:text-amber-400 transition-colors">hello@executiveva.com</a></li>
+                        <li class="flex space-x-4 mt-4">
+                            <a href="#" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-amber-500/20 transition-colors">
+                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-amber-500/20 transition-colors">
+                                <i data-lucide="instagram" class="w-4 h-4"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+                <p>&copy; 2026 Executive VA. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-amber-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-amber-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA Button -->
+    <button onclick="openCalendly()" class="sticky-cta gold-bg text-slate-900 px-6 py-4 rounded-full font-bold shadow-lg hover:bg-amber-300 transition-all flex items-center space-x-2 group">
+        <i data-lucide="calendar" class="w-5 h-5"></i>
+        <span class="hidden sm:inline">Book Call</span>
+    </button>
+
+    <!-- Modal for Service Details -->
+    <div id="serviceModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl px-6">
+            <div class="glass-card rounded-2xl p-8 relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger counters if it's a counter element
+                    if (entry.target.querySelector('.counter')) {
+                        animateCounters(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        
+        // Counter animation
+        function animateCounters(container) {
+            const counters = container.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        counter.textContent = target + (counter.textContent.includes('%') ? '%' : '+');
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current) + (counter.textContent.includes('%') ? '%' : '');
+                    }
+                }, 16);
+            });
+        }
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Calendly integration placeholder
+        function openCalendly() {
+            // Replace with your actual Calendly link
+            window.open('https://calendly.com/your-link', '_blank');
+            // Or use Calendly embed:
+            // Calendly.initPopupWidget({url: 'https://calendly.com/your-link'});
+        }
+        
+        // Service detail modal
+        const serviceDetails = {
+            admin: {
+                icon: 'briefcase',
+                title: 'Executive Admin Support',
+                description: 'Comprehensive administrative management that keeps your business running smoothly.',
+                features: [
+                    'Inbox Zero Management - Sort, prioritize, and respond to emails',
+                    'Calendar Optimization - Strategic scheduling and buffer time management',
+                    'CRM Organization - Contact management, tagging, and follow-up sequences',
+                    'Travel & Event Coordination - Booking, itineraries, and logistics',
+                    'Document Preparation - Reports, presentations, and data entry'
+                ]
+            },
+            social: {
+                icon: 'share-2',
+                title: 'Social Media Management',
+                description: 'Strategic social presence management to engage your audience while you focus on creation.',
+                features: [
+                    'Content Calendar Management - Scheduling and optimal timing',
+                    'Community Engagement - DM management and comment responses',
+                    'Analytics Reporting - Weekly performance insights',
+                    'Hashtag Research - Strategic tagging for reach',
+                    'Content Repurposing - Maximizing your existing content'
+                ]
+            },
+            automation: {
+                icon: 'cpu',
+                title: 'Automation & Systems',
+                description: 'Build scalable systems that reduce manual work and human error.',
+                features: [
+                    'Workflow Automation - Zapier, Make.com, and native integrations',
+                    'Email Automation - Sequences, triggers, and personalization',
+                    'CRM Integration - Connecting your tools for seamless data flow',
+                    'SOP Documentation - Creating repeatable processes',
+                    'Onboarding Systems - Client intake automation'
+                ]
+            },
+            project: {
+                icon: 'target',
+                title: 'Project Management',
+                description: 'End-to-end project coordination ensuring nothing falls through the cracks.',
+                features: [
+                    'Team Coordination - Managing contractors and team members',
+                    'Deadline Tracking - Milestone management and accountability',
+                    'Launch Management - Product/course launch coordination',
+                    'Resource Allocation - Budget and time tracking',
+                    'Risk Management - Identifying and mitigating bottlenecks'
+                ]
+            }
+        };
+        
+        function showServiceDetail(service) {
+            const modal = document.getElementById('serviceModal');
+            const content = document.getElementById('modalContent');
+            const details = serviceDetails[service];
+            
+            content.innerHTML = `
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="service-icon w-16 h-16 rounded-2xl flex items-center justify-center">
+                        <i data-lucide="${details.icon}" class="w-8 h-8 gold-text"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold">${details.title}</h3>
+                </div>
+                <p class="text-slate-300 mb-6 text-lg">${details.description}</p>
+                <ul class="space-y-3 mb-8">
+                    ${details.features.map(f => `
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 gold-text flex-shrink-0 mt-0.5"></i>
+                            <span class="text-slate-300">${f}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+                <button onclick="openCalendly()" class="w-full gold-bg text-slate-900 py-3 rounded-full font-bold hover:bg-amber-300 transition-all">
+                    Discuss Your Needs
+                </button>
+            `;
+            
+            modal.classList.remove('hidden');
+            lucide.createIcons();
+        }
+        
+        function closeModal() {
+            document.getElementById('serviceModal').classList.add('hidden');
+        }
+        
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            content.classList.toggle('hidden');
+            icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+        
+        // Case study placeholder
+        function openCaseStudy() {
+            alert('Full case study coming soon. Book a call to hear detailed success stories!');
+        }
+        
+        // Download capability statement
+        function downloadCapabilityStatement() {
+            alert('Capability statement download would start here. Replace with actual PDF link.');
+        }
+        
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow-lg', 'shadow-amber-500/5');
+            } else {
+                navbar.classList.remove('shadow-lg', 'shadow-amber-500/5');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>

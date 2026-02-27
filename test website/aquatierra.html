@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquatierra Aquariums & Pets | Your Pet Paradise in Cebu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        reef: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        sand: {
+                            50: '#fdfbf7',
+                            100: '#f7f3e8',
+                            200: '#efe5d0',
+                            300: '#e6d5b5',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'bubble': 'bubble 4s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        bubble: {
+                            '0%, 100%': { transform: 'translateY(0) scale(1)' },
+                            '50%': { transform: 'translateY(-10px) scale(1.05)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .bubble-bg {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(14, 165, 233, 0.1);
+            animation: float 8s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-sand-50 overflow-x-hidden">
+
+    <!-- Floating Messenger Button -->
+    <a href="https://m.me/YOUR_PAGE_ID" target="_blank" class="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 animate-bounce group">
+        <i class="fab fa-facebook-messenger text-2xl"></i>
+        <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white text-sm px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            Chat with us!
+        </span>
+    </a>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-ocean-400 to-reef-500 rounded-full flex items-center justify-center text-white text-xl">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <span class="font-serif text-2xl font-bold text-ocean-800">Aquatierra</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-ocean-600 font-semibold transition">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-ocean-600 font-semibold transition">About</a>
+                    <a href="#products" class="nav-link text-gray-700 hover:text-ocean-600 font-semibold transition">Products</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-ocean-600 font-semibold transition">Reviews</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-ocean-600 font-semibold transition">Visit Us</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="https://facebook.com" target="_blank" class="text-blue-600 hover:text-blue-700 text-2xl transition transform hover:scale-110">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <button class="md:hidden text-gray-700 text-2xl" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-ocean-600 font-semibold">Home</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-ocean-600 font-semibold">About</a>
+                <a href="#products" class="block py-2 text-gray-700 hover:text-ocean-600 font-semibold">Products</a>
+                <a href="#testimonials" class="block py-2 text-gray-700 hover:text-ocean-600 font-semibold">Reviews</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-ocean-600 font-semibold">Visit Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Animated Background Bubbles -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="bubble-bg w-32 h-32 top-20 left-10" style="animation-delay: 0s;"></div>
+            <div class="bubble-bg w-24 h-24 top-40 right-20" style="animation-delay: 2s;"></div>
+            <div class="bubble-bg w-40 h-40 bottom-20 left-1/4" style="animation-delay: 4s;"></div>
+            <div class="bubble-bg w-20 h-20 top-1/3 right-1/3" style="animation-delay: 1s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 animate-fade-in-up">
+                    <div class="inline-flex items-center space-x-2 bg-ocean-100 text-ocean-800 px-4 py-2 rounded-full text-sm font-bold">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <span>Trusted Pet Store in Cebu City</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-ocean-900 leading-tight">
+                        Your Pet & <span class="text-transparent bg-clip-text bg-gradient-to-r from-ocean-600 to-reef-600">Aquarium</span> Paradise
+                    </h1>
+                    
+                    <p class="text-xl text-gray-600 max-w-lg leading-relaxed">
+                        Aquariums, tropical fish, aquatic plants, supplies & expert advice — everything your pet needs, all under one roof in Cebu City.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-ocean-600 to-ocean-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Visit Us Today
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                            <i class="fab fa-facebook-f mr-2"></i>
+                            Message on Facebook
+                        </a>
+                    </div>
+
+                    <div class="flex items-center space-x-6 text-sm text-gray-500">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-reef-500 mr-2"></i>
+                            <span>Expert Advice</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-reef-500 mr-2"></i>
+                            <span>Quality Products</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-reef-500 mr-2"></i>
+                            <span>Local Business</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ocean-900/50 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=800&h=600&fit=crop" alt="Beautiful Aquarium" class="w-full h-[500px] object-cover">
+                        <div class="absolute bottom-6 left-6 z-20 text-white">
+                            <p class="font-serif text-2xl font-bold">Discover Underwater Worlds</p>
+                            <p class="text-ocean-100">Premium aquariums & exotic fish</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Cards -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl animate-float hidden md:block">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-reef-100 rounded-full flex items-center justify-center text-reef-600">
+                                <i class="fas fa-leaf text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800">Live Plants</p>
+                                <p class="text-sm text-gray-500">Aquatic Gardens</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl animate-float hidden md:block" style="animation-delay: 1s;">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center text-ocean-600">
+                                <i class="fas fa-fish text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800">Tropical Fish</p>
+                                <p class="text-sm text-gray-500">Exotic Species</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=500&fit=crop" alt="Pet Store" class="rounded-2xl shadow-lg transform translate-y-8">
+                        <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=400&h=500&fit=crop" alt="Aquarium Fish" class="rounded-2xl shadow-lg">
+                    </div>
+                    <div class="absolute -bottom-8 right-8 bg-ocean-600 text-white p-6 rounded-2xl shadow-xl max-w-xs">
+                        <p class="font-serif text-lg italic">"Passion for aquatics, love for animals — that's the Aquatierra way."</p>
+                        <p class="mt-2 text-sm text-ocean-100">— The Aquatierra Team</p>
+                    </div>
+                </div>
+
+                <div class="order-1 md:order-2 space-y-6">
+                    <div class="inline-block bg-reef-100 text-reef-800 px-4 py-1 rounded-full text-sm font-bold">
+                        About Us
+                    </div>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-gray-900">
+                        Serving Cebu Pet Lovers with <span class="text-ocean-600">Passion</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Aquatierra Aquariums & Pets is your local destination for everything aquatic and furry. Located in the heart of Guadalupe, Cebu City, we've been helping hobbyists and pet parents create thriving underwater ecosystems and happy homes for their companions.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Whether you're setting up your first betta tank or maintaining a complex reef aquarium, our team provides trusted advice and quality supplies to ensure your success.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 bg-ocean-100 rounded-lg flex items-center justify-center text-ocean-600 flex-shrink-0">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">Our Mission</h3>
+                                <p class="text-sm text-gray-600">Quality supplies with expert guidance</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 bg-reef-100 rounded-lg flex items-center justify-center text-reef-600 flex-shrink-0">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">Our Promise</h3>
+                                <p class="text-sm text-gray-600">Friendly, knowledgeable service</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-sand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block bg-ocean-100 text-ocean-800 px-4 py-1 rounded-full text-sm font-bold mb-4">
+                    Our Products
+                </div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Everything Your Pet Needs
+                </h2>
+                <p class="text-lg text-gray-600">
+                    From vibrant tropical fish to premium filtration systems, we stock carefully selected products for aquatic enthusiasts and pet owners.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Category 1 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="showProductDetail('fish')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=600&h=400&fit=crop" alt="Tropical Fish" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-sm font-semibold">View Collection →</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center text-ocean-600 mb-4">
+                            <i class="fas fa-fish text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-gray-900 mb-2">Aquarium Fish</h3>
+                        <p class="text-gray-600 mb-4">Betta, Tetras, Guppies, Cichlids, and exotic species carefully selected for health and vibrancy.</p>
+                        <button class="text-ocean-600 font-bold hover:text-ocean-700 transition flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="showProductDetail('tanks')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop" alt="Aquarium Tanks" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-sm font-semibold">View Collection →</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-reef-100 rounded-full flex items-center justify-center text-reef-600 mb-4">
+                            <i class="fas fa-cube text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-gray-900 mb-2">Tanks & Filtration</h3>
+                        <p class="text-gray-600 mb-4">Glass and acrylic aquariums, canister filters, hang-on-back systems, and air pumps.</p>
+                        <button class="text-reef-600 font-bold hover:text-reef-700 transition flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="showProductDetail('plants')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550100136-e074fa43d818?w=600&h=400&fit=crop" alt="Aquatic Plants" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-sm font-semibold">View Collection →</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-4">
+                            <i class="fas fa-leaf text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-gray-900 mb-2">Aquatic Plants</h3>
+                        <p class="text-gray-600 mb-4">Anubias, Java Fern, Mosses, Stem plants, and substrate for planted aquariums.</p>
+                        <button class="text-green-600 font-bold hover:text-green-700 transition flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="showProductDetail('food')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600&h=400&fit=crop" alt="Fish Food" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-sm font-semibold">View Collection →</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 mb-4">
+                            <i class="fas fa-utensils text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-gray-900 mb-2">Food & Nutrition</h3>
+                        <p class="text-gray-600 mb-4">Premium flakes, pellets, frozen foods, and specialty nutrition for optimal fish health.</p>
+                        <button class="text-yellow-600 font-bold hover:text-yellow-700 transition flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg card-hover cursor-pointer" onclick="showProductDetail('accessories')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=400&fit=crop" alt="Pet Accessories" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-sm font-semibold">View Collection →</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 mb-4">
+                            <i class="fas fa-paw text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-gray-900 mb-2">Pet Accessories</h3>
+                        <p class="text-gray-600 mb-4">Decorations, lighting, water conditioners, and supplies for small mammals and birds.</p>
+                        <button class="text-purple-600 font-bold hover:text-purple-700 transition flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Special Deals -->
+                <div class="group bg-gradient-to-br from-ocean-600 to-reef-600 rounded-3xl overflow-hidden shadow-lg card-hover text-white cursor-pointer" onclick="showProductDetail('deals')">
+                    <div class="p-6 h-full flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-10 -mb-10"></div>
+                        
+                        <div>
+                            <div class="inline-block bg-white/20 backdrop-blur px-3 py-1 rounded-full text-sm font-bold mb-4">
+                                <i class="fas fa-tag mr-1"></i> Special Offers
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold mb-2">Featured Deals</h3>
+                            <p class="text-ocean-100 mb-4">Check out our current promotions on starter kits, bulk food purchases, and seasonal specials.</p>
+                        </div>
+                        
+                        <button class="bg-white text-ocean-600 font-bold py-3 px-6 rounded-full hover:bg-ocean-50 transition flex items-center justify-center w-full">
+                            View Current Promotions <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">Why Choose Aquatierra?</h2>
+                <p class="text-gray-600">We're more than just a pet store — we're your partners in pet care.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-8 rounded-2xl bg-sand-50 hover:bg-ocean-50 transition duration-300">
+                    <div class="w-16 h-16 bg-ocean-100 rounded-full flex items-center justify-center text-ocean-600 text-2xl mx-auto mb-4">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-900 mb-2">Friendly Service</h3>
+                    <p class="text-gray-600">Our team loves pets as much as you do. Get warm, personalized assistance every time you visit.</p>
+                </div>
+
+                <div class="text-center p-8 rounded-2xl bg-sand-50 hover:bg-reef-50 transition duration-300">
+                    <div class="w-16 h-16 bg-reef-100 rounded-full flex items-center justify-center text-reef-600 text-2xl mx-auto mb-4">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-900 mb-2">Expert Advice</h3>
+                    <p class="text-gray-600">Years of experience in aquatics and pet care. We help you make informed decisions for your pets.</p>
+                </div>
+
+                <div class="text-center p-8 rounded-2xl bg-sand-50 hover:bg-yellow-50 transition duration-300">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 text-2xl mx-auto mb-4">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-900 mb-2">Local Cebu Business</h3>
+                    <p class="text-gray-600">Proudly serving the Cebu City community. Support local while getting the best for your pets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 bg-ocean-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-white/10 backdrop-blur px-4 py-1 rounded-full text-sm font-bold mb-4">
+                    <i class="fas fa-star text-yellow-400 mr-1"></i> 4.8/5 Rating
+                </div>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">What Our Customers Say</h2>
+                <p class="text-ocean-200">Trusted by aquarium hobbyists and pet lovers across Cebu</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:bg-white/20 transition duration-300">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-ocean-100 mb-6 italic">"Finally found a pet store in Cebu that actually knows about aquariums! They helped me set up my first planted tank and it's thriving. Highly recommended!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-reef-500 rounded-full flex items-center justify-center font-bold text-white">JD</div>
+                        <div class="ml-3">
+                            <p class="font-bold">Juan Dela Cruz</p>
+                            <p class="text-sm text-ocean-300">Aquarium Hobbyist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:bg-white/20 transition duration-300">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-ocean-100 mb-6 italic">"Great selection of healthy fish and quality supplies. The staff is very friendly and always willing to give advice. My go-to pet store in Guadalupe!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-ocean-500 rounded-full flex items-center justify-center font-bold text-white">MS</div>
+                        <div class="ml-3">
+                            <p class="font-bold">Maria Santos</p>
+                            <p class="text-sm text-ocean-300">Regular Customer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:bg-white/20 transition duration-300">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-ocean-100 mb-6 italic">"Best prices on filters and fish food in the area. They also carry hard-to-find aquatic plants. Support this local business!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center font-bold text-white">RL</div>
+                        <div class="ml-3">
+                            <p class="font-bold">Roberto Lim</p>
+                            <p class="text-sm text-ocean-300">Fish Keeper</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Visit Us -->
+    <section id="contact" class="py-20 bg-sand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                    <div class="inline-block bg-reef-100 text-reef-800 px-4 py-1 rounded-full text-sm font-bold mb-4">
+                        Visit Us
+                    </div>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                        Come Say Hello!
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Visit our store in Guadalupe, Cebu City. We'd love to help you find the perfect addition to your aquarium or answer any pet care questions.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center text-ocean-600 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-lg">Address</h3>
+                                <p class="text-gray-600">Grove Building, Guadalupe,<br>M. Veloso St, Cebu City, Philippines</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-reef-100 rounded-full flex items-center justify-center text-reef-600 flex-shrink-0">
+                                <i class="fas fa-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-lg">Contact</h3>
+                                <p class="text-gray-600">0998-968-0381</p>
+                                <p class="text-sm text-gray-500">Message us on Facebook for quick replies</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 flex-shrink-0">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-lg">Business Hours</h3>
+                                <ul class="text-gray-600 space-y-1">
+                                    <li class="flex justify-between max-w-xs">
+                                        <span>Monday - Saturday:</span>
+                                        <span class="font-semibold">9:00 AM - 7:00 PM</span>
+                                    </li>
+                                    <li class="flex justify-between max-w-xs">
+                                        <span>Sunday:</span>
+                                        <span class="font-semibold">10:00 AM - 5:00 PM</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a href="https://facebook.com" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition shadow-lg">
+                            <i class="fab fa-facebook-f mr-2"></i>
+                            Message on Facebook
+                        </a>
+                        <a href="tel:09989680381" class="inline-flex items-center justify-center px-6 py-3 bg-ocean-600 text-white font-bold rounded-full hover:bg-ocean-700 transition shadow-lg">
+                            <i class="fas fa-phone mr-2"></i>
+                            Call Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-3xl shadow-xl">
+                    <div class="relative rounded-2xl overflow-hidden h-[400px] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=800&h=600&fit=crop" alt="Map Location" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+                            <div class="bg-white p-6 rounded-2xl shadow-2xl text-center max-w-xs">
+                                <div class="w-16 h-16 bg-ocean-600 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-3 animate-bounce">
+                                    <i class="fas fa-map-pin"></i>
+                                </div>
+                                <h3 class="font-bold text-gray-900 mb-1">Aquatierra Aquariums</h3>
+                                <p class="text-sm text-gray-600 mb-3">Grove Building, Guadalupe, Cebu City</p>
+                                <a href="https://maps.google.com/?q=Grove+Building+Guadalupe+Cebu+City" target="_blank" class="text-ocean-600 font-bold text-sm hover:underline">
+                                    Open in Google Maps →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-ocean-400 to-reef-500 rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-fish text-sm"></i>
+                        </div>
+                        <span class="font-serif text-2xl font-bold">Aquatierra</span>
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-sm">
+                        Your trusted local pet and aquarium store in Cebu City. Quality products, expert advice, and friendly service.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-600 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://m.me/YOUR_PAGE_ID" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-600 hover:text-white transition">
+                            <i class="fab fa-facebook-messenger"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#products" class="hover:text-white transition">Products</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li class="flex items-start space-x-2">
+                            <i class="fas fa-map-marker-alt mt-1 text-ocean-400"></i>
+                            <span>Grove Building, Guadalupe,<br>M. Veloso St, Cebu City</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-ocean-400"></i>
+                            <span>0998-968-0381</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2024 Aquatierra Aquariums & Pets. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Made with <i class="fas fa-heart text-red-500 mx-1"></i> in Cebu City</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="closeProductModal()"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                            <h3 class="text-2xl leading-6 font-serif font-bold text-gray-900 mb-4" id="modal-title">Product Category</h3>
+                            <div class="mt-2">
+                                <p class="text-sm text-gray-500 mb-4" id="modal-description">Product description goes here.</p>
+                                <div class="bg-ocean-50 p-4 rounded-lg">
+                                    <p class="text-sm text-ocean-800 font-semibold mb-2">Available Items:</p>
+                                    <ul class="text-sm text-gray-600 space-y-1" id="modal-items">
+                                        <li>• Item 1</li>
+                                        <li>• Item 2</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <a href="https://facebook.com" target="_blank" class="w-full inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
+                        Message for Prices
+                    </a>
+                    <button type="button" class="mt-3 w-full inline-flex justify-center rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeProductModal()">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        // Product Detail Data
+        const productData = {
+            fish: {
+                title: "Aquarium Fish Collection",
+                description: "We carry a wide variety of healthy, vibrant aquarium fish suitable for beginners to advanced hobbyists. All our fish are quarantined and conditioned before sale.",
+                items: ["Betta Splendens (Fighting Fish)", "Neon Tetras & Cardinal Tetras", "Guppies, Mollies, Platies", "African Cichlids", "Discus (Special Order)", "Goldfish Varieties", "Algae Eaters & Bottom Feeders"]
+            },
+            tanks: {
+                title: "Tanks & Filtration Systems",
+                description: "From nano tanks to large show aquariums, we have glass and acrylic options. Our filtration systems keep your water crystal clear and your fish healthy.",
+                items: ["Glass Aquariums (Various Sizes)", "Acrylic Tanks", "Canister Filters", "Hang-on-Back Filters", "Sponge Filters & Air Pumps", "Protein Skimmers", "Tank Stands & Cabinets"]
+            },
+            plants: {
+                title: "Aquatic Plants",
+                description: "Create a lush underwater garden with our selection of aquatic plants. We carry both beginner-friendly and advanced species for planted tanks.",
+                items: ["Anubias (Various Types)", "Java Fern & Moss", "Amazon Swords", "Stem Plants (Rotala, Ludwigia)", "Carpeting Plants (Monte Carlo)", "Floating Plants", "Aquarium Substrates & Fertilizers"]
+            },
+            food: {
+                title: "Food & Nutrition",
+                description: "Premium nutrition for optimal fish health and coloration. We stock trusted brands and specialty foods for specific species.",
+                items: ["Tropical Fish Flakes", "Cichlid Pellets", "Betta Special Food", "Frozen Bloodworms & Brine Shrimp", "Algae Wafers", "Live Foods (Available Seasonally)", "Automatic Fish Feeders"]
+            },
+            accessories: {
+                title: "Pet Accessories & Supplies",
+                description: "Complete your setup with our range of accessories, decorations, and water care products. We also stock supplies for small mammals and birds.",
+                items: ["LED Aquarium Lights", "Heaters & Thermometers", "Water Conditioners & Test Kits", "Gravel & Decorations", "Fish Nets & Maintenance Tools", "Small Mammal Cages & Food", "Bird Supplies"]
+            },
+            deals: {
+                title: "Current Promotions",
+                description: "Check out our latest deals! Follow our Facebook page for flash sales and seasonal specials.",
+                items: ["Starter Kit Bundles (Tank + Filter + Light)", "Buy 3 Get 1 Free on Selected Fish", "Bulk Fish Food Discounts", "Plant Package Deals", "Weekend Specials - Ask in Store!", "Loyalty Card Program Available"]
+            }
+        };
+
+        // Show Product Detail
+        function showProductDetail(category) {
+            const data = productData[category];
+            if (data) {
+                document.getElementById('modal-title').textContent = data.title;
+                document.getElementById('modal-description').textContent = data.description;
+                const itemsList = document.getElementById('modal-items');
+                itemsList.innerHTML = data.items.map(item => `<li>• ${item}</li>`).join('');
+                document.getElementById('productModal').classList.remove('hidden');
+            }
+        }
+
+        // Close Product Modal
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProductModal();
+            }
+        });
+
+        // Smooth Scroll for Safari
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card-hover').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

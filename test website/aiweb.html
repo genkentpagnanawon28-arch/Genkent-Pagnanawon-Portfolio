@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Website Mastery | Build the Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        display: ['Orbitron', 'sans-serif'],
+                        tech: ['Rajdhani', 'sans-serif'],
+                    },
+                    colors: {
+                        neon: {
+                            blue: '#00f3ff',
+                            purple: '#bc13fe',
+                            pink: '#ff0055',
+                            green: '#0aff00'
+                        },
+                        dark: {
+                            bg: '#050505',
+                            card: '#0a0a0a',
+                            surface: '#111111'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 10px #00f3ff, 0 0 20px #00f3ff' },
+                            'to': { boxShadow: '0 0 20px #bc13fe, 0 0 30px #bc13fe' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f3ff;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Neon Text Effects */
+        .text-neon-blue {
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+        }
+        .text-neon-purple {
+            text-shadow: 0 0 10px rgba(188, 19, 254, 0.5), 0 0 20px rgba(188, 19, 254, 0.3);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(to right, #00f3ff, #bc13fe, #ff0055);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientMove 5s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Button Hover Effects */
+        .btn-primary {
+            background: linear-gradient(90deg, #00f3ff, #bc13fe);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        /* 3D Card Tilt */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+        
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glitch Effect for Hero */
+        .glitch-wrapper {
+            position: relative;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -1px 0 #ff0055;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -1px 0 #00f3ff;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(14px, 9999px, 127px, 0); }
+            20% { clip: rect(80px, 9999px, 30px, 0); }
+            40% { clip: rect(90px, 9999px, 15px, 0); }
+            60% { clip: rect(20px, 9999px, 90px, 0); }
+            80% { clip: rect(100px, 9999px, 10px, 0); }
+            100% { clip: rect(40px, 9999px, 120px, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(120px, 9999px, 20px, 0); }
+            20% { clip: rect(10px, 9999px, 100px, 0); }
+            40% { clip: rect(90px, 9999px, 5px, 0); }
+            60% { clip: rect(30px, 9999px, 80px, 0); }
+            80% { clip: rect(110px, 9999px, 40px, 0); }
+            100% { clip: rect(60px, 9999px, 130px, 0); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-neon-blue selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="fa-solid fa-cube text-neon-blue text-2xl animate-pulse-slow"></i>
+                    <span class="font-display font-bold text-2xl tracking-wider text-white">AI<span class="text-neon-blue">WEB</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#benefits" class="hover:text-neon-blue transition-colors px-3 py-2 rounded-md text-sm font-medium">Curriculum</a>
+                        <a href="#how-it-works" class="hover:text-neon-blue transition-colors px-3 py-2 rounded-md text-sm font-medium">Process</a>
+                        <a href="#pricing" class="hover:text-neon-blue transition-colors px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+                        <a href="#faq" class="hover:text-neon-blue transition-colors px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="#pricing" class="btn-primary px-6 py-2 rounded-full text-black font-bold text-sm uppercase tracking-wider hover:shadow-[0_0_20px_rgba(0,243,255,0.5)] transition-all">
+                        Enroll Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 grid-bg z-0"></div>
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-blue/20 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+        
+        <!-- Canvas for Particles -->
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-0 opacity-40"></canvas>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-neon-blue/30 bg-neon-blue/10 backdrop-blur-sm">
+                <span class="text-neon-blue font-tech tracking-widest text-sm uppercase">The Future of Web Design is Here</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-black mb-6 leading-tight glitch-wrapper">
+                <span class="glitch block" data-text="Build Websites">Build Websites</span>
+                <span class="gradient-text block mt-2">With AI</span>
+            </h1>
+            
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 font-light leading-relaxed">
+                No Code. No Stress. Just Results. Master the art of creating stunning, high-converting websites using cutting-edge AI tools.
+            </p>
+            
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#pricing" class="group relative px-8 py-4 bg-white text-black font-bold rounded-full overflow-hidden transition-all hover:scale-105">
+                    <span class="relative z-10 flex items-center gap-2">
+                        Start Building Now <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-neon-blue to-neon-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+                <button onclick="openVideoModal()" class="px-8 py-4 glass border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2 group">
+                    <i class="fa-solid fa-play text-neon-blue group-hover:scale-110 transition-transform"></i> Watch Free Demo
+                </button>
+            </div>
+
+            <!-- Stats -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-8">
+                <div class="text-center">
+                    <div class="text-3xl font-display font-bold text-white counter" data-target="5000">0</div>
+                    <div class="text-sm text-gray-500 uppercase tracking-wider mt-1">Students</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-display font-bold text-white counter" data-target="98">0</div>
+                    <div class="text-sm text-gray-500 uppercase tracking-wider mt-1">% Satisfaction</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-display font-bold text-white counter" data-target="12">0</div>
+                    <div class="text-sm text-gray-500 uppercase tracking-wider mt-1">Modules</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-display font-bold text-white counter" data-target="24">0</div>
+                    <div class="text-sm text-gray-500 uppercase tracking-wider mt-1">/7 Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="py-24 relative bg-dark-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Still Struggling to Build Websites <span class="text-neon-pink">the Old Way?</span></h2>
+                <p class="text-gray-400 text-lg">The traditional methods are slow, expensive, and frustrating. It's time to evolve.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Pain Point Cards -->
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-neon-pink hover:transform hover:-translate-y-2 transition-all duration-300 reveal">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-neon-pink/10 rounded-lg">
+                            <i class="fa-solid fa-code text-neon-pink text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Spending Hours Writing Code?</h3>
+                            <p class="text-gray-400">Stop wrestling with syntax errors and complex frameworks. AI generates clean, semantic code for you instantly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-neon-purple hover:transform hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-neon-purple/10 rounded-lg">
+                            <i class="fa-solid fa-puzzle-piece text-neon-purple text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Confused by Complex Tools?</h3>
+                            <p class="text-gray-400">Forget clunky interfaces. Our streamlined AI workflow makes design intuitive and logical.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-neon-blue hover:transform hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 200ms;">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-neon-blue/10 rounded-lg">
+                            <i class="fa-solid fa-gauge-high text-neon-blue text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Missing Out on Efficiency?</h3>
+                            <p class="text-gray-400">Your competitors are using AI. Don't get left behind. 10x your output without 10x the effort.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-neon-green hover:transform hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 300ms;">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-neon-green/10 rounded-lg">
+                            <i class="fa-solid fa-rocket text-neon-green text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Want to Launch Faster?</h3>
+                            <p class="text-gray-400">Go from idea to live website in hours, not weeks. Validate your business ideas instantly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center reveal">
+                <a href="#pricing" class="inline-flex items-center gap-2 text-neon-blue hover:text-white transition-colors text-lg font-medium group">
+                    Get Instant Access <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Benefits (Bento Grid) -->
+    <section id="benefits" class="py-24 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-neon-blue/5 to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Master the <span class="gradient-text">AI Workflow</span></h2>
+                <p class="text-gray-400 text-xl max-w-2xl">Everything you need to become a high-value web designer in the AI era.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+                <!-- Large Card -->
+                <div class="md:col-span-2 md:row-span-2 glass-card rounded-3xl p-8 relative overflow-hidden group reveal tilt-card">
+                    <div class="absolute inset-0 bg-gradient-to-br from-neon-blue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div class="w-14 h-14 rounded-2xl bg-neon-blue/20 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-wand-magic-sparkles text-2xl text-neon-blue"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-display font-bold mb-4">Generate Layouts with Prompts</h3>
+                            <p class="text-gray-300 text-lg leading-relaxed">Learn how to communicate with AI to generate complex, responsive layouts. Stop dragging boxes, start describing visions.</p>
+                            <ul class="mt-6 space-y-2 text-gray-400">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-blue"></i> Prompt Engineering for Design</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-blue"></i> Responsive Grid Systems</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-blue"></i> Visual Hierarchy Automation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-neon-blue/20 rounded-full blur-3xl group-hover:bg-neon-blue/30 transition-all"></div>
+                </div>
+
+                <!-- Small Card 1 -->
+                <div class="glass-card rounded-3xl p-8 relative overflow-hidden group reveal tilt-card">
+                    <div class="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-12 h-12 rounded-xl bg-neon-purple/20 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-pen-nib text-xl text-neon-purple"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AI Copywriting</h3>
+                    <p class="text-gray-400 text-sm">Generate compelling marketing copy that converts visitors into customers.</p>
+                </div>
+
+                <!-- Small Card 2 -->
+                <div class="glass-card rounded-3xl p-8 relative overflow-hidden group reveal tilt-card">
+                    <div class="absolute inset-0 bg-gradient-to-br from-neon-pink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-12 h-12 rounded-xl bg-neon-pink/20 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-image text-xl text-neon-pink"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Visual Assets</h3>
+                    <p class="text-gray-400 text-sm">Create unique images, icons, and graphics without stock photo subscriptions.</p>
+                </div>
+
+                <!-- Wide Card -->
+                <div class="md:col-span-3 glass-card rounded-3xl p-8 relative overflow-hidden group reveal tilt-card">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-1">
+                            <div class="w-14 h-14 rounded-2xl bg-neon-green/20 flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-sack-dollar text-2xl text-neon-green"></i>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold mb-2">Monetize Your Skills</h3>
+                            <p class="text-gray-300">We don't just teach you to build; we teach you to sell. Learn pricing strategies, client acquisition, and how to package AI services.</p>
+                        </div>
+                        <div class="flex-1 w-full">
+                            <div class="bg-dark-bg rounded-xl p-4 border border-white/10 font-mono text-sm text-green-400">
+                                <div class="flex gap-2 mb-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <p>> Client Project: Landing Page</p>
+                                <p>> Time Taken: 2 Hours</p>
+                                <p>> Invoice Generated: $2,500</p>
+                                <p class="animate-pulse">_</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works (Timeline) -->
+    <section id="how-it-works" class="py-24 bg-dark-surface relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Your Journey to <span class="text-neon-blue">Mastery</span></h2>
+            </div>
+
+            <div class="relative">
+                <!-- Connecting Line -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink transform -translate-y-1/2 rounded-full opacity-30"></div>
+
+                <div class="grid md:grid-cols-3 gap-12 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="text-center reveal group">
+                        <div class="w-20 h-20 mx-auto bg-dark-bg border-2 border-neon-blue rounded-full flex items-center justify-center mb-6 relative group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(0,243,255,0.3)]">
+                            <span class="text-2xl font-display font-bold text-neon-blue">01</span>
+                            <div class="absolute inset-0 rounded-full border border-neon-blue animate-ping opacity-20"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Learn</h3>
+                        <p class="text-gray-400">Short, actionable video modules. No fluff. Just the exact prompts and workflows you need.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="text-center reveal group" style="transition-delay: 200ms;">
+                        <div class="w-20 h-20 mx-auto bg-dark-bg border-2 border-neon-purple rounded-full flex items-center justify-center mb-6 relative group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(188,19,254,0.3)]">
+                            <span class="text-2xl font-display font-bold text-neon-purple">02</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Build</h3>
+                        <p class="text-gray-400">Follow along with real-world projects. Create portfolios, e-commerce sites, and SaaS landing pages.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="text-center reveal group" style="transition-delay: 400ms;">
+                        <div class="w-20 h-20 mx-auto bg-dark-bg border-2 border-neon-pink rounded-full flex items-center justify-center mb-6 relative group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(255,0,85,0.3)]">
+                            <span class="text-2xl font-display font-bold text-neon-pink">03</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Launch & Earn</h3>
+                        <p class="text-gray-400">Deploy your sites to the web. Learn how to find clients and start generating income immediately.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Marquee) -->
+    <section class="py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center reveal">
+            <h2 class="text-3xl md:text-5xl font-display font-bold">Success <span class="gradient-text">Stories</span></h2>
+        </div>
+
+        <!-- Marquee Container -->
+        <div class="relative w-full">
+            <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-dark-bg to-transparent z-10"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-dark-bg to-transparent z-10"></div>
+            
+            <div class="flex gap-6 animate-marquee whitespace-nowrap hover:pause">
+                <!-- Card 1 -->
+                <div class="inline-block w-96 glass-card p-6 rounded-2xl whitespace-normal">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="User" class="w-12 h-12 rounded-full border-2 border-neon-blue">
+                        <div>
+                            <h4 class="font-bold">Sarah Jenkins</h4>
+                            <p class="text-xs text-gray-500">Marketing Director</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm italic">"I built my agency's new site in a single weekend. The AI workflow is a game changer for our turnaround times."</p>
+                    <div class="mt-4 flex text-neon-blue text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="inline-block w-96 glass-card p-6 rounded-2xl whitespace-normal">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://i.pravatar.cc/150?img=33" alt="User" class="w-12 h-12 rounded-full border-2 border-neon-purple">
+                        <div>
+                            <h4 class="font-bold">David Chen</h4>
+                            <p class="text-xs text-gray-500">Freelance Designer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm italic">"I was skeptical about AI replacing designers, but this course taught me how to use AI to enhance my creativity, not replace it."</p>
+                    <div class="mt-4 flex text-neon-purple text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="inline-block w-96 glass-card p-6 rounded-2xl whitespace-normal">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="User" class="w-12 h-12 rounded-full border-2 border-neon-pink">
+                        <div>
+                            <h4 class="font-bold">Elena Rodriguez</h4>
+                            <p class="text-xs text-gray-500">Startup Founder</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm italic">"Launched my MVP landing page in 3 hours. I didn't need to hire a developer, saving me thousands in seed capital."</p>
+                    <div class="mt-4 flex text-neon-pink text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                
+                 <!-- Card 4 -->
+                 <div class="inline-block w-96 glass-card p-6 rounded-2xl whitespace-normal">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="User" class="w-12 h-12 rounded-full border-2 border-neon-green">
+                        <div>
+                            <h4 class="font-bold">Marcus Johnson</h4>
+                            <p class="text-xs text-gray-500">Web Developer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm italic">"Even as a coder, this speed up my prototyping by 10x. I now use AI for the boilerplate and focus on the complex logic."</p>
+                    <div class="mt-4 flex text-neon-green text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-dark-surface relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Choose Your <span class="text-neon-blue">Path</span></h2>
+                <p class="text-gray-400">Invest in the most valuable skill of the decade.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Basic -->
+                <div class="glass-card rounded-2xl p-8 border border-white/10 hover:border-neon-blue/50 transition-all duration-300 reveal">
+                    <h3 class="text-xl font-display font-bold text-gray-300 mb-2">Starter</h3>
+                    <div class="text-4xl font-bold mb-6">$97</div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-400">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-blue"></i> Core AI Modules (6)</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-blue"></i> Community Access</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-blue"></i> Basic Templates</li>
+                        <li class="flex items-center gap-3 opacity-50"><i class="fa-solid fa-xmark"></i> 1-on-1 Mentorship</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-lg border border-white/20 hover:bg-white/10 transition-colors font-bold">Get Started</button>
+                </div>
+
+                <!-- Pro (Highlighted) -->
+                <div class="glass-card rounded-2xl p-8 border-2 border-neon-purple relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(188,19,254,0.2)] reveal">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-neon-purple text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Most Popular</div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2">Professional</h3>
+                    <div class="text-4xl font-bold mb-6 text-neon-purple">$297</div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-purple"></i> All Core Modules (12)</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-purple"></i> Premium Template Library</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-purple"></i> AI Asset Pack</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-purple"></i> Weekly Group Calls</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-lg bg-neon-purple text-white hover:bg-neon-purple/80 transition-colors font-bold shadow-lg shadow-neon-purple/30">Enroll Now</button>
+                </div>
+
+                <!-- Premium -->
+                <div class="glass-card rounded-2xl p-8 border border-white/10 hover:border-neon-pink/50 transition-all duration-300 reveal">
+                    <h3 class="text-xl font-display font-bold text-gray-300 mb-2">Agency</h3>
+                    <div class="text-4xl font-bold mb-6">$997</div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-400">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-pink"></i> Everything in Pro</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-pink"></i> 3x 1-on-1 Mentorship</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-pink"></i> White-label Resources</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-neon-pink"></i> Client Acquisition System</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-lg border border-white/20 hover:bg-white/10 transition-colors font-bold">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12 reveal">Frequently Asked <span class="gradient-text">Questions</span></h2>
+            
+            <div class="space-y-4 reveal">
+                <!-- FAQ Item 1 -->
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-lg">Do I need any coding experience?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="pb-4 text-gray-400">Absolutely not. This course is designed for beginners. We teach you how to use AI to handle the technical heavy lifting, so you can focus on design and strategy.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-lg">What AI tools do I need?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="pb-4 text-gray-400">We primarily use industry-standard tools like ChatGPT, Midjourney, and specific No-Code builders. We provide a full list of free and paid alternatives inside the course.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-lg">Is there a certificate?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="pb-4 text-gray-400">Yes! Upon completion of all modules and the final project, you will receive a verified digital certificate to add to your LinkedIn profile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-neon-blue/10 to-transparent"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+            <h2 class="text-4xl md:text-6xl font-display font-bold mb-6">Ready to Build the <span class="text-neon-blue">Future?</span></h2>
+            <p class="text-xl text-gray-300 mb-10">Join 5,000+ students who are already designing with AI.</p>
+            <a href="#pricing" class="inline-block px-10 py-5 bg-white text-black font-bold text-lg rounded-full hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                Get Instant Access
+            </a>
+            <p class="mt-4 text-sm text-gray-500">30-Day Money-Back Guarantee</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-black py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-cube text-neon-blue"></i>
+                <span class="font-display font-bold text-xl">AI<span class="text-neon-blue">WEB</span></span>
+            </div>
+            <div class="text-gray-500 text-sm">
+                &copy; 2026 AI Web Mastery. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-discord text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeVideoModal()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl p-4">
+            <div class="relative aspect-video bg-black rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
+                <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-10 text-white hover:text-neon-blue">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+                <div class="w-full h-full flex items-center justify-center text-gray-500">
+                    <div class="text-center">
+                        <i class="fa-regular fa-circle-play text-6xl mb-4 opacity-50"></i>
+                        <p>Video Demo Placeholder</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Canvas Particle Animation ---
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2;
+                this.color = Math.random() > 0.5 ? '#00f3ff' : '#bc13fe';
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = 0.5;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 50; i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            // Draw connections
+            ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // --- Scroll Reveal Animation ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Trigger counters if inside
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 2000; 
+                        const increment = target / (duration / 16);
+                        
+                        let current = 0;
+                        const updateCounter = () => {
+                            current += increment;
+                            if (current < target) {
+                                counter.innerText = Math.ceil(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        updateCounter();
+                    });
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- FAQ Accordion ---
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            // Close others
+            document.querySelectorAll('#faq .max-h-0').forEach(el => {
+                if (el !== content) {
+                    el.style.maxHeight = null;
+                    el.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                }
+            });
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // --- Modal Logic ---
+        function openVideoModal() {
+            document.getElementById('videoModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // --- 3D Tilt Effect for Cards ---
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -5; // Max rotation deg
+                const rotateY = ((x - centerX) / centerX) * 5;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // --- Navbar Scroll Effect ---
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-black/80', 'backdrop-blur-md');
+            } else {
+                nav.classList.remove('bg-black/80', 'backdrop-blur-md');
+            }
+        });
+
+    </script>
+</body>
+</html>

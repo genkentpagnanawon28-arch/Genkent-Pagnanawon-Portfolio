@@ -1,0 +1,914 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA | Modern Luxury Eyewear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --color-gold: #D4AF37;
+                --color-charcoal: #1a1a1a;
+                --color-sand: #F5F1EB;
+                --color-navy: #0F172A;
+            }
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: var(--color-charcoal);
+                color: white;
+                overflow-x: hidden;
+            }
+            h1, h2, h3, h4 {
+                font-family: 'Playfair Display', serif;
+            }
+        }
+        @layer components {
+            .luxury-gold {
+                color: var(--color-gold);
+            }
+            .luxury-bg-gold {
+                background-color: var(--color-gold);
+            }
+            .text-reveal {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            }
+            .hover-lift {
+                transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+            }
+            .hover-lift:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 30px 60px -15px rgba(0,0,0,0.5);
+            }
+            .gradient-text {
+                background: linear-gradient(135deg, #D4AF37 0%, #FFF 50%, #D4AF37 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .glass-effect {
+                background: rgba(255,255,255,0.05);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255,255,255,0.1);
+            }
+            .magnetic-btn {
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .magnetic-btn:hover {
+                transform: scale(1.05);
+                letter-spacing: 2px;
+            }
+            .parallax-img {
+                will-change: transform;
+            }
+            .countdown-box {
+                background: linear-gradient(145deg, rgba(212,175,55,0.1), rgba(0,0,0,0.3));
+                border: 1px solid rgba(212,175,55,0.3);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-3xl font-bold tracking-widest luxury-gold">AURA</div>
+            <div class="hidden md:flex space-x-12 text-sm tracking-widest uppercase">
+                <a href="#collection" class="hover:text-[#D4AF37] transition-colors duration-300">Collection</a>
+                <a href="#story" class="hover:text-[#D4AF37] transition-colors duration-300">Our Story</a>
+                <a href="#community" class="hover:text-[#D4AF37] transition-colors duration-300">Community</a>
+                <a href="#limited" class="hover:text-[#D4AF37] transition-colors duration-300">Limited Drop</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <button class="hover:text-[#D4AF37] transition-colors">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </button>
+                <button class="hover:text-[#D4AF37] transition-colors relative">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 w-5 h-5 luxury-bg-gold text-black text-xs rounded-full flex items-center justify-center font-bold hidden">0</span>
+                </button>
+                <button class="md:hidden" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 hidden flex-col items-center justify-center space-y-8">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-8">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a href="#collection" onclick="toggleMobileMenu()" class="text-2xl tracking-widest hover:text-[#D4AF37]">Collection</a>
+        <a href="#story" onclick="toggleMobileMenu()" class="text-2xl tracking-widest hover:text-[#D4AF37]">Our Story</a>
+        <a href="#community" onclick="toggleMobileMenu()" class="text-2xl tracking-widest hover:text-[#D4AF37]">Community</a>
+        <a href="#limited" onclick="toggleMobileMenu()" class="text-2xl tracking-widest hover:text-[#D4AF37]">Limited Drop</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen w-full overflow-hidden">
+        <div class="absolute inset-0">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-80">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-walking-on-the-beach-at-sunset-4267-large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80"></div>
+        </div>
+        
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+            <div class="hero-content opacity-0 transform translate-y-10">
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 tracking-tight">
+                    See the World<br><span class="gradient-text italic">Differently</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-12 font-light tracking-wide">
+                    Premium handcrafted sunglasses designed for bold expression and everyday luxury.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <button onclick="scrollToSection('collection')" class="magnetic-btn px-10 py-4 luxury-bg-gold text-black font-semibold tracking-widest uppercase text-sm hover:bg-white transition-colors duration-300">
+                        Shop Collection
+                    </button>
+                    <button onclick="scrollToSection('story')" class="magnetic-btn px-10 py-4 border border-white/30 text-white font-semibold tracking-widest uppercase text-sm hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+                        Discover the Story
+                    </button>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-12 text-xs tracking-widest uppercase text-gray-400">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-[#D4AF37]"></i>
+                    <span>UV400 Protection</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="eye" class="w-4 h-4 text-[#D4AF37]"></i>
+                    <span>Polarized Lenses</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="gem" class="w-4 h-4 text-[#D4AF37]"></i>
+                    <span>Premium Acetate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Collection -->
+    <section id="collection" class="py-32 px-6 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 collection-header opacity-0">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">Signature Collections</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Three distinct expressions of modern luxury. Each frame tells a story.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Riviera Collection -->
+                <div class="group cursor-pointer collection-card opacity-0" onclick="openProductModal('riviera')">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80" alt="Riviera Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="px-8 py-3 border border-white/50 text-white tracking-widest uppercase text-sm">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2">The Riviera Collection</h3>
+                    <p class="text-gray-400 text-sm mb-4">Sharp lines. European-inspired silhouettes.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl luxury-gold font-semibold">$385</span>
+                        <button onclick="event.stopPropagation(); addToCart('Riviera Collection')" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-black transition-all duration-300">
+                            <i data-lucide="plus" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Midnight Series -->
+                <div class="group cursor-pointer collection-card opacity-0" onclick="openProductModal('midnight')">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=80" alt="Midnight Series" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="px-8 py-3 border border-white/50 text-white tracking-widest uppercase text-sm">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2">The Midnight Series</h3>
+                    <p class="text-gray-400 text-sm mb-4">Bold black frames. Urban aesthetic.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl luxury-gold font-semibold">$425</span>
+                        <button onclick="event.stopPropagation(); addToCart('Midnight Series')" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-black transition-all duration-300">
+                            <i data-lucide="plus" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Coastline Edition -->
+                <div class="group cursor-pointer collection-card opacity-0" onclick="openProductModal('coastline')">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=800&q=80" alt="Coastline Edition" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="px-8 py-3 border border-white/50 text-white tracking-widest uppercase text-sm">View Details</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2">The Coastline Edition</h3>
+                    <p class="text-gray-400 text-sm mb-4">Lightweight. Minimal. Timeless.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl luxury-gold font-semibold">$345</span>
+                        <button onclick="event.stopPropagation(); addToCart('Coastline Edition')" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-black transition-all duration-300">
+                            <i data-lucide="plus" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeProductModal()"></div>
+        <div class="absolute inset-4 md:inset-12 bg-[#0a0a0a] overflow-y-auto">
+            <button onclick="closeProductModal()" class="absolute top-6 right-6 z-10 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="grid md:grid-cols-2 h-full">
+                <div class="relative">
+                    <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+                    <div class="absolute bottom-6 left-6 right-6 flex space-x-2">
+                        <button class="flex-1 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-sm tracking-widest uppercase hover:bg-white/20 transition-colors">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 inline mr-2"></i>360° View
+                        </button>
+                        <button class="flex-1 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-sm tracking-widest uppercase hover:bg-white/20 transition-colors">
+                            <i data-lucide="maximize" class="w-4 h-4 inline mr-2"></i>Zoom
+                        </button>
+                    </div>
+                </div>
+                <div class="p-8 md:p-12 flex flex-col justify-center">
+                    <h2 id="modal-title" class="text-4xl md:text-5xl font-bold mb-4"></h2>
+                    <p id="modal-price" class="text-3xl luxury-gold font-semibold mb-8"></p>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="layers" class="w-5 h-5 text-[#D4AF37] mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold mb-1">Frame Material</h4>
+                                <p class="text-gray-400 text-sm">Italian Mazzucchelli acetate. Hand-polished for 72 hours.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="sun" class="w-5 h-5 text-[#D4AF37] mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold mb-1">Lens Technology</h4>
+                                <p class="text-gray-400 text-sm">CR-39 polarized lenses with anti-reflective coating.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="shield" class="w-5 h-5 text-[#D4AF37] mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold mb-1">UV Protection</h4>
+                                <p class="text-gray-400 text-sm">100% UV400 protection. Exceeds ANSI standards.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <h4 class="font-semibold mb-3">Select Size</h4>
+                        <div class="flex space-x-3">
+                            <button class="px-6 py-2 border border-white/30 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors text-sm">Small</button>
+                            <button class="px-6 py-2 border border-[#D4AF37] text-[#D4AF37] text-sm">Medium</button>
+                            <button class="px-6 py-2 border border-white/30 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors text-sm">Large</button>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-4 mb-8">
+                        <button onclick="addToCartFromModal()" class="flex-1 py-4 luxury-bg-gold text-black font-semibold tracking-widest uppercase hover:bg-white transition-colors">
+                            Add to Cart
+                        </button>
+                        <button class="px-6 py-4 border border-white/30 hover:bg-white/10 transition-colors">
+                            <i data-lucide="heart" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <div class="pt-6 border-t border-white/10 text-sm text-gray-400">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <i data-lucide="refresh-cw" class="w-4 h-4 text-[#D4AF37]"></i>
+                            <span>Try Risk-Free – 14 Day Returns</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="truck" class="w-4 h-4 text-[#D4AF37]"></i>
+                            <span>Free Worldwide Shipping</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Brand Story -->
+    <section id="story" class="py-32 px-6 bg-[#0a0a0a] overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="story-content opacity-0">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+                        Crafted for Those<br>Who <span class="italic luxury-gold">Lead</span>
+                    </h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Our sunglasses are designed for individuals who embrace confidence, clarity, and refined style. Every frame blends durability with elevated aesthetics.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        Founded in Milan and crafted in the Italian Alps, AURA represents the intersection of traditional artisanal techniques and contemporary design. Each pair requires over 100 manual steps and 72 hours of hand-polishing.
+                    </p>
+                    <div class="flex items-center space-x-8">
+                        <div>
+                            <div class="text-3xl font-bold luxury-gold">100%</div>
+                            <div class="text-sm text-gray-400 uppercase tracking-wider">Handcrafted</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold luxury-gold">72h</div>
+                            <div class="text-sm text-gray-400 uppercase tracking-wider">Polishing</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold luxury-gold">2yr</div>
+                            <div class="text-sm text-gray-400 uppercase tracking-wider">Warranty</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative story-image opacity-0">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=800&q=80" alt="Craftsmanship" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-8 -left-8 w-48 h-48 border border-[#D4AF37]/30"></div>
+                    <div class="absolute -top-8 -right-8 w-32 h-32 bg-[#D4AF37]/10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Features -->
+    <section class="py-32 px-6 bg-[#050505]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">Find Your Perfect Frame</h2>
+                <p class="text-gray-400 text-lg">Interactive tools to discover your ideal match.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Virtual Try-On -->
+                <div class="glass-effect p-8 rounded-2xl text-center hover-lift cursor-pointer group" onclick="startVirtualTryOn()">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#D4AF37]/20 to-transparent flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="camera" class="w-10 h-10 text-[#D4AF37]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Virtual Try-On</h3>
+                    <p class="text-gray-400 text-sm mb-4">Experience our frames in AR. See how they look on you before buying.</p>
+                    <span class="text-[#D4AF37] text-sm tracking-widest uppercase">Launch AR Experience →</span>
+                </div>
+
+                <!-- Style Quiz -->
+                <div class="glass-effect p-8 rounded-2xl text-center hover-lift cursor-pointer group" onclick="startStyleQuiz()">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#D4AF37]/20 to-transparent flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="sparkles" class="w-10 h-10 text-[#D4AF37]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Style Quiz</h3>
+                    <p class="text-gray-400 text-sm mb-4">Answer a few questions. We'll recommend your perfect collection.</p>
+                    <span class="text-[#D4AF37] text-sm tracking-widest uppercase">Take the Quiz →</span>
+                </div>
+
+                <!-- Face Shape Tool -->
+                <div class="glass-effect p-8 rounded-2xl text-center hover-lift cursor-pointer group" onclick="startFaceShapeTool()">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#D4AF37]/20 to-transparent flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="scan-face" class="w-10 h-10 text-[#D4AF37]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Face Shape Guide</h3>
+                    <p class="text-gray-400 text-sm mb-4">Discover which frames complement your unique features.</p>
+                    <span class="text-[#D4AF37] text-sm tracking-widest uppercase">Analyze Now →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style Quiz Modal -->
+    <div id="quiz-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeQuiz()"></div>
+        <div class="relative bg-[#0a0a0a] max-w-2xl w-full rounded-2xl overflow-hidden">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="text-2xl font-bold">Find Your Style</h3>
+                    <button onclick="closeQuiz()" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <div id="quiz-content">
+                    <div class="quiz-step" data-step="1">
+                        <p class="text-gray-400 mb-6">Question 1 of 3</p>
+                        <h4 class="text-xl mb-8">What's your vibe?</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button onclick="quizAnswer('minimal')" class="p-6 border border-white/20 hover:border-[#D4AF37] hover:bg-[#D4AF37]/5 transition-all text-left">
+                                <div class="font-semibold mb-2">Minimal</div>
+                                <div class="text-sm text-gray-400">Clean lines, subtle elegance</div>
+                            </button>
+                            <button onclick="quizAnswer('bold')" class="p-6 border border-white/20 hover:border-[#D4AF37] hover:bg-[#D4AF37]/5 transition-all text-left">
+                                <div class="font-semibold mb-2">Bold</div>
+                                <div class="text-sm text-gray-400">Statement pieces, standout style</div>
+                            </button>
+                            <button onclick="quizAnswer('classic')" class="p-6 border border-white/20 hover:border-[#D4AF37] hover:bg-[#D4AF37]/5 transition-all text-left">
+                                <div class="font-semibold mb-2">Classic</div>
+                                <div class="text-sm text-gray-400">Timeless designs, never trendy</div>
+                            </button>
+                            <button onclick="quizAnswer('street')" class="p-6 border border-white/20 hover:border-[#D4AF37] hover:bg-[#D4AF37]/5 transition-all text-left">
+                                <div class="font-semibold mb-2">Street</div>
+                                <div class="text-sm text-gray-400">Urban edge, contemporary cool</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Limited Edition Drop -->
+    <section id="limited" class="py-32 px-6 bg-[#0a0a0a] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#D4AF37]/20 via-transparent to-transparent"></div>
+        </div>
+        <div class="max-w-7xl mx-auto relative">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-block px-4 py-2 border border-[#D4AF37]/50 text-[#D4AF37] text-xs tracking-widest uppercase mb-6">
+                        Limited Edition
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-bold mb-6">The Obsidian Drop</h2>
+                    <p class="text-gray-400 text-lg mb-8">
+                        Only 500 pieces worldwide. Matte black titanium frames with 24k gold accents. Once sold out, gone forever.
+                    </p>
+                    
+                    <div class="grid grid-cols-4 gap-4 mb-8">
+                        <div class="countdown-box p-4 text-center rounded-lg">
+                            <div id="days" class="text-3xl font-bold luxury-gold">02</div>
+                            <div class="text-xs text-gray-400 uppercase tracking-wider">Days</div>
+                        </div>
+                        <div class="countdown-box p-4 text-center rounded-lg">
+                            <div id="hours" class="text-3xl font-bold luxury-gold">14</div>
+                            <div class="text-xs text-gray-400 uppercase tracking-wider">Hours</div>
+                        </div>
+                        <div class="countdown-box p-4 text-center rounded-lg">
+                            <div id="minutes" class="text-3xl font-bold luxury-gold">35</div>
+                            <div class="text-xs text-gray-400 uppercase tracking-wider">Mins</div>
+                        </div>
+                        <div class="countdown-box p-4 text-center rounded-lg">
+                            <div id="seconds" class="text-3xl font-bold luxury-gold">48</div>
+                            <div class="text-xs text-gray-400 uppercase tracking-wider">Secs</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="flex-1 bg-white/10 rounded-full h-2 overflow-hidden">
+                            <div class="bg-[#D4AF37] h-full rounded-full" style="width: 73%"></div>
+                        </div>
+                        <span class="text-sm text-gray-400">365/500 Sold</span>
+                    </div>
+
+                    <button onclick="addToCart('Obsidian Drop - Limited Edition')" class="magnetic-btn w-full py-4 luxury-bg-gold text-black font-semibold tracking-widest uppercase hover:bg-white transition-colors">
+                        Secure Your Pair — $895
+                    </button>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square overflow-hidden rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&q=80" alt="Limited Edition" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-[#D4AF37] text-black p-6 rounded-lg">
+                        <div class="text-2xl font-bold">#</div>
+                        <div class="text-sm font-semibold">001-500</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof & Community -->
+    <section id="community" class="py-32 px-6 bg-[#050505]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <i data-lucide="star" class="w-6 h-6 text-[#D4AF37] fill-[#D4AF37]"></i>
+                    <span class="text-2xl font-bold">4.9/5</span>
+                    <span class="text-gray-400">from 2,847 reviews</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">Worn by the Bold</h2>
+                <p class="text-gray-400 text-lg">Join our community of confident individuals.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                <div class="aspect-square overflow-hidden rounded-lg group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80" alt="Community 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=400&q=80" alt="Community 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80" alt="Community 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80" alt="Community 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80" alt="Community 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400&q=80" alt="Community 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400&q=80" alt="Community 7" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg group cursor-pointer bg-gradient-to-br from-[#D4AF37]/20 to-transparent flex items-center justify-center">
+                    <div class="text-center">
+                        <i data-lucide="instagram" class="w-8 h-8 mx-auto mb-2 text-[#D4AF37]"></i>
+                        <p class="text-sm font-semibold">Share Your Look</p>
+                        <p class="text-xs text-gray-400">#AURAEyewear</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="px-8 py-3 border border-white/30 text-white tracking-widest uppercase text-sm hover:bg-white/10 transition-all">
+                    View Gallery
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Luxury Details -->
+    <section class="py-20 px-6 bg-[#0a0a0a] border-t border-white/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <i data-lucide="package" class="w-8 h-8 mx-auto mb-4 text-[#D4AF37]"></i>
+                    <h4 class="font-semibold mb-2">Premium Packaging</h4>
+                    <p class="text-sm text-gray-400">Leather case & cleaning kit included</p>
+                </div>
+                <div class="text-center">
+                    <i data-lucide="globe" class="w-8 h-8 mx-auto mb-4 text-[#D4AF37]"></i>
+                    <h4 class="font-semibold mb-2">Worldwide Shipping</h4>
+                    <p class="text-sm text-gray-400">Free express delivery</p>
+                </div>
+                <div class="text-center">
+                    <i data-lucide="lock" class="w-8 h-8 mx-auto mb-4 text-[#D4AF37]"></i>
+                    <h4 class="font-semibold mb-2">Secure Checkout</h4>
+                    <p class="text-sm text-gray-400">256-bit SSL encryption</p>
+                </div>
+                <div class="text-center">
+                    <i data-lucide="badge-check" class="w-8 h-8 mx-auto mb-4 text-[#D4AF37]"></i>
+                    <h4 class="font-semibold mb-2">2-Year Warranty</h4>
+                    <p class="text-sm text-gray-400">Full coverage guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Capture -->
+    <section class="py-32 px-6 bg-[#050505]">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Join The Inner Circle</h2>
+            <p class="text-gray-400 text-lg mb-8">Get early access to drops, exclusive offers, and style updates.</p>
+            
+            <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto" onsubmit="handleSubscribe(event)">
+                <input type="email" placeholder="Enter your email" required class="flex-1 px-6 py-4 bg-white/5 border border-white/20 rounded-none focus:outline-none focus:border-[#D4AF37] transition-colors text-white placeholder-gray-500">
+                <button type="submit" class="px-8 py-4 luxury-bg-gold text-black font-semibold tracking-widest uppercase hover:bg-white transition-colors">
+                    Subscribe
+                </button>
+            </form>
+            
+            <p class="text-sm text-gray-500 mt-6">Get 10% off your first order. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 bg-black border-t border-white/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="text-3xl font-bold tracking-widest luxury-gold mb-6">AURA</div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Modern luxury eyewear designed for bold, confident living. Crafted in Italy.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 tracking-widest uppercase text-sm">Collections</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Riviera</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Midnight</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Coastline</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Limited Editions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 tracking-widest uppercase text-sm">Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Size Guide</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Care Instructions</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 tracking-widest uppercase text-sm">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2024 AURA Eyewear. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Notification -->
+    <div id="cart-notification" class="fixed bottom-8 right-8 bg-[#D4AF37] text-black px-6 py-4 rounded-lg shadow-2xl transform translate-y-24 transition-transform duration-300 z-50 flex items-center space-x-3">
+        <i data-lucide="check-circle" class="w-5 h-5"></i>
+        <span class="font-semibold">Added to cart</span>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero animation
+        gsap.to('.hero-content', {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: 'power3.out',
+            delay: 0.3
+        });
+
+        // Navbar scroll effect
+        ScrollTrigger.create({
+            start: 'top -100',
+            onUpdate: (self) => {
+                const navbar = document.getElementById('navbar');
+                if (self.direction === 1 && self.scroll() > 100) {
+                    navbar.classList.add('bg-black/80', 'backdrop-blur-md');
+                } else if (self.scroll() < 100) {
+                    navbar.classList.remove('bg-black/80', 'backdrop-blur-md');
+                }
+            }
+        });
+
+        // Collection section animation
+        gsap.to('.collection-header', {
+            scrollTrigger: {
+                trigger: '.collection-header',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.8
+        });
+
+        gsap.to('.collection-card', {
+            scrollTrigger: {
+                trigger: '.collection-card',
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.2
+        });
+
+        // Story section animation
+        gsap.to('.story-content', {
+            scrollTrigger: {
+                trigger: '.story-content',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            x: 0,
+            duration: 1
+        });
+
+        gsap.to('.story-image', {
+            scrollTrigger: {
+                trigger: '.story-image',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            delay: 0.2
+        });
+
+        // Cart functionality
+        let cartCount = 0;
+        const cartCountEl = document.getElementById('cart-count');
+        const cartNotification = document.getElementById('cart-notification');
+
+        function addToCart(product) {
+            cartCount++;
+            cartCountEl.textContent = cartCount;
+            cartCountEl.classList.remove('hidden');
+            
+            // Show notification
+            cartNotification.classList.remove('translate-y-24');
+            setTimeout(() => {
+                cartNotification.classList.add('translate-y-24');
+            }, 3000);
+
+            // Animate cart icon
+            gsap.fromTo(cartCountEl, {scale: 1.5}, {scale: 1, duration: 0.3, ease: 'back.out'});
+        }
+
+        function addToCartFromModal() {
+            const title = document.getElementById('modal-title').textContent;
+            addToCart(title);
+            closeProductModal();
+        }
+
+        // Product Modal
+        const productData = {
+            riviera: {
+                title: 'The Riviera Collection',
+                price: '$385',
+                image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80'
+            },
+            midnight: {
+                title: 'The Midnight Series',
+                price: '$425',
+                image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=80'
+            },
+            coastline: {
+                title: 'The Coastline Edition',
+                price: '$345',
+                image: 'https://images.unsplash.com/photo-1577803645773-f96470509666?w=800&q=80'
+            }
+        };
+
+        function openProductModal(product) {
+            const data = productData[product];
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-price').textContent = data.price;
+            document.getElementById('modal-img').src = data.image;
+            document.getElementById('product-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        // Smooth scroll
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+        }
+
+        // Countdown timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 2);
+            endDate.setHours(endDate.getHours() + 14);
+            
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = endDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+        updateCountdown();
+
+        // Quiz functionality
+        let quizAnswers = {};
+        let currentStep = 1;
+
+        function startStyleQuiz() {
+            document.getElementById('quiz-modal').classList.remove('hidden');
+            document.getElementById('quiz-modal').classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeQuiz() {
+            document.getElementById('quiz-modal').classList.add('hidden');
+            document.getElementById('quiz-modal').classList.remove('flex');
+            currentStep = 1;
+            quizAnswers = {};
+        }
+
+        function quizAnswer(answer) {
+            quizAnswers[`step${currentStep}`] = answer;
+            
+            if (currentStep < 3) {
+                currentStep++;
+                updateQuizStep();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function updateQuizStep() {
+            const questions = [
+                {q: "What's your vibe?", options: ['Minimal', 'Bold', 'Classic', 'Street']},
+                {q: "Choose a color palette:", options: ['Neutral Tones', 'Bold Colors', 'Classic Black', 'Mixed Metals']},
+                {q: "Your ideal weekend:", options: ['Beach Resort', 'City Exploration', 'Countryside', 'Urban Nightlife']}
+            ];
+            
+            const currentQ = questions[currentStep - 1];
+            let html = `
+                <div class="quiz-step" data-step="${currentStep}">
+                    <p class="text-gray-400 mb-6">Question ${currentStep} of 3</p>
+                    <h4 class="text-xl mb-8">${currentQ.q}</h4>
+                    <div class="grid grid-cols-2 gap-4">
+            `;
+            
+            currentQ.options.forEach(opt => {
+                html += `
+                    <button onclick="quizAnswer('${opt.toLowerCase().replace(' ', '-')}')" class="p-6 border border-white/20 hover:border-[#D4AF37] hover:bg-[#D4AF37]/5 transition-all text-left">
+                        <div class="font-semibold">${opt}</div>
+                    </button>
+                `;
+            });
+            
+            html += '</div></div>';
+            document.getElementById('quiz-content').innerHTML = html;
+        }
+
+        function showQuizResult() {
+            const collections = {
+                'riviera': 'The Riviera Collection',
+                'midnight': 'The Midnight Series',
+                'coastline': 'The Coastline Edition'
+            };
+            const result = Object.keys(collections)[Math.floor(Math.random() * 3)];
+            
+            document.getElementById('quiz-content').innerHTML = `
+                <div class="text-center py-8">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-[#D4AF37]/20 flex items-center justify-center">
+                        <i data-lucide="sparkles" class="w-10 h-10 text-[#D4AF37]"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Your Perfect Match</h4>
+                    <p class="text-gray-400 mb-6">Based on your style profile, we recommend:</p>
+                    <div class="text-3xl luxury-gold font-bold mb-8">${collections[result]}</div>
+                    <button onclick="closeQuiz(); openProductModal('${result}')" class="px-8 py-3 luxury-bg-gold text-black font-semibold tracking-widest uppercase hover:bg-white transition-colors">
+                        View Collection
+                    </button>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function startVirtualTryOn() {
+            alert('AR Virtual Try-On would launch here. This feature uses your camera to overlay sunglasses on your face in real-time.');
+        }
+
+        function startFaceShapeTool() {
+            alert('Face Shape Analysis would launch here. Upload a photo or use your camera to determine your face shape and get personalized recommendations.');
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            alert('Welcome to the Inner Circle! Check your email for your 10% discount code.');
+            e.target.reset();
+        }
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-img');
+            parallaxElements.forEach(el => {
+                const speed = 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

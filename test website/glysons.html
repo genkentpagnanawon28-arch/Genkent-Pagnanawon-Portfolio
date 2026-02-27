@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glynson's Cebu Flower Shop | Luxury Floral Boutique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        champagne: '#F7E7CE',
+                        'champagne-dark': '#E8D4B8',
+                        'deep-rose': '#C41E3A',
+                        'rose-dark': '#9B1B30',
+                        'forest-green': '#2D5A27',
+                        'soft-ivory': '#FFFFF0',
+                        'gold-accent': '#D4AF37',
+                        'gold-light': '#F4E8C1',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        script: ['Great Vibes', 'cursive'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 1s ease-out',
+                        'slide-in': 'slideIn 0.8s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(45, 90, 39, 0.3) 0%, rgba(196, 30, 58, 0.2) 100%);
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 240, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .hover-lift {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .image-zoom {
+            overflow: hidden;
+        }
+        
+        .image-zoom img {
+            transition: transform 0.6s ease;
+        }
+        
+        .image-zoom:hover img {
+            transform: scale(1.1);
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-scrolled {
+            background: rgba(255, 255, 240, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .gold-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .collection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+        
+        .collection-card:hover::before {
+            opacity: 1;
+        }
+        
+        .collection-card .card-content {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .collection-card:hover .card-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .step-connector {
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #D4AF37, transparent);
+            transform: translateY(-50%);
+        }
+        
+        @media (max-width: 768px) {
+            .step-connector {
+                display: none;
+            }
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #FFFFF0;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        
+        .bouquet-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .bouquet-float:nth-child(2) {
+            animation-delay: 1s;
+        }
+        
+        .bouquet-float:nth-child(3) {
+            animation-delay: 2s;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-soft-ivory overflow-x-hidden custom-scrollbar">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-spa text-deep-rose text-2xl"></i>
+                <span class="font-serif text-2xl font-semibold text-gray-900 tracking-wide">Glynson's</span>
+            </div>
+            
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="#collections" class="text-sm uppercase tracking-widest hover:text-deep-rose transition-colors">Collections</a>
+                <a href="#signature" class="text-sm uppercase tracking-widest hover:text-deep-rose transition-colors">Signature</a>
+                <a href="#gallery" class="text-sm uppercase tracking-widest hover:text-deep-rose transition-colors">Gallery</a>
+                <a href="#order" class="text-sm uppercase tracking-widest hover:text-deep-rose transition-colors">Order</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button class="lg:hidden text-gray-800 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="https://wa.me/639XXXXXXXXX" target="_blank" class="hidden lg:flex items-center space-x-2 bg-deep-rose text-white px-6 py-3 rounded-full hover:bg-rose-dark transition-all transform hover:scale-105 shadow-lg">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span class="text-sm font-medium">Order Now</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen w-full overflow-hidden">
+        <!-- Background with Parallax -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=1920&q=80" alt="Luxury Roses" class="w-full h-full object-cover scale-110 animate-pulse-slow">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-soft-ivory"></div>
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <!-- Floating Bouquets Decoration -->
+        <div class="absolute top-20 right-10 w-32 h-32 opacity-20 bouquet-float hidden lg:block">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&q=80" class="w-full h-full object-cover rounded-full shadow-2xl">
+        </div>
+        <div class="absolute bottom-40 left-10 w-24 h-24 opacity-20 bouquet-float hidden lg:block" style="animation-delay: 2s;">
+            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&q=80" class="w-full h-full object-cover rounded-full shadow-2xl">
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 h-full flex items-center justify-center text-center px-6">
+            <div class="max-w-4xl mx-auto reveal active">
+                <div class="mb-6 inline-block">
+                    <span class="font-script text-3xl lg:text-5xl text-gold-accent mb-2 block">Est. 2008</span>
+                    <div class="h-px w-24 bg-gold-accent mx-auto"></div>
+                </div>
+                
+                <h1 class="font-serif text-5xl lg:text-7xl xl:text-8xl text-white mb-6 text-shadow leading-tight">
+                    Cebu's Premier<br>
+                    <span class="italic text-champagne">Floral Boutique</span>
+                </h1>
+                
+                <p class="text-lg lg:text-xl text-white/90 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+                    Luxury bouquets and custom arrangements crafted to celebrate life's most beautiful moments
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <a href="#collections" class="bg-white text-gray-900 px-8 py-4 rounded-full font-medium hover:bg-champagne transition-all transform hover:scale-105 shadow-xl flex items-center space-x-2">
+                        <span>Shop Collection</span>
+                        <i class="fas fa-arrow-right text-deep-rose"></i>
+                    </a>
+                    <a href="https://wa.me/639XXXXXXXXX" target="_blank" class="bg-deep-rose text-white px-8 py-4 rounded-full font-medium hover:bg-rose-dark transition-all transform hover:scale-105 shadow-xl flex items-center space-x-2">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        <span>Order via WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="flex flex-wrap justify-center gap-6 text-white/90 text-sm">
+                    <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <span>16,000+ Happy Clients</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <i class="fas fa-truck text-gold-accent"></i>
+                        <span>Same-Day Delivery</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <i class="fas fa-leaf text-gold-accent"></i>
+                        <span>Fresh Daily Supply</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl opacity-70"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-24 px-6 lg:px-12 bg-soft-ivory relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-64 h-64 bg-champagne/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-deep-rose/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=80" alt="Florist at work" class="rounded-2xl shadow-2xl w-full object-cover h-[600px]">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl max-w-xs hidden lg:block">
+                            <p class="font-script text-2xl text-deep-rose mb-2">"Every bloom tells a story"</p>
+                            <p class="text-sm text-gray-600">— Glynson, Founder</p>
+                        </div>
+                        <div class="absolute -top-4 -left-4 w-24 h-24 border-2 border-gold-accent rounded-full opacity-50"></div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <span class="text-deep-rose uppercase tracking-widest text-sm font-semibold mb-4 block">Our Story</span>
+                    <h2 class="font-serif text-4xl lg:text-5xl text-gray-900 mb-6 leading-tight">
+                        Crafting Beauty,<br>
+                        <span class="italic text-deep-rose">One Bouquet at a Time</span>
+                    </h2>
+                    <div class="w-20 h-1 bg-gold-accent mb-8"></div>
+                    
+                    <div class="space-y-6 text-gray-600 leading-relaxed">
+                        <p class="text-lg">
+                            For over 15 years, Glynson's has been Cebu's trusted destination for luxury floral artistry. What began as a small family passion has blossomed into the island's premier floral boutique.
+                        </p>
+                        <p>
+                            We believe that flowers are more than decorations—they are emotions made visible. Each arrangement that leaves our studio is meticulously crafted by our master florists, combining traditional techniques with contemporary design sensibilities.
+                        </p>
+                        <p>
+                            Our commitment to excellence means sourcing only the freshest premium blooms, from local Cebu farms to imported Ecuadorian roses, ensuring every petal is perfect for your special moments.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-8 mt-10 pt-10 border-t border-gray-200">
+                        <div class="text-center">
+                            <span class="font-serif text-3xl text-deep-rose block">15+</span>
+                            <span class="text-sm text-gray-500 uppercase tracking-wider">Years</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="font-serif text-3xl text-deep-rose block">16k+</span>
+                            <span class="text-sm text-gray-500 uppercase tracking-wider">Clients</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="font-serif text-3xl text-deep-rose block">50+</span>
+                            <span class="text-sm text-gray-500 uppercase tracking-wider">Varieties</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Collections Grid -->
+    <section id="collections" class="py-24 px-6 lg:px-12 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-deep-rose uppercase tracking-widest text-sm font-semibold mb-4 block">Our Selection</span>
+                <h2 class="font-serif text-4xl lg:text-5xl text-gray-900 mb-4">Premium Flower Collections</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover our curated selection of luxury blooms, each category offering unique expressions of beauty</p>
+                <div class="w-24 h-1 bg-gold-accent mx-auto mt-6"></div>
+            </div>
+
+            <!-- Roses Collection -->
+            <div class="mb-20 reveal">
+                <div class="flex items-center justify-between mb-8">
+                    <h3 class="font-serif text-3xl text-gray-900 flex items-center">
+                        <i class="fas fa-heart text-deep-rose mr-3"></i>
+                        Roses Collection
+                    </h3>
+                    <a href="#" class="text-deep-rose hover:text-rose-dark transition-colors text-sm uppercase tracking-wider font-medium">View All <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover-lift cursor-pointer">
+                        <div class="image-zoom h-80">
+                            <img src="https://images.unsplash.com/photo-1548586196-aa5803b77379?w=600&q=80" alt="Red Roses" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif text-2xl mb-2">Red Roses</h4>
+                            <p class="text-white/80 text-sm mb-3">Classic romance, premium long-stemmed</p>
+                            <span class="text-gold-accent font-semibold">₱1,200 - ₱5,500</span>
+                        </div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover-lift cursor-pointer">
+                        <div class="image-zoom h-80">
+                            <img src="https://images.unsplash.com/photo-1559563458-527698bf5295?w=600&q=80" alt="Pink Roses" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif text-2xl mb-2">Pink Roses</h4>
+                            <p class="text-white/80 text-sm mb-3">Grace and admiration</p>
+                            <span class="text-gold-accent font-semibold">₱1,100 - ₱4,800</span>
+                        </div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover-lift cursor-pointer">
+                        <div class="image-zoom h-80">
+                            <img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=600&q=80" alt="Ecuadorian Roses" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif text-2xl mb-2">Ecuadorian Roses</h4>
+                            <p class="text-white/80 text-sm mb-3">Imported luxury, largest blooms</p>
+                            <span class="text-gold-accent font-semibold">₱2,500 - ₱8,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sunflowers & Tulips -->
+            <div class="grid lg:grid-cols-2 gap-12 mb-20">
+                <div class="reveal">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="font-serif text-3xl text-gray-900 flex items-center">
+                            <i class="fas fa-sun text-yellow-500 mr-3"></i>
+                            Sunflower Collection
+                        </h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center bg-soft-ivory p-4 rounded-xl hover:shadow-md transition-shadow cursor-pointer group">
+                            <img src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=200&q=80" class="w-24 h-24 object-cover rounded-lg mr-4 group-hover:scale-105 transition-transform">
+                            <div class="flex-1">
+                                <h4 class="font-serif text-xl text-gray-900">Single Stem Sunflower</h4>
+                                <p class="text-gray-600 text-sm">Bright and cheerful</p>
+                            </div>
+                            <span class="text-deep-rose font-semibold">₱350</span>
+                        </div>
+                        <div class="flex items-center bg-soft-ivory p-4 rounded-xl hover:shadow-md transition-shadow cursor-pointer group">
+                            <img src="https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=200&q=80" class="w-24 h-24 object-cover rounded-lg mr-4 group-hover:scale-105 transition-transform">
+                            <div class="flex-1">
+                                <h4 class="font-serif text-xl text-gray-900">Sunflower Bouquets</h4>
+                                <p class="text-gray-600 text-sm">Radiant happiness</p>
+                            </div>
+                            <span class="text-deep-rose font-semibold">₱1,500</span>
+                        </div>
+                        <div class="flex items-center bg-soft-ivory p-4 rounded-xl hover:shadow-md transition-shadow cursor-pointer group">
+                            <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=200&q=80" class="w-24 h-24 object-cover rounded-lg mr-4 group-hover:scale-105 transition-transform">
+                            <div class="flex-1">
+                                <h4 class="font-serif text-xl text-gray-900">Mixed Arrangements</h4>
+                                <p class="text-gray-600 text-sm">With baby's breath & greens</p>
+                            </div>
+                            <span class="text-deep-rose font-semibold">₱2,200</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="font-serif text-3xl text-gray-900 flex items-center">
+                            <i class="fas fa-seedling text-purple-500 mr-3"></i>
+                            Tulip Collection
+                        </h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="text-white font-serif text-xl">Pink Tulips</span>
+                            </div>
+                        </div>
+                        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="text-white font-serif text-xl">Purple Tulips</span>
+                            </div>
+                        </div>
+                        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1558293842-c0fd3db84500?w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="text-white font-serif text-xl">White Tulips</span>
+                            </div>
+                        </div>
+                        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer bg-champagne flex items-center justify-center">
+                            <div class="text-center p-4">
+                                <span class="font-script text-2xl text-deep-rose">Mixed Bouquets</span>
+                                <p class="text-sm text-gray-600 mt-2">Custom arrangements available</p>
+                                <button class="mt-3 text-deep-rose text-sm font-semibold hover:underline">Inquire Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lilies & Gerbera -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20 reveal">
+                <div class="lg:col-span-2">
+                    <h3 class="font-serif text-2xl text-gray-900 mb-6 flex items-center">
+                        <i class="fas fa-fan text-pink-400 mr-3"></i>
+                        Lilies Collection
+                    </h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center group cursor-pointer">
+                            <div class="overflow-hidden rounded-lg mb-3">
+                                <img src="https://images.unsplash.com/photo-1589539118272-c28cb396a1c6?w=300&q=80" class="w-full h-32 object-cover group-hover:scale-110 transition-transform">
+                            </div>
+                            <h4 class="font-medium text-gray-900">Stargazer</h4>
+                            <p class="text-deep-rose text-sm">₱1,800</p>
+                        </div>
+                        <div class="text-center group cursor-pointer">
+                            <div class="overflow-hidden rounded-lg mb-3">
+                                <img src="https://images.unsplash.com/photo-1591567093634-9200011b9dc2?w=300&q=80" class="w-full h-32 object-cover group-hover:scale-110 transition-transform">
+                            </div>
+                            <h4 class="font-medium text-gray-900">Oriental White</h4>
+                            <p class="text-deep-rose text-sm">₱1,600</p>
+                        </div>
+                        <div class="text-center group cursor-pointer">
+                            <div class="overflow-hidden rounded-lg mb-3">
+                                <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=300&q=80" class="w-full h-32 object-cover group-hover:scale-110 transition-transform">
+                            </div>
+                            <h4 class="font-medium text-gray-900">Pink Lilies</h4>
+                            <p class="text-deep-rose text-sm">₱1,700</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <h3 class="font-serif text-2xl text-gray-900 mb-6 flex items-center">
+                        <i class="fas fa-certificate text-orange-400 mr-3"></i>
+                        Gerbera Daisies
+                    </h3>
+                    <div class="bg-gradient-to-r from-orange-50 to-pink-50 p-6 rounded-2xl">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex space-x-2">
+                                <div class="w-8 h-8 rounded-full bg-red-500"></div>
+                                <div class="w-8 h-8 rounded-full bg-pink-500"></div>
+                                <div class="w-8 h-8 rounded-full bg-yellow-500"></div>
+                            </div>
+                            <span class="text-sm text-gray-600">Vibrant Colors</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Bright, cheerful blooms perfect for celebrations and get-well wishes.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif text-2xl text-deep-rose">₱800 - ₱2,500</span>
+                            <button class="bg-deep-rose text-white px-4 py-2 rounded-full text-sm hover:bg-rose-dark transition-colors">View Collection</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event & Sympathy -->
+            <div class="grid md:grid-cols-2 gap-8 reveal">
+                <div class="relative overflow-hidden rounded-2xl h-96 group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Wedding Flowers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
+                        <h3 class="font-serif text-3xl text-white mb-2">Event Floral Styling</h3>
+                        <p class="text-white/80 mb-4">Weddings, debuts, corporate events, and grand openings</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm">Wedding Bouquets</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm">Bridal Car</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm">Centerpieces</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative overflow-hidden rounded-2xl h-96 group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1463320726281-696a41370405?w=800&q=80" alt="Sympathy Flowers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
+                        <h3 class="font-serif text-3xl text-white mb-2">Sympathy & Funeral</h3>
+                        <p class="text-white/80 mb-4">Dignified arrangements to honor your loved ones</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm">Standing Sprays</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm">Wreaths</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm">Casket Sprays</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Collections -->
+    <section id="signature" class="py-24 px-6 lg:px-12 bg-champagne/20 relative">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-accent to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-deep-rose uppercase tracking-widest text-sm font-semibold mb-4 block">Exclusive</span>
+                <h2 class="font-serif text-4xl lg:text-5xl text-gray-900 mb-4">Signature Collections</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Curated luxury experiences for life's most precious moments</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Royal Rose -->
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover-lift reveal">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=600&q=80" alt="Royal Rose" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-serif text-2xl text-gray-900">The Royal Rose</h3>
+                            <i class="fas fa-crown text-gold-accent text-xl"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6">50 stems of premium Ecuadorian roses in velvet box presentation. The ultimate luxury statement.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-3xl text-deep-rose">₱8,500</span>
+                            <button class="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-deep-rose transition-colors">Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pastel Dream -->
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover-lift reveal" style="transition-delay: 100ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=600&q=80" alt="Pastel Dream" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-serif text-2xl text-gray-900">The Pastel Dream</h3>
+                            <i class="fas fa-cloud text-pink-300 text-xl"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6">Soft pink roses, peonies, and hydrangeas in Korean-style wrapping. Ethereal beauty.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-3xl text-deep-rose">₱4,200</span>
+                            <button class="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-deep-rose transition-colors">Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Golden Sun -->
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover-lift reveal" style="transition-delay: 200ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1591886960571-74d43a9e4166?w=600&q=80" alt="Golden Sun" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-serif text-2xl text-gray-900">The Golden Sun</h3>
+                            <i class="fas fa-sun text-yellow-500 text-xl"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6">Vibrant sunflowers with golden accents and premium greenery. Radiant joy.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-3xl text-deep-rose">₱3,800</span>
+                            <button class="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-deep-rose transition-colors">Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wedding Luxe -->
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover-lift reveal">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556216750-73235f548b04?w=600&q=80" alt="Wedding Luxe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-serif text-2xl text-gray-900">The Wedding Luxe</h3>
+                            <i class="fas fa-ring text-gold-accent text-xl"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6">Bridal bouquet, entourage flowers, and car decor package. Complete elegance.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-3xl text-deep-rose">₱25,000</span>
+                            <button class="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-deep-rose transition-colors">Inquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grand Gesture -->
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover-lift reveal" style="transition-delay: 100ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=600&q=80" alt="Grand Gesture" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-serif text-2xl text-gray-900">The Grand Gesture</h3>
+                            <i class="fas fa-gift text-deep-rose text-xl"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6">100 roses heart-shaped arrangement with fairy lights. Unforgettable impact.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-3xl text-deep-rose">₱12,000</span>
+                            <button class="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-deep-rose transition-colors">Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monthly Subscription -->
+                <div class="group relative bg-gradient-to-br from-deep-rose to-rose-dark rounded-2xl overflow-hidden shadow-xl hover-lift reveal" style="transition-delay: 200ms;">
+                    <div class="p-8 text-white h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-serif text-2xl">Monthly Bloom Box</h3>
+                                <i class="fas fa-calendar-alt text-gold-accent text-xl"></i>
+                            </div>
+                            <p class="text-white/90 mb-6">Weekly fresh flower deliveries to your doorstep. Elevate your space continuously.</p>
+                            <ul class="space-y-2 text-sm text-white/80 mb-6">
+                                <li><i class="fas fa-check mr-2"></i>4 weekly deliveries</li>
+                                <li><i class="fas fa-check mr-2"></i>Seasonal selections</li>
+                                <li><i class="fas fa-check mr-2"></i>Free vase included</li>
+                                <li><i class="fas fa-check mr-2"></i>20% off regular price</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-3xl">₱3,500<span class="text-sm font-sans">/month</span></span>
+                            <button class="bg-white text-deep-rose px-6 py-2 rounded-full hover:bg-champagne transition-colors font-semibold">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 px-6 lg:px-12 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-serif text-4xl lg:text-5xl text-gray-900 mb-4">Why Choose Glynson's</h2>
+                <div class="w-24 h-1 bg-gold-accent mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <div class="text-center group reveal">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-champagne rounded-full flex items-center justify-center group-hover:bg-deep-rose transition-colors duration-300">
+                        <i class="fas fa-users text-2xl text-deep-rose group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-gray-900 mb-2">16,000+ Community</h3>
+                    <p class="text-gray-600 text-sm">Trusted by thousands of happy clients across Cebu</p>
+                </div>
+
+                <div class="text-center group reveal" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-champagne rounded-full flex items-center justify-center group-hover:bg-deep-rose transition-colors duration-300">
+                        <i class="fas fa-leaf text-2xl text-deep-rose group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-gray-900 mb-2">Fresh Daily</h3>
+                    <p class="text-gray-600 text-sm">New stock arrives every morning for maximum freshness</p>
+                </div>
+
+                <div class="text-center group reveal" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-champagne rounded-full flex items-center justify-center group-hover:bg-deep-rose transition-colors duration-300">
+                        <i class="fas fa-palette text-2xl text-deep-rose group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-gray-900 mb-2">Custom Designs</h3>
+                    <p class="text-gray-600 text-sm">Bespoke arrangements tailored to your vision</p>
+                </div>
+
+                <div class="text-center group reveal" style="transition-delay: 300ms;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-champagne rounded-full flex items-center justify-center group-hover:bg-deep-rose transition-colors duration-300">
+                        <i class="fas fa-shipping-fast text-2xl text-deep-rose group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-gray-900 mb-2">Reliable Delivery</h3>
+                    <p class="text-gray-600 text-sm">Same-day delivery across Metro Cebu</p>
+                </div>
+
+                <div class="text-center group reveal" style="transition-delay: 400ms;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-champagne rounded-full flex items-center justify-center group-hover:bg-deep-rose transition-colors duration-300">
+                        <i class="fas fa-gem text-2xl text-deep-rose group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-gray-900 mb-2">Premium Presentation</h3>
+                    <p class="text-gray-600 text-sm">Luxury wrapping and elegant packaging</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 px-6 lg:px-12 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gold-accent uppercase tracking-widest text-sm font-semibold mb-4 block">Portfolio</span>
+                <h2 class="font-serif text-4xl lg:text-5xl mb-4">Our Gallery</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Moments we've had the privilege to beautify</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
+                <button class="gallery-filter active px-6 py-2 rounded-full border border-gold-accent bg-gold-accent text-gray-900 font-medium transition-all" data-filter="all">All</button>
+                <button class="gallery-filter px-6 py-2 rounded-full border border-gold-accent text-gold-accent hover:bg-gold-accent hover:text-gray-900 font-medium transition-all" data-filter="roses">Roses</button>
+                <button class="gallery-filter px-6 py-2 rounded-full border border-gold-accent text-gold-accent hover:bg-gold-accent hover:text-gray-900 font-medium transition-all" data-filter="sunflowers">Sunflowers</button>
+                <button class="gallery-filter px-6 py-2 rounded-full border border-gold-accent text-gold-accent hover:bg-gold-accent hover:text-gray-900 font-medium transition-all" data-filter="mixed">Mixed</button>
+                <button class="gallery-filter px-6 py-2 rounded-full border border-gold-accent text-gold-accent hover:bg-gold-accent hover:text-gray-900 font-medium transition-all" data-filter="events">Events</button>
+            </div>
+
+            <!-- Masonry Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gallery-grid">
+                <div class="gallery-item roses group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer reveal">
+                    <img src="https://images.unsplash.com/photo-1548586196-aa5803b77379?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-search-plus text-2xl text-white"></i>
+                    </div>
+                </div>
+                <div class="gallery-item mixed group relative overflow-hidden rounded-lg aspect-square cursor-pointer reveal">
+                    <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-search-plus text-2xl text-white"></i>
+                    </div>
+                </div>
+                <div class="gallery-item sunflowers group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer reveal">
+                    <img src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-search-plus text-2xl text-white"></i>
+                    </div>
+                </div>
+                <div class="gallery-item events group relative overflow-hidden rounded-lg aspect-square cursor-pointer reveal">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-search-plus text-2xl text-white"></i>
+                    </div>
+                </div>
+                <div class="gallery-item roses group relative overflow-hidden rounded-lg aspect-square cursor-pointer reveal">
+                    <img src="https://images.unsplash.com/photo-1559563458-527698bf5295?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-search-plus text-2xl text-white"></i>
+                    </div>
+                </div>
+                <div class="gallery-item mixed group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer reveal">
+                    <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-search-plus text-2xl text-white"></i>
+                    </div>
+                </div>
+                <div class="gallery-item events group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer reveal">
+                    <img src="https://images.unsplash.com/photo-1463320726281-696a41370405?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-search-plus text-2xl text-white"></i>
+                    </div>
+                </div>
+                <div class="gallery-item roses group relative overflow-hidden rounded-lg aspect-square cursor-pointer reveal">
+                    <img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fas fa-search-plus text-2xl text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Order -->
+    <section id="order" class="py-24 px-6 lg:px-12 bg-soft-ivory relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-deep-rose uppercase tracking-widest text-sm font-semibold mb-4 block">Simple Process</span>
+                <h2 class="font-serif text-4xl lg:text-5xl text-gray-900 mb-4">How to Order</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Three easy steps to your perfect arrangement</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="relative reveal">
+                    <div class="bg-white rounded-2xl p-8 shadow-xl hover-lift text-center relative z-10">
+                        <div class="w-16 h-16 bg-deep-rose rounded-full flex items-center justify-center text-white text-2xl font-serif mx-auto mb-6">1</div>
+                        <h3 class="font-serif text-2xl text-gray-900 mb-4">Choose Design</h3>
+                        <p class="text-gray-600 mb-6">Browse our collections or request a custom arrangement tailored to your preferences.</p>
+                        <div class="flex justify-center space-x-2 text-gold-accent">
+                            <i class="fas fa-mobile-alt"></i>
+                            <i class="fas fa-mouse-pointer"></i>
+                        </div>
+                    </div>
+                    <div class="step-connector hidden lg:block"></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative reveal" style="transition-delay: 100ms;">
+                    <div class="bg-white rounded-2xl p-8 shadow-xl hover-lift text-center relative z-10">
+                        <div class="w-16 h-16 bg-deep-rose rounded-full flex items-center justify-center text-white text-2xl font-serif mx-auto mb-6">2</div>
+                        <h3 class="font-serif text-2xl text-gray-900 mb-4">Send Details</h3>
+                        <p class="text-gray-600 mb-6">Message us via WhatsApp with your choice, delivery details, and special instructions.</p>
+                        <a href="https://wa.me/639XXXXXXXXX" class="inline-flex items-center text-deep-rose font-semibold hover:underline">
+                            <i class="fab fa-whatsapp mr-2 text-xl"></i>
+                            Chat Now
+                        </a>
+                    </div>
+                    <div class="step-connector hidden lg:block"></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative reveal" style="transition-delay: 200ms;">
+                    <div class="bg-white rounded-2xl p-8 shadow-xl hover-lift text-center relative z-10">
+                        <div class="w-16 h-16 bg-deep-rose rounded-full flex items-center justify-center text-white text-2xl font-serif mx-auto mb-6">3</div>
+                        <h3 class="font-serif text-2xl text-gray-900 mb-4">Confirm & Deliver</h3>
+                        <p class="text-gray-600 mb-6">Confirm payment and receive your fresh arrangement delivered with care.</p>
+                        <div class="flex justify-center space-x-2 text-gold-accent">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-truck"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery Info -->
+            <div class="mt-16 grid md:grid-cols-3 gap-8 reveal">
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-deep-rose">
+                    <h4 class="font-serif text-lg text-gray-900 mb-2"><i class="far fa-clock text-deep-rose mr-2"></i>Cut-off Times</h4>
+                    <p class="text-gray-600 text-sm">Same-day delivery for orders placed before 3:00 PM. Next-day delivery available 24/7.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-deep-rose">
+                    <h4 class="font-serif text-lg text-gray-900 mb-2"><i class="fas fa-map-marker-alt text-deep-rose mr-2"></i>Delivery Areas</h4>
+                    <p class="text-gray-600 text-sm">Cebu City, Mandaue, Lapu-Lapu, Talisay, and select provincial areas. Contact for specifics.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-deep-rose">
+                    <h4 class="font-serif text-lg text-gray-900 mb-2"><i class="fas fa-credit-card text-deep-rose mr-2"></i>Payment Methods</h4>
+                    <p class="text-gray-600 text-sm">GCash, Maya, Bank Transfer, Cash on Delivery (select areas), and major credit cards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 px-6 lg:px-12 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-serif text-4xl lg:text-5xl text-gray-900 mb-4">Client Love</h2>
+                <div class="w-24 h-1 bg-gold-accent mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-soft-ivory p-8 rounded-2xl relative reveal">
+                    <i class="fas fa-quote-right absolute top-6 right-6 text-4xl text-champagne-dark/50"></i>
+                    <div class="flex text-gold-accent mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"The Royal Rose collection exceeded all expectations. The presentation was absolutely stunning, and the roses stayed fresh for over a week. Glynson's is now my go-to for all special occasions."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-lg text-gray-900">Maria Santos</h4>
+                            <p class="text-gray-600 text-sm">Cebu City</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-soft-ivory p-8 rounded-2xl relative reveal" style="transition-delay: 100ms;">
+                    <i class="fas fa-quote-right absolute top-6 right-6 text-4xl text-champagne-dark/50"></i>
+                    <div class="flex text-gold-accent mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"We used Glynson's for our wedding floral styling, and they transformed our venue into something magical. Professional, creative, and incredibly reliable. Highly recommended!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-lg text-gray-900">James & Anna</h4>
+                            <p class="text-gray-600 text-sm">Wedding Clients</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-soft-ivory p-8 rounded-2xl relative reveal" style="transition-delay: 200ms;">
+                    <i class="fas fa-quote-right absolute top-6 right-6 text-4xl text-champagne-dark/50"></i>
+                    <div class="flex text-gold-accent mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"Same-day delivery saved me when I forgot our anniversary! The Pastel Dream bouquet was gorgeous, and my wife was thrilled. Exceptional service and quality."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-lg text-gray-900">Robert Chen</h4>
+                            <p class="text-gray-600 text-sm">Mandaue City</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-6 lg:px-12 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=1920&q=80" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-deep-rose/90"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto text-center text-white reveal">
+            <h2 class="font-serif text-4xl lg:text-6xl mb-6">Ready to Say It Beautifully?</h2>
+            <p class="text-xl text-white/90 mb-10 font-light">Let us craft the perfect arrangement for your special moment. Luxury flowers, delivered with love.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/639XXXXXXXXX" target="_blank" class="bg-white text-deep-rose px-10 py-4 rounded-full font-semibold hover:bg-champagne transition-all transform hover:scale-105 shadow-xl flex items-center justify-center space-x-2">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    <span>Order via WhatsApp</span>
+                </a>
+                <a href="tel:+639XXXXXXXXX" class="border-2 border-white text-white px-10 py-4 rounded-full font-semibold hover:bg-white hover:text-deep-rose transition-all flex items-center justify-center space-x-2">
+                    <i class="fas fa-phone"></i>
+                    <span>Call Us Now</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-10 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fas fa-spa text-deep-rose text-2xl"></i>
+                        <span class="font-serif text-2xl font-semibold tracking-wide">Glynson's</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Cebu's premier luxury floral boutique, crafting beautiful moments since 2008.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-deep-rose transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-deep-rose transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-deep-rose transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-xl mb-6 text-gold-accent">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#collections" class="hover:text-white transition-colors">Collections</a></li>
+                        <li><a href="#signature" class="hover:text-white transition-colors">Signature</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Flower Care Guide</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-xl mb-6 text-gold-accent">Services</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Wedding Styling</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Event Decor</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Corporate Accounts</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Monthly Subscriptions</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Sympathy Flowers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-xl mb-6 text-gold-accent">Contact</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt mt-1 text-deep-rose"></i>
+                            <span>123 Flower Street, Cebu City, Philippines 6000</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-deep-rose"></i>
+                            <span>+63 9XX XXX XXXX</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-deep-rose"></i>
+                            <span>hello@glynsonsflowers.com</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-deep-rose"></i>
+                            <span>Mon-Sat: 8:00 AM - 7:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">&copy; 2024 Glynson's Flower Shop. All rights reserved.</p>
+                <div class="flex space-x-6 text-sm text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/639XXXXXXXXX" target="_blank" class="fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-50 animate-bounce">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+                navbar.classList.remove('py-6');
+                navbar.classList.add('py-4');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-6');
+            }
+        });
+
+        // Reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Gallery filter
+        const filterButtons = document.querySelectorAll('.gallery-filter');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-gold-accent', 'text-gray-900');
+                    btn.classList.add('text-gold-accent');
+                });
+                // Add active class to clicked button
+                button.classList.add('bg-gold-accent', 'text-gray-900');
+                button.classList.remove('text-gold-accent');
+
+                const filter = button.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('ahref^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('section:first-child img');
+            if (heroImage && scrolled < window.innerHeight) {
+                heroImage.style.transform = `scale(1.1) translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

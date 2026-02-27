@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Shop GT | Boutique de Moda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lavender: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            200: '#e9d5ff',
+                            300: '#d8b4fe',
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            800: '#6b21a8',
+                            900: '#581c87',
+                        },
+                        blush: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                        },
+                        beige: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .product-card:hover .quick-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .quick-view {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .size-btn.active {
+            background-color: #9333ea;
+            color: white;
+            border-color: #9333ea;
+        }
+        .cart-badge {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(147, 51, 234, 0.15) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+        .story-ring {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            padding: 3px;
+            border-radius: 50%;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-beige-50 smooth-scroll">
+
+    <!-- Announcement Bar -->
+    <div class="bg-gradient-to-r from-lavender-600 to-blush-500 text-white text-center py-2 px-4 text-sm font-medium animate-fade-in">
+        <span class="hidden sm:inline">🚚 Envío a toda Guatemala por Q35.00 | </span>
+        <span>Prendas desde Q20.00 ✨</span>
+        <button onclick="this.parentElement.style.display='none'" class="absolute right-4 top-2 text-white hover:text-gray-200">✕</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-effect border-b border-lavender-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-gradient-to-br from-lavender-400 to-blush-400 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3 shadow-lg">
+                        FS
+                    </div>
+                    <div>
+                        <h1 class="font-serif text-xl font-bold text-gray-900">Flower Shop</h1>
+                        <p class="text-xs text-lavender-600 font-medium">Boutique GT</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-700 hover:text-lavender-600 font-medium transition-colors">Inicio</a>
+                    <a href="#categorias" class="text-gray-700 hover:text-lavender-600 font-medium transition-colors">Categorías</a>
+                    <a href="#nuevos" class="text-gray-700 hover:text-lavender-600 font-medium transition-colors">Nuevos</a>
+                    <a href="#testimonios" class="text-gray-700 hover:text-lavender-600 font-medium transition-colors">Reseñas</a>
+                </div>
+
+                <!-- Icons -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleSearch()" class="p-2 text-gray-600 hover:text-lavender-600 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                    <button onclick="toggleWishlist()" class="p-2 text-gray-600 hover:text-blush-500 transition-colors relative">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <span id="wishlist-count" class="absolute -top-1 -right-1 bg-blush-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                    <button onclick="toggleCart()" class="p-2 text-gray-600 hover:text-lavender-600 transition-colors relative">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-lavender-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center cart-badge hidden">0</span>
+                    </button>
+                    <button class="md:hidden p-2 text-gray-600" onclick="toggleMobileMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#inicio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-lavender-600 hover:bg-lavender-50">Inicio</a>
+                <a href="#categorias" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-lavender-600 hover:bg-lavender-50">Categorías</a>
+                <a href="#nuevos" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-lavender-600 hover:bg-lavender-50">Nuevos</a>
+                <a href="#testimonios" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-lavender-600 hover:bg-lavender-50">Reseñas</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-start justify-center pt-24">
+        <div class="bg-white w-full max-w-2xl mx-4 rounded-2xl shadow-2xl p-6 animate-slide-up">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-gray-900">Buscar productos</h3>
+                <button onclick="toggleSearch()" class="text-gray-400 hover:text-gray-600">✕</button>
+            </div>
+            <input type="text" placeholder="Buscar blusas, vestidos, tops..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-lavender-500 focus:ring-2 focus:ring-lavender-200 outline-none transition-all" onkeyup="searchProducts(this.value)">
+            <div id="search-results" class="mt-4 max-h-64 overflow-y-auto hide-scrollbar"></div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-50 transition-opacity" onclick="toggleCart()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl transform transition-transform translate-x-full" id="cart-panel">
+            <div class="flex flex-col h-full">
+                <div class="flex justify-between items-center p-6 border-b border-gray-100">
+                    <h2 class="text-xl font-bold text-gray-900">Tu Carrito</h2>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600">✕</button>
+                </div>
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <div class="text-center text-gray-500 mt-10">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <p>Tu carrito está vacío</p>
+                    </div>
+                </div>
+                <div class="border-t border-gray-100 p-6 bg-gray-50">
+                    <div class="flex justify-between mb-4 text-lg font-semibold">
+                        <span>Total:</span>
+                        <span id="cart-total" class="text-lavender-600">Q0.00</span>
+                    </div>
+                    <button onclick="checkout()" class="w-full bg-gradient-to-r from-lavender-600 to-blush-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transform hover:scale-[1.02] transition-all">
+                        Finalizar Compra
+                    </button>
+                    <p class="text-xs text-center mt-3 text-gray-500">Envío calculado al finalizar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-[90vh] flex items-center hero-pattern overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-lavender-50/90 to-transparent z-0"></div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-10 w-64 h-64 bg-blush-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse-slow"></div>
+        <div class="absolute bottom-20 left-10 w-72 h-72 bg-lavender-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse-slow" style="animation-delay: 1s;"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid md:grid-cols-2 gap-12 items-center">
+            <div class="animate-slide-up">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 border border-lavender-200 text-lavender-700 text-sm font-medium mb-6 shadow-sm">
+                    <span class="w-2 h-2 bg-lavender-500 rounded-full mr-2 animate-pulse"></span>
+                    Nueva Colección 2024
+                </div>
+                <h1 class="font-serif text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-6">
+                    Trendy Styles <br>
+                    <span class="gradient-text">You'll Love 💜</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                    Moda asequible entregada en toda Guatemala. Descubre las últimas tendencias con precios que te encantarán.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <button onclick="scrollToSection('nuevos')" class="px-8 py-4 bg-gradient-to-r from-lavender-600 to-lavender-700 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center">
+                        Comprar Ahora
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </button>
+                    <button onclick="scrollToSection('nuevos')" class="px-8 py-4 bg-white text-lavender-700 border-2 border-lavender-200 rounded-full font-semibold hover:bg-lavender-50 transition-all">
+                        Ver Novedades
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-6 text-sm text-gray-600">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 text-lavender-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <span class="font-semibold">10.3k</span> seguidores
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 text-blush-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span class="font-semibold">500+</span> clientes felices
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=1000&fit=crop" alt="Fashion Model" class="w-full h-[600px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-500">Outfit Destacado</p>
+                                <p class="font-semibold text-gray-900">Vestido Floral Primavera</p>
+                            </div>
+                            <span class="text-xl font-bold text-lavender-600">Q125.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Floating Badge -->
+                <div class="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4 animate-bounce-slow">
+                    <div class="text-center">
+                        <p class="text-2xl font-bold text-blush-500">Q20</p>
+                        <p class="text-xs text-gray-600">Desde</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="py-12 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="group cursor-pointer">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-lavender-100 rounded-full flex items-center justify-center text-lavender-600 group-hover:bg-lavender-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900">Envío Nacional</h3>
+                    <p class="text-sm text-gray-500">A toda Guatemala</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-blush-100 rounded-full flex items-center justify-center text-blush-600 group-hover:bg-blush-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900">Precios Bajos</h3>
+                    <p class="text-sm text-gray-500">Desde Q20.00</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-lavender-100 rounded-full flex items-center justify-center text-lavender-600 group-hover:bg-lavender-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900">Nuevos Ingresos</h3>
+                    <p class="text-sm text-gray-500">Cada semana</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-blush-100 rounded-full flex items-center justify-center text-blush-600 group-hover:bg-blush-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900">Soporte 24/7</h3>
+                    <p class="text-sm text-gray-500">WhatsApp Directo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categorias" class="py-20 bg-beige-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">Explora por Categoría</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Encuentra exactamente lo que buscas en nuestra colección curada</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Category Items -->
+                <div class="group cursor-pointer" onclick="filterByCategory('new')">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] mb-3 shadow-lg hover-lift">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Nuevos">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform">
+                            <span class="text-sm font-medium">Ver todo →</span>
+                        </div>
+                    </div>
+                    <h3 class="text-center font-semibold text-gray-900">✨ Nuevos</h3>
+                </div>
+
+                <div class="group cursor-pointer" onclick="filterByCategory('tops')">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] mb-3 shadow-lg hover-lift">
+                        <img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=400&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Tops">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h3 class="text-center font-semibold text-gray-900">👚 Tops</h3>
+                </div>
+
+                <div class="group cursor-pointer" onclick="filterByCategory('bottoms')">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] mb-3 shadow-lg hover-lift">
+                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Bottoms">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h3 class="text-center font-semibold text-gray-900">👖 Bottoms</h3>
+                </div>
+
+                <div class="group cursor-pointer" onclick="filterByCategory('dresses')">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] mb-3 shadow-lg hover-lift">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Vestidos">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h3 class="text-center font-semibold text-gray-900">💕 Vestidos</h3>
+                </div>
+
+                <div class="group cursor-pointer" onclick="filterByCategory('bestsellers')">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] mb-3 shadow-lg hover-lift">
+                        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=400&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Best Sellers">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">HOT</div>
+                    </div>
+                    <h3 class="text-center font-semibold text-gray-900">🔥 Best Sellers</h3>
+                </div>
+
+                <div class="group cursor-pointer" onclick="filterByCategory('sale')">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[3/4] mb-3 shadow-lg hover-lift">
+                        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Sale">
+                        <div class="absolute top-2 right-2 bg-blush-500 text-white text-xs font-bold px-2 py-1 rounded-full">-30%</div>
+                    </div>
+                    <h3 class="text-center font-semibold text-gray-900">🎁 Ofertas</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Collection Section -->
+    <section id="nuevos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-lavender-600 font-semibold text-sm uppercase tracking-wider">Colección 2024</span>
+                    <h2 class="font-serif text-4xl font-bold text-gray-900 mt-2">Just Dropped ✨</h2>
+                    <p class="text-gray-600 mt-2">Las piezas más recientes que no puedes perderte</p>
+                </div>
+                <div class="flex gap-2 mt-4 md:mt-0">
+                    <button onclick="scrollProducts('left')" class="p-3 rounded-full border border-gray-200 hover:bg-lavender-50 hover:border-lavender-300 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button onclick="scrollProducts('right')" class="p-3 rounded-full border border-gray-200 hover:bg-lavender-50 hover:border-lavender-300 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Products will be injected by JS -->
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="px-8 py-3 border-2 border-lavender-600 text-lavender-600 rounded-full font-semibold hover:bg-lavender-600 hover:text-white transition-all">
+                    Ver Todos los Productos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Shop With Us -->
+    <section class="py-20 bg-gradient-to-br from-lavender-50 to-blush-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-serif text-4xl font-bold text-gray-900 mb-6">¿Por qué comprar con nosotros?</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-md flex items-center justify-center text-lavender-600 mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-lg">Envío a Todo el País</h3>
+                                <p class="text-gray-600">Entregamos en todas las zonas de Guatemala por solo Q35.00</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-md flex items-center justify-center text-blush-500 mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-lg">Pagos Seguros</h3>
+                                <p class="text-gray-600">Aceptamos transferencia bancaria y pago contra entrega</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-md flex items-center justify-center text-lavender-600 mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-lg">Cambios y Devoluciones</h3>
+                                <p class="text-gray-600">7 días para cambios. Tu satisfacción garantizada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-lavender-200 to-blush-200 rounded-3xl transform rotate-3"></div>
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" alt="Shopping Experience" class="relative rounded-3xl shadow-2xl w-full object-cover h-[500px]">
+                    <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-6 max-w-xs">
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                ★★★★★
+                            </div>
+                            <span class="ml-2 text-sm text-gray-600">4.9/5</span>
+                        </div>
+                        <p class="text-gray-800 font-medium">"La calidad es increíble y el envío super rápido. ¡Mi tienda favorita!"</p>
+                        <p class="text-sm text-gray-500 mt-2">- María G., Quetzaltenango</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">Síguenos en Instagram 💜</h2>
+                <p class="text-gray-600 mb-6">@flower.shopgt • 10.3k seguidores</p>
+                <a href="https://instagram.com/flower.shopgt" target="_blank" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white rounded-full font-semibold hover:shadow-lg transition-all">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    Ver Perfil
+                </a>
+            </div>
+
+            <div class="instagram-grid max-w-3xl mx-auto">
+                <div class="aspect-square overflow-hidden cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+                <div class="aspect-square overflow-hidden cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+                <div class="aspect-square overflow-hidden cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&h=400&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+                <div class="aspect-square overflow-hidden cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&h=400&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+                <div class="aspect-square overflow-hidden cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=400&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+                <div class="aspect-square overflow-hidden cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1485968579169-a6e9dc7c8a3d?w=400&h=400&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <p class="text-gray-600 italic">Etiquétanos @flower.shopgt para aparecer aquí</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonios" class="py-20 bg-beige-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-serif text-4xl font-bold text-center text-gray-900 mb-12">Lo que dicen nuestras clientas 💕</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-gray-700 mb-6">"La calidad es hermosa y el envío fue rápido. Los vestidos son exactamente como se ven en las fotos. ¡Totalmente recomendada!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-lavender-100 rounded-full flex items-center justify-center text-lavender-600 font-bold text-lg">M</div>
+                        <div class="ml-3">
+                            <p class="font-semibold text-gray-900">María José</p>
+                            <p class="text-sm text-gray-500">Quetzaltenango</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-gray-700 mb-6">"Superó mis expectativas. El precio es increíble para la calidad que ofrecen. Ya hice mi tercera compra 💜"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blush-100 rounded-full flex items-center justify-center text-blush-600 font-bold text-lg">A</div>
+                        <div class="ml-3">
+                            <p class="font-semibold text-gray-900">Ana Lucía</p>
+                            <p class="text-sm text-gray-500">Ciudad de Guatemala</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-gray-700 mb-6">"El mejor servicio al cliente. Tuve un problema con la talla y lo resolvieron inmediatamente. Gracias Flower Shop!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-lavender-100 rounded-full flex items-center justify-center text-lavender-600 font-bold text-lg">C</div>
+                        <div class="ml-3">
+                            <p class="font-semibold text-gray-900">Carmen S.</p>
+                            <p class="text-sm text-gray-500">Antigua Guatemala</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shipping & Policies -->
+    <section class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 rounded-2xl bg-gray-50 hover:bg-lavender-50 transition-colors cursor-pointer" onclick="togglePolicy('shipping')">
+                    <svg class="w-12 h-12 mx-auto mb-4 text-lavender-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
+                    <h3 class="font-semibold text-gray-900 mb-2">Envíos</h3>
+                    <p class="text-sm text-gray-600">Q35.00 a todo Guatemala</p>
+                    <p class="text-xs text-lavender-600 mt-2">Ver detalles →</p>
+                </div>
+
+                <div class="text-center p-6 rounded-2xl bg-gray-50 hover:bg-blush-50 transition-colors cursor-pointer" onclick="togglePolicy('returns')">
+                    <svg class="w-12 h-12 mx-auto mb-4 text-blush-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    <h3 class="font-semibold text-gray-900 mb-2">Devoluciones</h3>
+                    <p class="text-sm text-gray-600">7 días para cambios</p>
+                    <p class="text-xs text-blush-500 mt-2">Ver política →</p>
+                </div>
+
+                <div class="text-center p-6 rounded-2xl bg-gray-50 hover:bg-lavender-50 transition-colors cursor-pointer" onclick="togglePolicy('payment')">
+                    <svg class="w-12 h-12 mx-auto mb-4 text-lavender-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    <h3 class="font-semibold text-gray-900 mb-2">Pagos</h3>
+                    <p class="text-sm text-gray-600">Transferencia y contra entrega</p>
+                    <p class="text-xs text-lavender-600 mt-2">Ver métodos →</p>
+                </div>
+
+                <div class="text-center p-6 rounded-2xl bg-gray-50 hover:bg-blush-50 transition-colors cursor-pointer" onclick="togglePolicy('support')">
+                    <svg class="w-12 h-12 mx-auto mb-4 text-blush-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <h3 class="font-semibold text-gray-900 mb-2">Soporte</h3>
+                    <p class="text-sm text-gray-600">WhatsApp directo</p>
+                    <p class="text-xs text-blush-500 mt-2">Contactar →</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-lavender-400 to-blush-400 rounded-full flex items-center justify-center text-white font-bold mr-3">FS</div>
+                        <div>
+                            <h3 class="font-serif text-xl font-bold">Flower Shop</h3>
+                            <p class="text-xs text-gray-400">Boutique GT</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Moda asequible y trendy para la mujer moderna. Enviamos a toda Guatemala.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Categorías</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Nuevos Ingresos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Tops</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Vestidos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Bottoms</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Ofertas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Ayuda</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Guía de Tallas</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Envíos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Devoluciones</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                            Quetzaltenango, Guatemala
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            flower.shopgt@gmail.com
+                        </li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-lavender-600 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/flower.shopgt" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blush-500 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500">&copy; 2024 Flower Shop GT. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-sm text-gray-500">
+                    <a href="#" class="hover:text-white">Privacidad</a>
+                    <a href="#" class="hover:text-white">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity bg-black bg-opacity-50" onclick="closeProductModal()"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full animate-slide-up">
+                <div id="modal-content" class="bg-white">
+                    <!-- Content injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Size Guide Modal -->
+    <div id="size-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closeSizeGuide()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 animate-slide-up">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-gray-900">Guía de Tallas</h3>
+                <button onclick="closeSizeGuide()" class="text-gray-400 hover:text-gray-600">✕</button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                    <thead class="bg-lavender-50 text-lavender-900">
+                        <tr>
+                            <th class="px-4 py-3 rounded-l-lg">Talla</th>
+                            <th class="px-4 py-3">Busto (cm)</th>
+                            <th class="px-4 py-3">Cintura (cm)</th>
+                            <th class="px-4 py-3 rounded-r-lg">Cadera (cm)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr><td class="px-4 py-3 font-medium">S</td><td class="px-4 py-3">82-86</td><td class="px-4 py-3">64-68</td><td class="px-4 py-3">90-94</td></tr>
+                        <tr><td class="px-4 py-3 font-medium">M</td><td class="px-4 py-3">86-90</td><td class="px-4 py-3">68-72</td><td class="px-4 py-3">94-98</td></tr>
+                        <tr><td class="px-4 py-3 font-medium">L</td><td class="px-4 py-3">90-94</td><td class="px-4 py-3">72-76</td><td class="px-4 py-3">98-102</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-gray-500 mt-4">* Las medidas pueden variar ±2cm según el estilo</p>
+        </div>
+    </div>
+
+    <!-- Policy Modal -->
+    <div id="policy-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closePolicy()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full mx-4 animate-slide-up max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="policy-title" class="text-xl font-bold text-gray-900"></h3>
+                <button onclick="closePolicy()" class="text-gray-400 hover:text-gray-600">✕</button>
+            </div>
+            <div id="policy-content" class="text-gray-600 leading-relaxed"></div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/502XXXXXXXX?text=Hola%20Flower%20Shop!%20Me%20interesa%20un%20producto" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all transform hover:scale-110 z-40 flex items-center gap-2 group">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap">¿Ayuda?</span>
+    </a>
+
+    <script>
+        // Product Data
+        const products = [
+            { id: 1, name: "Top Floral Lila", price: 45.00, category: "tops", image: "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&h=800&fit=crop", sizes: ["S", "M", "L"], badge: "Nuevo", description: "Top floral en tonos lilas, perfecto para primavera. Material suave y fresco." },
+            { id: 2, name: "Vestido Midi Rosado", price: 125.00, category: "dresses", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=800&fit=crop", sizes: ["S", "M", "L"], badge: "Best Seller", description: "Vestido midi en blush pink, ideal para ocasiones especiales." },
+            { id: 3, name: "Jeans Mom Fit", price: 95.00, category: "bottoms", image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&h=800&fit=crop", sizes: ["S", "M", "L"], badge: "", description: "Jeans estilo mom fit, tiro alto y cómodo." },
+            { id: 4, name: "Blusa Beige Elegante", price: 65.00, category: "tops", image: "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&h=800&fit=crop", sizes: ["S", "M", "L"], badge: "", description: "Blusa elegante en tono beige, perfecta para oficina." },
+            { id: 5, name: "Vestido Negro Básico", price: 85.00, category: "dresses", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=800&fit=crop", sizes: ["S", "M", "L"], badge: "Sale", oldPrice: 120.00, description: "El clásico LBD. Versátil y elegante." },
+            { id: 6, name: "Falda Plisada", price: 55.00, category: "bottoms", image: "https://images.unsplash.com/photo-1583496661160-fb5886a0uj2f?w=600&h=800&fit=crop", sizes: ["S", "M", "L"], badge: "Nuevo", description: "Falda plisada en tono lavanda." },
+            { id: 7, name: "Crop Top Blanco", price: 35.00, category: "tops", image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&h=800&fit=crop", sizes: ["S", "M", "L"], badge: "", description: "Crop top básico blanco, essential del closet." },
+            { id: 8, name: "Vestido Floral Maxi", price: 145.00, category: "dresses", image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&h=800&fit=crop", sizes: ["S", "M", "L"], badge: "Nuevo", description: "Vestido maxi con estampado floral." }
+        ];
+
+        let cart = [];
+        let wishlist = [];
+        let currentProduct = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+        });
+
+        // Render Products
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('products-grid');
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter || (filter === 'new' && p.badge === 'Nuevo') || (filter === 'sale' && p.badge === 'Sale') || (filter === 'bestsellers' && p.badge === 'Best Seller'));
+            
+            grid.innerHTML = filtered.map(product => `
+                <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                    <div class="relative aspect-[3/4] overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        ${product.badge ? `<div class="absolute top-3 left-3 ${product.badge === 'Sale' ? 'bg-blush-500' : 'bg-lavender-600'} text-white text-xs font-bold px-3 py-1 rounded-full">${product.badge}</div>` : ''}
+                        ${product.oldPrice ? `<div class="absolute top-3 right-3 bg-gray-900 text-white text-xs font-bold px-2 py-1 rounded">-${Math.round((1 - product.price/product.oldPrice)*100)}%</div>` : ''}
+                        
+                        <div class="quick-view absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+                            <button onclick="openProductModal(${product.id})" class="w-full bg-white text-gray-900 py-2 rounded-full font-medium hover:bg-lavender-50 transition-colors">
+                                Vista Rápida
+                            </button>
+                        </div>
+                        
+                        <button onclick="toggleWishlistItem(${product.id})" class="absolute top-3 right-3 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-gray-400 hover:text-blush-500 transition-colors shadow-sm ${wishlist.includes(product.id) ? 'text-blush-500' : ''}">
+                            <svg class="w-5 h-5" fill="${wishlist.includes(product.id) ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </button>
+                    </div>
+                    
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-1 truncate">${product.name}</h3>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="text-lg font-bold text-lavender-600">Q${product.price.toFixed(2)}</span>
+                                ${product.oldPrice ? `<span class="text-sm text-gray-400 line-through">Q${product.oldPrice.toFixed(2)}</span>` : ''}
+                            </div>
+                            <div class="flex gap-1">
+                                ${product.sizes.map(size => `<span class="text-xs w-6 h-6 flex items-center justify-center border border-gray-200 rounded text-gray-600">${size}</span>`).join('')}
+                            </div>
+                        </div>
+                        <button onclick="addToCart(${product.id})" class="w-full bg-gray-900 text-white py-2 rounded-full font-medium hover:bg-lavender-600 transition-colors flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                            Agregar
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Product Modal
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            currentProduct = product;
+            const modal = document.getElementById('product-modal');
+            const content = document.getElementById('modal-content');
+            
+            content.innerHTML = `
+                <div class="grid md:grid-cols-2">
+                    <div class="relative h-96 md:h-auto">
+                        <img src="${product.image}" class="w-full h-full object-cover">
+                        ${product.badge ? `<div class="absolute top-4 left-4 ${product.badge === 'Sale' ? 'bg-blush-500' : 'bg-lavender-600'} text-white text-sm font-bold px-4 py-2 rounded-full">${product.badge}</div>` : ''}
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 class="text-3xl font-serif font-bold text-gray-900 mb-2">${product.name}</h2>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl font-bold text-lavender-600">Q${product.price.toFixed(2)}</span>
+                                    ${product.oldPrice ? `<span class="text-lg text-gray-400 line-through">Q${product.oldPrice.toFixed(2)}</span>` : ''}
+                                </div>
+                            </div>
+                            <button onclick="closeProductModal()" class="text-gray-400 hover:text-gray-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            </button>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6">${product.description}</p>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <label class="font-semibold text-gray-900">Talla</label>
+                                <button onclick="openSizeGuide()" class="text-sm text-lavender-600 hover:underline">Guía de tallas</button>
+                            </div>
+                            <div class="flex gap-3" id="size-selector">
+                                ${product.sizes.map(size => `
+                                    <button onclick="selectSize('${size}')" class="size-btn w-12 h-12 border-2 border-gray-200 rounded-lg font-medium hover:border-lavender-600 transition-colors" data-size="${size}">${size}</button>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4 mb-6">
+                            <div class="flex items-center border border-gray-200 rounded-lg">
+                                <button onclick="updateQuantity(-1)" class="px-4 py-2 hover:bg-gray-50">-</button>
+                                <span id="modal-quantity" class="px-4 py-2 font-medium">1</span>
+                                <button onclick="updateQuantity(1)" class="px-4 py-2 hover:bg-gray-50">+</button>
+                            </div>
+                            <button onclick="addToCartFromModal()" class="flex-1 bg-gradient-to-r from-lavender-600 to-blush-500 text-white py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-[1.02] transition-all">
+                                Agregar al Carrito - Q${product.price.toFixed(2)}
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-3 text-sm text-gray-600 border-t pt-6">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Envío disponible a todo Guatemala (Q35.00)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Entrega en 2-3 días hábiles</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>7 días para cambios</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+            currentProduct = null;
+        }
+
+        function selectSize(size) {
+            document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-size="${size}"]`).classList.add('active');
+        }
+
+        let modalQuantity = 1;
+        function updateQuantity(change) {
+            modalQuantity = Math.max(1, modalQuantity + change);
+            document.getElementById('modal-quantity').textContent = modalQuantity;
+        }
+
+        function addToCartFromModal() {
+            const selectedSize = document.querySelector('.size-btn.active');
+            if (!selectedSize) {
+                alert('Por favor selecciona una talla');
+                return;
+            }
+            addToCart(currentProduct.id, modalQuantity, selectedSize.dataset.size);
+            closeProductModal();
+        }
+
+        // Cart Functions
+        function addToCart(productId, quantity = 1, size = null) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId && item.size === size);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity, size: size || product.sizes[0] });
+            }
+            
+            updateCartUI();
+            showNotification('Producto agregado al carrito');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const count = document.getElementById('cart-count');
+            const items = document.getElementById('cart-items');
+            const total = document.getElementById('cart-total');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            count.textContent = totalItems;
+            count.classList.toggle('hidden', totalItems === 0);
+            total.textContent = `Q${totalPrice.toFixed(2)}`;
+            
+            if (cart.length === 0) {
+                items.innerHTML = `
+                    <div class="text-center text-gray-500 mt-10">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <p>Tu carrito está vacío</p>
+                        <button onclick="toggleCart(); scrollToSection('nuevos')" class="mt-4 text-lavender-600 font-medium hover:underline">Ver productos</button>
+                    </div>
+                `;
+            } else {
+                items.innerHTML = cart.map((item, index) => `
+                    <div class="flex gap-4 bg-gray-50 p-4 rounded-xl">
+                        <img src="${item.image}" class="w-20 h-24 object-cover rounded-lg">
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-gray-900 text-sm">${item.name}</h4>
+                            <p class="text-xs text-gray-500 mb-1">Talla: ${item.size}</p>
+                            <p class="text-lavender-600 font-bold">Q${item.price.toFixed(2)}</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <button onclick="updateCartItem(${index}, -1)" class="w-6 h-6 bg-white rounded border border-gray-200 flex items-center justify-center text-xs hover:bg-gray-100">-</button>
+                                <span class="text-sm font-medium">${item.quantity}</span>
+                                <button onclick="updateCartItem(${index}, 1)" class="w-6 h-6 bg-white rounded border border-gray-200 flex items-center justify-center text-xs hover:bg-gray-100">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-gray-400 hover:text-red-500 self-start">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function updateCartItem(index, change) {
+            cart[index].quantity = Math.max(1, cart[index].quantity + change);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const panel = document.getElementById('cart-panel');
+            
+            if (sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+                setTimeout(() => panel.classList.remove('translate-x-full'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                panel.classList.add('translate-x-full');
+                setTimeout(() => {
+                    sidebar.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+        }
+
+        // Wishlist
+        function toggleWishlistItem(productId) {
+            const index = wishlist.indexOf(productId);
+            if (index > -1) {
+                wishlist.splice(index, 1);
+                showNotification('Eliminado de favoritos');
+            } else {
+                wishlist.push(productId);
+                showNotification('Agregado a favoritos');
+            }
+            document.getElementById('wishlist-count').textContent = wishlist.length;
+            document.getElementById('wishlist-count').classList.toggle('hidden', wishlist.length === 0);
+            renderProducts();
+        }
+
+        function toggleWishlist() {
+            if (wishlist.length === 0) {
+                showNotification('Tu lista de favoritos está vacía');
+                return;
+            }
+            showNotification(`${wishlist.length} productos en favoritos`);
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) return;
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const message = `Hola Flower Shop! Quiero hacer un pedido:%0A%0A${cart.map(item => `- ${item.name} (Talla: ${item.size}, Cant: ${item.quantity}) - Q${(item.price * item.quantity).toFixed(2)}`).join('%0A')}%0A%0ATotal: Q${total.toFixed(2)}%0A%0AMi nombre: `;
+            
+            window.open(`https://wa.me/502XXXXXXXX?text=${message}`, '_blank');
+        }
+
+        // UI Helpers
+        function toggleSearch() {
+            const overlay = document.getElementById('search-overlay');
+            overlay.classList.toggle('hidden');
+            if (!overlay.classList.contains('hidden')) {
+                overlay.querySelector('input').focus();
+            }
+        }
+
+        function searchProducts(query) {
+            const results = document.getElementById('search-results');
+            if (!query) {
+                results.innerHTML = '';
+                return;
+            }
+            
+            const filtered = products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
+            results.innerHTML = filtered.map(p => `
+                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg cursor-pointer" onclick="openProductModal(${p.id}); toggleSearch()">
+                    <img src="${p.image}" class="w-12 h-12 object-cover rounded-lg">
+                    <div class="flex-1">
+                        <h4 class="font-medium text-gray-900">${p.name}</h4>
+                        <p class="text-sm text-lavender-600">Q${p.price.toFixed(2)}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function filterByCategory(category) {
+            renderProducts(category);
+            scrollToSection('nuevos');
+        }
+
+        function scrollProducts(direction) {
+            const grid = document.getElementById('products-grid');
+            const scrollAmount = 300;
+            grid.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+        }
+
+        // Size Guide
+        function openSizeGuide() {
+            document.getElementById('size-modal').classList.remove('hidden');
+        }
+
+        function closeSizeGuide() {
+            document.getElementById('size-modal').classList.add('hidden');
+        }
+
+        // Policies
+        function togglePolicy(type) {
+            const modal = document.getElementById('policy-modal');
+            const title = document.getElementById('policy-title');
+            const content = document.getElementById('policy-content');
+            
+            const policies = {
+                shipping: {
+                    title: 'Envíos',
+                    content: 'Realizamos envíos a todo Guatemala por Q35.00. El tiempo de entrega es de 2-3 días hábiles en la capital y 3-5 días en departamentos. Hacemos entregas personales en Quetzaltenango sin costo adicional.'
+                },
+                returns: {
+                    title: 'Cambios y Devoluciones',
+                    content: 'Tienes 7 días después de recibir tu pedido para solicitar un cambio de talla. Los productos deben estar sin usar, con etiquetas y en su empaque original. No realizamos devoluciones de dinero, solo cambios por talla o defecto de fábrica.'
+                },
+                payment: {
+                    title: 'Métodos de Pago',
+                    content: 'Aceptamos transferencia bancaria a Banco Industrial, G&T Continental y Banrural. También ofrecemos pago contra entrega en la ciudad de Guatemala con un anticipo del 50%. Todos los pagos deben confirmarse vía WhatsApp.'
+                },
+                support: {
+                    title: 'Soporte',
+                    content: 'Estamos disponibles vía WhatsApp de lunes a sábado de 9:00 AM a 7:00 PM. Respondemos en menos de 2 horas durante horario laboral. Para consultas urgentes sobre pedidos, menciona tu número de orden.'
+                }
+            };
+            
+            const policy = policies[type];
+            title.textContent = policy.title;
+            content.textContent = policy.content;
+            modal.classList.remove('hidden');
+        }
+
+        function closePolicy() {
+            document.getElementById('policy-modal').classList.add('hidden');
+        }
+
+        function showNotification(message) {
+            const notif = document.createElement('div');
+            notif.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-xl z-50 animate-slide-up';
+            notif.textContent = message;
+            document.body.appendChild(notif);
+            setTimeout(() => notif.remove(), 3000);
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>

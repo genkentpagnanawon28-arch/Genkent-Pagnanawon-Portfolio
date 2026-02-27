@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMIÈRE | Premium Event Photography</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E8C1;
+            --dark: #0a0a0a;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .text-gold {
+            color: var(--gold);
+        }
+        
+        .bg-gold {
+            background-color: var(--gold);
+        }
+        
+        .border-gold {
+            border-color: var(--gold);
+        }
+        
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+        }
+        
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .masonry-grid { column-count: 2; }
+        }
+        
+        @media (min-width: 1024px) {
+            .masonry-grid { column-count: 3; }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+        
+        .service-overlay {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .nav-scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .luxury-border {
+            position: relative;
+        }
+        
+        .luxury-border::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+        }
+        
+        .package-card {
+            transition: all 0.4s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .package-card:hover {
+            border-color: var(--gold);
+            transform: scale(1.02);
+        }
+        
+        .package-featured {
+            border: 2px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--gold);
+            color: #000;
+            padding: 5px 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+        }
+        
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s, opacity 0.2s;
+            mix-blend-mode: difference;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(0,0,0,0) 100%);
+            border-left: 3px solid var(--gold);
+        }
+        
+        .filter-btn.active {
+            color: var(--gold);
+            border-bottom: 1px solid var(--gold);
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 50;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .input-luxury {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .input-luxury:focus {
+            border-color: var(--gold);
+            background: rgba(255,255,255,0.08);
+            outline: none;
+        }
+        
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--dark);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loader-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            letter-spacing: 0.5em;
+            color: var(--gold);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-text">LUMIÈRE</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-6 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl md:text-3xl tracking-widest text-white">
+                LUMIÈRE<span class="text-gold">.</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-sm tracking-widest hover:text-gold transition-colors uppercase">About</a>
+                <a href="#services" class="text-sm tracking-widest hover:text-gold transition-colors uppercase">Services</a>
+                <a href="#portfolio" class="text-sm tracking-widest hover:text-gold transition-colors uppercase">Portfolio</a>
+                <a href="#packages" class="text-sm tracking-widest hover:text-gold transition-colors uppercase">Packages</a>
+                <a href="#contact" class="px-6 py-2 border border-gold text-gold hover:bg-gold hover:text-black transition-all duration-300 text-sm tracking-widest uppercase">
+                    Book Now
+                </a>
+            </div>
+            
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-lg border-t border-gold/20">
+            <div class="flex flex-col p-6 space-y-4">
+                <a href="#about" class="text-sm tracking-widest hover:text-gold transition-colors uppercase">About</a>
+                <a href="#services" class="text-sm tracking-widest hover:text-gold transition-colors uppercase">Services</a>
+                <a href="#portfolio" class="text-sm tracking-widest hover:text-gold transition-colors uppercase">Portfolio</a>
+                <a href="#packages" class="text-sm tracking-widest hover:text-gold transition-colors uppercase">Packages</a>
+                <a href="#contact" class="text-gold uppercase tracking-widest">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sticky CTA Button -->
+    <a href="#contact" class="sticky-cta bg-gold text-black px-6 py-3 rounded-full font-medium text-sm tracking-wider hover:bg-white transition-all duration-300 hidden md:block">
+        Book Your Date
+    </a>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen w-full overflow-hidden">
+        <div id="hero-slideshow" class="absolute inset-0">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80');"></div>
+        </div>
+        
+        <div class="hero-overlay absolute inset-0 flex items-center justify-center">
+            <div class="text-center px-6 max-w-5xl mx-auto">
+                <p class="text-gold text-sm md:text-base tracking-[0.3em] uppercase mb-6 reveal-text" id="hero-subtitle">
+                    Luxury Event Photography
+                </p>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-tight reveal-text" id="hero-title">
+                    Capturing Moments<br>
+                    <span class="italic text-gold-light">That Last Forever</span>
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light reveal-text" id="hero-desc">
+                    Luxury photography for life's most meaningful celebrations. Weddings, debuts, graduations, and corporate events.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center reveal-text" id="hero-cta">
+                    <a href="#portfolio" class="px-8 py-4 bg-transparent border border-white text-white hover:bg-white hover:text-black transition-all duration-300 tracking-widest uppercase text-sm">
+                        View Portfolio
+                    </a>
+                    <a href="#contact" class="px-8 py-4 bg-gold text-black hover:bg-white transition-all duration-300 tracking-widest uppercase text-sm font-medium">
+                        Book Your Date
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 md:py-32 px-6 lg:px-12 bg-neutral-950 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1554048612-387768052bf7?w=800&q=80" 
+                             alt="Lead Photographer" 
+                             class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute -bottom-6 -right-6 w-48 h-48 border border-gold/30"></div>
+                        <div class="absolute -top-6 -left-6 w-48 h-48 border border-gold/30"></div>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2 space-y-8">
+                    <div>
+                        <p class="text-gold text-sm tracking-[0.3em] uppercase mb-4">The Studio</p>
+                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-6 luxury-border inline-block">
+                            Where Every Moment<br>
+                            <span class="italic text-gold-light">Becomes Art</span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-6 text-gray-400 font-light leading-relaxed">
+                        <p class="text-lg">
+                            For over a decade, Lumière has been at the forefront of luxury event photography, 
+                            transforming fleeting moments into timeless masterpieces. Our approach combines 
+                            editorial sophistication with raw emotional authenticity.
+                        </p>
+                        <p>
+                            Led by award-winning photographer Alexander Chen, our team brings together 
+                            decades of experience in fashion, photojournalism, and fine art photography. 
+                            We don't just document events—we craft visual narratives that resonate for generations.
+                        </p>
+                        <p>
+                            Every frame is captured using state-of-the-art equipment and refined through 
+                            meticulous post-processing, ensuring that your memories are preserved with 
+                            the highest standards of excellence.
+                        </p>
+                    </div>
+                    
+                    <div class="flex items-center space-x-8 pt-4">
+                        <div>
+                            <p class="font-serif text-3xl text-gold">12+</p>
+                            <p class="text-sm text-gray-500 uppercase tracking-wider">Years Experience</p>
+                        </div>
+                        <div class="w-px h-12 bg-gold/30"></div>
+                        <div>
+                            <p class="font-serif text-3xl text-gold">500+</p>
+                            <p class="text-sm text-gray-500 uppercase tracking-wider">Events Captured</p>
+                        </div>
+                        <div class="w-px h-12 bg-gold/30"></div>
+                        <div>
+                            <p class="font-serif text-3xl text-gold">50+</p>
+                            <p class="text-sm text-gray-500 uppercase tracking-wider">Industry Awards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 md:py-32 px-6 lg:px-12 bg-black relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <p class="text-gold text-sm tracking-[0.3em] uppercase mb-4">What We Offer</p>
+                <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white luxury-border inline-block pb-4">
+                    Premium Services
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Wedding -->
+                <div class="service-card group relative h-[500px] overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" 
+                         alt="Wedding Photography" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80"></div>
+                    <div class="service-overlay absolute inset-0 bg-black/60 flex items-center justify-center">
+                        <span class="px-6 py-3 border border-gold text-gold tracking-widest uppercase text-sm hover:bg-gold hover:text-black transition-all">
+                            View Gallery
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <div class="text-gold mb-2 text-3xl">💍</div>
+                        <h3 class="font-serif text-2xl text-white mb-2">Wedding Photography</h3>
+                        <p class="text-gray-400 text-sm mb-4">Full coverage • Pre-wedding shoots • Same-day edits</p>
+                    </div>
+                </div>
+                
+                <!-- Graduation -->
+                <div class="service-card group relative h-[500px] overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" 
+                         alt="Graduation Photography" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80"></div>
+                    <div class="service-overlay absolute inset-0 bg-black/60 flex items-center justify-center">
+                        <span class="px-6 py-3 border border-gold text-gold tracking-widest uppercase text-sm hover:bg-gold hover:text-black transition-all">
+                            View Gallery
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <div class="text-gold mb-2 text-3xl">🎓</div>
+                        <h3 class="font-serif text-2xl text-white mb-2">Graduation Photography</h3>
+                        <p class="text-gray-400 text-sm mb-4">Studio & outdoor • Family portraits • Custom albums</p>
+                    </div>
+                </div>
+                
+                <!-- Birthday -->
+                <div class="service-card group relative h-[500px] overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80" 
+                         alt="Birthday Photography" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80"></div>
+                    <div class="service-overlay absolute inset-0 bg-black/60 flex items-center justify-center">
+                        <span class="px-6 py-3 border border-gold text-gold tracking-widest uppercase text-sm hover:bg-gold hover:text-black transition-all">
+                            View Gallery
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <div class="text-gold mb-2 text-3xl">🎉</div>
+                        <h3 class="font-serif text-2xl text-white mb-2">Birthday Coverage</h3>
+                        <p class="text-gray-400 text-sm mb-4">Event highlights • Candid moments • Edited galleries</p>
+                    </div>
+                </div>
+                
+                <!-- Debut -->
+                <div class="service-card group relative h-[500px] overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1496337589254-7e19d01cec44?w=800&q=80" 
+                         alt="Debut Photography" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80"></div>
+                    <div class="service-overlay absolute inset-0 bg-black/60 flex items-center justify-center">
+                        <span class="px-6 py-3 border border-gold text-gold tracking-widest uppercase text-sm hover:bg-gold hover:text-black transition-all">
+                            View Gallery
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <div class="text-gold mb-2 text-3xl">👑</div>
+                        <h3 class="font-serif text-2xl text-white mb-2">Debut Photography</h3>
+                        <p class="text-gray-400 text-sm mb-4">Themed shoots • Grand entrance • Premium albums</p>
+                    </div>
+                </div>
+                
+                <!-- Corporate -->
+                <div class="service-card group relative h-[500px] overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" 
+                         alt="Corporate Events" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80"></div>
+                    <div class="service-overlay absolute inset-0 bg-black/60 flex items-center justify-center">
+                        <span class="px-6 py-3 border border-gold text-gold tracking-widest uppercase text-sm hover:bg-gold hover:text-black transition-all">
+                            View Gallery
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <div class="text-gold mb-2 text-3xl">🏢</div>
+                        <h3 class="font-serif text-2xl text-white mb-2">Corporate Events</h3>
+                        <p class="text-gray-400 text-sm mb-4">Professional documentation • Brand-focused • Conferences</p>
+                    </div>
+                </div>
+                
+                <!-- Special Events -->
+                <div class="service-card group relative h-[500px] overflow-hidden cursor-pointer bg-neutral-900 flex items-center justify-center">
+                    <div class="text-center p-8">
+                        <div class="text-gold text-4xl mb-4">✨</div>
+                        <h3 class="font-serif text-2xl text-white mb-4">Custom Events</h3>
+                        <p class="text-gray-400 mb-6">Have something unique in mind? We specialize in creating bespoke photography experiences tailored to your vision.</p>
+                        <a href="#contact" class="text-gold border-b border-gold pb-1 hover:text-white hover:border-white transition-all">Let's Discuss</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 md:py-32 px-6 lg:px-12 bg-neutral-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <p class="text-gold text-sm tracking-[0.3em] uppercase mb-4">Our Work</p>
+                <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-8 luxury-border inline-block pb-4">
+                    Our Work Speaks for Itself
+                </h2>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-6 mt-8">
+                    <button class="filter-btn active text-sm tracking-widest uppercase text-gray-400 hover:text-gold transition-colors pb-1" data-filter="all">All</button>
+                    <button class="filter-btn text-sm tracking-widest uppercase text-gray-400 hover:text-gold transition-colors pb-1" data-filter="wedding">Weddings</button>
+                    <button class="filter-btn text-sm tracking-widest uppercase text-gray-400 hover:text-gold transition-colors pb-1" data-filter="graduation">Graduation</button>
+                    <button class="filter-btn text-sm tracking-widest uppercase text-gray-400 hover:text-gold transition-colors pb-1" data-filter="debut">Debut</button>
+                    <button class="filter-btn text-sm tracking-widest uppercase text-gray-400 hover:text-gold transition-colors pb-1" data-filter="birthday">Birthdays</button>
+                    <button class="filter-btn text-sm tracking-widest uppercase text-gray-400 hover:text-gold transition-colors pb-1" data-filter="corporate">Corporate</button>
+                </div>
+            </div>
+            
+            <!-- Masonry Grid -->
+            <div class="masonry-grid" id="portfolio-grid">
+                <div class="masonry-item group relative overflow-hidden cursor-pointer" data-category="wedding" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&q=80" alt="Wedding" class="w-full transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-2xl">+</span>
+                    </div>
+                </div>
+                
+                <div class="masonry-item group relative overflow-hidden cursor-pointer" data-category="graduation" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1627556592933-ffe99c1cd9eb?w=600&q=80" alt="Graduation" class="w-full transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-2xl">+</span>
+                    </div>
+                </div>
+                
+                <div class="masonry-item group relative overflow-hidden cursor-pointer" data-category="debut" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80" alt="Debut" class="w-full transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-2xl">+</span>
+                    </div>
+                </div>
+                
+                <div class="masonry-item group relative overflow-hidden cursor-pointer" data-category="wedding" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=600&q=80" alt="Wedding" class="w-full transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-2xl">+</span>
+                    </div>
+                </div>
+                
+                <div class="masonry-item group relative overflow-hidden cursor-pointer" data-category="birthday" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80" alt="Birthday" class="w-full transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-2xl">+</span>
+                    </div>
+                </div>
+                
+                <div class="masonry-item group relative overflow-hidden cursor-pointer" data-category="corporate" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600&q=80" alt="Corporate" class="w-full transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-2xl">+</span>
+                    </div>
+                </div>
+                
+                <div class="masonry-item group relative overflow-hidden cursor-pointer" data-category="wedding" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80" alt="Wedding" class="w-full transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-2xl">+</span>
+                    </div>
+                </div>
+                
+                <div class="masonry-item group relative overflow-hidden cursor-pointer" data-category="graduation" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1525921429624-479b6a26d84d?w=600&q=80" alt="Graduation" class="w-full transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-2xl">+</span>
+                    </div>
+                </div>
+                
+                <div class="masonry-item group relative overflow-hidden cursor-pointer" data-category="debut" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Debut" class="w-full transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-2xl">+</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="px-8 py-3 border border-gold text-gold hover:bg-gold hover:text-black transition-all duration-300 tracking-widest uppercase text-sm">
+                    Load More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white text-4xl hover:text-gold transition-colors">&times;</button>
+        <img id="lightbox-img" src="" alt="Full size" class="max-h-[90vh] max-w-[90vw] object-contain">
+    </div>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 md:py-32 px-6 lg:px-12 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-gold rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gold rounded-full blur-[100px]"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20">
+                <p class="text-gold text-sm tracking-[0.3em] uppercase mb-4">Why Lumière</p>
+                <h2 class="font-serif text-4xl md:text-5xl text-white luxury-border inline-block pb-4">
+                    The Lumière Difference
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 border border-gold/20 hover:border-gold/50 transition-all duration-300 group">
+                    <div class="text-gold text-3xl mb-4 floating">📷</div>
+                    <h3 class="font-serif text-xl text-white mb-3">Professional Equipment</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Latest Sony & Canon cinema cameras, prime lenses, and professional lighting setups for impeccable quality.</p>
+                </div>
+                
+                <div class="p-8 border border-gold/20 hover:border-gold/50 transition-all duration-300 group">
+                    <div class="text-gold text-3xl mb-4 floating" style="animation-delay: 0.5s">🎨</div>
+                    <h3 class="font-serif text-xl text-white mb-3">Creative Excellence</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Award-winning photographers with backgrounds in fashion, fine art, and photojournalism.</p>
+                </div>
+                
+                <div class="p-8 border border-gold/20 hover:border-gold/50 transition-all duration-300 group">
+                    <div class="text-gold text-3xl mb-4 floating" style="animation-delay: 1s">✨</div>
+                    <h3 class="font-serif text-xl text-white mb-3">High-Resolution Editing</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Every image meticulously color-graded and retouched to magazine-quality standards.</p>
+                </div>
+                
+                <div class="p-8 border border-gold/20 hover:border-gold/50 transition-all duration-300 group">
+                    <div class="text-gold text-3xl mb-4 floating" style="animation-delay: 1.5s">⚡</div>
+                    <h3 class="font-serif text-xl text-white mb-3">Fast Turnaround</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Sneak peeks within 48 hours. Full galleries delivered within 2-4 weeks guaranteed.</p>
+                </div>
+                
+                <div class="p-8 border border-gold/20 hover:border-gold/50 transition-all duration-300 group">
+                    <div class="text-gold text-3xl mb-4 floating" style="animation-delay: 2s">📚</div>
+                    <h3 class="font-serif text-xl text-white mb-3">Premium Albums</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Handcrafted Italian leather albums with archival-quality printing that lasts generations.</p>
+                </div>
+                
+                <div class="p-8 border border-gold/20 hover:border-gold/50 transition-all duration-300 group">
+                    <div class="text-gold text-3xl mb-4 floating" style="animation-delay: 2.5s">🤝</div>
+                    <h3 class="font-serif text-xl text-white mb-3">White-Glove Service</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Dedicated client concierge from inquiry to final delivery. Your experience matters.</p>
+                </div>
+            </div>
+            
+            <!-- Awards -->
+            <div class="mt-20 pt-12 border-t border-gold/20">
+                <p class="text-center text-gray-500 text-sm tracking-widest uppercase mb-8">Featured In</p>
+                <div class="flex flex-wrap justify-center items-center gap-12 opacity-50">
+                    <span class="font-serif text-2xl text-white">Vogue</span>
+                    <span class="font-serif text-2xl text-white">Harper's Bazaar</span>
+                    <span class="font-serif text-2xl text-white">The Knot</span>
+                    <span class="font-serif text-2xl text-white">Style Me Pretty</span>
+                    <span class="font-serif text-2xl text-white">Junebug</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 md:py-32 px-6 lg:px-12 bg-neutral-950">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <p class="text-gold text-sm tracking-[0.3em] uppercase mb-4">Testimonials</p>
+                <h2 class="font-serif text-4xl md:text-5xl text-white luxury-border inline-block pb-4">
+                    Client Stories
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="testimonial-card p-8 md:p-12">
+                    <div class="text-gold text-4xl font-serif mb-6">"</div>
+                    <p class="text-gray-300 text-lg font-light italic mb-6 leading-relaxed">
+                        They captured our wedding perfectly. Every photo feels magical. The team was invisible during the ceremony but captured every tear and smile. Our album is absolutely breathtaking.
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center text-gold font-serif">SC</div>
+                        <div class="ml-4">
+                            <p class="text-white font-medium">Sarah & Michael Chen</p>
+                            <p class="text-gold text-sm">Wedding • December 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 md:p-12">
+                    <div class="text-gold text-4xl font-serif mb-6">"</div>
+                    <p class="text-gray-300 text-lg font-light italic mb-6 leading-relaxed">
+                        Lumière made my debut feel like a fairytale. The attention to detail, the lighting, the way they captured my grand entrance—I've never felt more beautiful. Worth every penny.
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center text-gold font-serif">JR</div>
+                        <div class="ml-4">
+                            <p class="text-white font-medium">Isabella Rodriguez</p>
+                            <p class="text-gold text-sm">Debut • March 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 md:p-12">
+                    <div class="text-gold text-4xl font-serif mb-6">"</div>
+                    <p class="text-gray-300 text-lg font-light italic mb-6 leading-relaxed">
+                        Professional, punctual, and incredibly talented. Our corporate gala coverage exceeded expectations. The photos have elevated our brand image significantly.
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center text-gold font-serif">DK</div>
+                        <div class="ml-4">
+                            <p class="text-white font-medium">David Kim</p>
+                            <p class="text-gold text-sm">Corporate Event • January 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 md:p-12">
+                    <div class="text-gold text-4xl font-serif mb-6">"</div>
+                    <p class="text-gray-300 text-lg font-light italic mb-6 leading-relaxed">
+                        My graduation photos are stunning. They found the perfect light and made me feel so comfortable. The same-day edits were incredible!
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center text-gold font-serif">AT</div>
+                        <div class="ml-4">
+                            <p class="text-white font-medium">Amanda Torres</p>
+                            <p class="text-gold text-sm">Graduation • May 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="py-24 md:py-32 px-6 lg:px-12 bg-black relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <p class="text-gold text-sm tracking-[0.3em] uppercase mb-4">Investment</p>
+                <h2 class="font-serif text-4xl md:text-5xl text-white mb-4 luxury-border inline-block pb-4">
+                    Photography Packages
+                </h2>
+                <p class="text-gray-400 mt-6">Tailored collections for every celebration</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Silver -->
+                <div class="package-card p-8 bg-neutral-900/50">
+                    <div class="text-center mb-8">
+                        <h3 class="font-serif text-2xl text-white mb-2">Silver</h3>
+                        <div class="text-gold text-4xl font-serif mb-2">$1,500</div>
+                        <p class="text-gray-500 text-sm">Starting at</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8 text-gray-400 text-sm">
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> 4 Hours Coverage</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> 200+ Edited Photos</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> Online Gallery</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> 1 Photographer</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> Digital Downloads</li>
+                    </ul>
+                    
+                    <button class="w-full py-3 border border-gold/50 text-gold hover:bg-gold hover:text-black transition-all duration-300 uppercase tracking-widest text-sm">
+                        Inquire Now
+                    </button>
+                </div>
+                
+                <!-- Gold -->
+                <div class="package-card package-featured p-8 bg-neutral-900">
+                    <div class="text-center mb-8">
+                        <h3 class="font-serif text-2xl text-white mb-2">Gold</h3>
+                        <div class="text-gold text-4xl font-serif mb-2">$3,200</div>
+                        <p class="text-gray-500 text-sm">Most Popular</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8 text-gray-300 text-sm">
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> 8 Hours Coverage</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> 500+ Edited Photos</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> Premium Leather Album</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> 2 Photographers</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> Engagement Session</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> Same-Day Sneak Peek</li>
+                    </ul>
+                    
+                    <button class="w-full py-3 bg-gold text-black hover:bg-white transition-all duration-300 uppercase tracking-widest text-sm font-medium">
+                        Check Availability
+                    </button>
+                </div>
+                
+                <!-- Platinum -->
+                <div class="package-card p-8 bg-neutral-900/50">
+                    <div class="text-center mb-8">
+                        <h3 class="font-serif text-2xl text-white mb-2">Platinum</h3>
+                        <div class="text-gold text-4xl font-serif mb-2">$5,800</div>
+                        <p class="text-gray-500 text-sm">The Ultimate Experience</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8 text-gray-400 text-sm">
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> Full Day Coverage</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> 800+ Edited Photos</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> Deluxe Album + Prints</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> 3 Photographers</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> Drone Coverage</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> Video Highlights</li>
+                        <li class="flex items-center"><span class="text-gold mr-3">✓</span> Photo Booth</li>
+                    </ul>
+                    
+                    <button class="w-full py-3 border border-gold/50 text-gold hover:bg-gold hover:text-black transition-all duration-300 uppercase tracking-widest text-sm">
+                        Inquire Now
+                    </button>
+                </div>
+            </div>
+            
+            <p class="text-center text-gray-500 text-sm mt-12">Custom packages available. All packages include consultation, planning, and full usage rights.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 md:py-32 px-6 lg:px-12 bg-neutral-950 relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <p class="text-gold text-sm tracking-[0.3em] uppercase mb-4">Get In Touch</p>
+                <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-6 luxury-border inline-block pb-4">
+                    Let's Capture Your<br>
+                    <span class="italic text-gold-light">Special Day</span>
+                </h2>
+                <p class="text-gray-400">Limited dates available for 2024-2025 season</p>
+            </div>
+            
+            <form class="space-y-6" onsubmit="handleSubmit(event)">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2 uppercase tracking-wider">Your Name</label>
+                        <input type="text" required class="w-full px-4 py-3 input-luxury text-white" placeholder="John & Jane Doe">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2 uppercase tracking-wider">Email Address</label>
+                        <input type="email" required class="w-full px-4 py-3 input-luxury text-white" placeholder="hello@example.com">
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2 uppercase tracking-wider">Event Type</label>
+                        <select class="w-full px-4 py-3 input-luxury text-white bg-transparent">
+                            <option value="" class="bg-neutral-900">Select Event Type</option>
+                            <option value="wedding" class="bg-neutral-900">Wedding</option>
+                            <option value="debut" class="bg-neutral-900">Debut</option>
+                            <option value="graduation" class="bg-neutral-900">Graduation</option>
+                            <option value="birthday" class="bg-neutral-900">Birthday</option>
+                            <option value="corporate" class="bg-neutral-900">Corporate</option>
+                            <option value="other" class="bg-neutral-900">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2 uppercase tracking-wider">Event Date</label>
+                        <input type="date" class="w-full px-4 py-3 input-luxury text-white">
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2 uppercase tracking-wider">Location</label>
+                        <input type="text" class="w-full px-4 py-3 input-luxury text-white" placeholder="City, Venue">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-sm mb-2 uppercase tracking-wider">Budget Range</label>
+                        <select class="w-full px-4 py-3 input-luxury text-white bg-transparent">
+                            <option value="" class="bg-neutral-900">Select Budget</option>
+                            <option value="1500-2500" class="bg-neutral-900">$1,500 - $2,500</option>
+                            <option value="2500-4000" class="bg-neutral-900">$2,500 - $4,000</option>
+                            <option value="4000-6000" class="bg-neutral-900">$4,000 - $6,000</option>
+                            <option value="6000+" class="bg-neutral-900">$6,000+</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-400 text-sm mb-2 uppercase tracking-wider">Tell Us Your Story</label>
+                    <textarea rows="5" class="w-full px-4 py-3 input-luxury text-white resize-none" placeholder="Share your vision, theme, or any special requests..."></textarea>
+                </div>
+                
+                <div class="text-center pt-6">
+                    <button type="submit" class="px-12 py-4 bg-gold text-black font-medium tracking-widest uppercase hover:bg-white transition-all duration-300">
+                        Send Inquiry
+                    </button>
+                </div>
+            </form>
+            
+            <div class="mt-16 pt-12 border-t border-gold/20 grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <p class="text-gold text-sm uppercase tracking-widest mb-2">Email</p>
+                    <p class="text-white">hello@lumiere-studio.com</p>
+                </div>
+                <div>
+                    <p class="text-gold text-sm uppercase tracking-widest mb-2">Phone</p>
+                    <p class="text-white">+1 (555) 123-4567</p>
+                </div>
+                <div>
+                    <p class="text-gold text-sm uppercase tracking-widest mb-2">Studio</p>
+                    <p class="text-white">123 Elegance Ave, Suite 500</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gold/20 py-12 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <a href="#" class="font-serif text-3xl tracking-widest text-white">
+                    LUMIÈRE<span class="text-gold">.</span>
+                </a>
+                <p class="text-gray-500 text-sm mt-2">Capturing moments that last forever.</p>
+            </div>
+            
+            <div class="flex space-x-6 mb-6 md:mb-0">
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors">Instagram</a>
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors">Facebook</a>
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors">Pinterest</a>
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors">LinkedIn</a>
+            </div>
+            
+            <div class="text-gray-600 text-sm">
+                &copy; 2024 Lumière Photography. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2)';
+                cursor.style.opacity = '0.5';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.opacity = '1';
+            });
+        });
+
+        // Navigation Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+                navbar.classList.remove('py-6');
+                navbar.classList.add('py-4');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-6');
+            }
+        });
+
+        // Mobile Menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Hero Slideshow
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000);
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Text Animation
+        gsap.to('#hero-subtitle', { opacity: 1, y: 0, duration: 1, delay: 0.5 });
+        gsap.to('#hero-title', { opacity: 1, y: 0, duration: 1, delay: 0.8 });
+        gsap.to('#hero-desc', { opacity: 1, y: 0, duration: 1, delay: 1.1 });
+        gsap.to('#hero-cta', { opacity: 1, y: 0, duration: 1, delay: 1.4 });
+
+        // Scroll Reveal Animations
+        gsap.utils.toArray('.service-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 85%',
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                delay: i * 0.1
+            });
+        });
+
+        // Portfolio Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.masonry-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.style.opacity = '1', 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+
+        // Lightbox
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Form Submit
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you within 24 hours.');
+            e.target.reset();
+        }
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

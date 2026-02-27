@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genkent Pagnanawon | Premium Web Designer & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: #0f0f0f;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(45, 27, 78, 0.5) 100%);
+            padding: 40px 20px;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            text-align: center;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(168, 85, 247, 0.4);
+        }
+
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .card-hover:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 40px 20px;
+        }
+
+        .gallery-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .view-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .view-btn:hover::before {
+            left: 100%;
+        }
+
+        .view-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1 class="text-5xl md:text-6xl font-bold mb-2">
+            <span class="gradient-text">Genkent Pagnanawon</span>
+        </h1>
+        <p class="text-gray-400 text-lg">Web Design & Development Showcase</p>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="max-w-7xl mx-auto">
+        <div class="gallery-grid">
+            
+            <!-- Aquatierra -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-fish text-blue-400 text-5xl"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Aquatierra</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Aquariums & Pets</p>
+                    <p class="text-gray-500 text-xs mb-4">Premium aquarium and pet care solutions</p>
+                    <button onclick="window.open('aquatierra.html', '_blank')" class="view-btn w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- IronPulse -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-yellow-500/20 to-red-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-dumbbell text-yellow-400 text-5xl animate-pulse"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">IronPulse</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Premium Fitness</p>
+                    <p class="text-gray-500 text-xs mb-4">Elite fitness training and transformation</p>
+                    <button onclick="window.open('ironpulse.html', '_blank')" class="view-btn w-full py-2 bg-yellow-600 hover:bg-yellow-700 rounded-lg text-gray-900 font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bloom & Petal -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-flower-tulip text-pink-400 text-5xl"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Bloom & Petal</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Artisan Florist</p>
+                    <p class="text-gray-500 text-xs mb-4">Elegant flower arrangements</p>
+                    <button onclick="window.open('bloom and petal.html', '_blank')" class="view-btn w-full py-2 bg-pink-600 hover:bg-pink-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Velvet & Bean -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-coffee text-amber-600 text-5xl"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Velvet & Bean</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Premium Café</p>
+                    <p class="text-gray-500 text-xs mb-4">Specialty coffee and experiences</p>
+                    <button onclick="window.open('velvet and bean.html', '_blank')" class="view-btn w-full py-2 bg-amber-600 hover:bg-amber-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- AI Website Mastery -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-robot text-purple-400 text-5xl animate-pulse"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">AI Website Mastery</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Web Development</p>
+                    <p class="text-gray-500 text-xs mb-4">Cutting-edge AI web tools</p>
+                    <button onclick="window.open('aiweb.html', '_blank')" class="view-btn w-full py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- LuxeClean -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-shirt text-blue-400 text-5xl animate-pulse"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">LuxeClean</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Laundry Services</p>
+                    <p class="text-gray-500 text-xs mb-4">Premium cleaning services</p>
+                    <button onclick="window.open('luxeclean.html', '_blank')" class="view-btn w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Champions 4 Change -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-amber-500/20 to-yellow-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-heart text-red-400 text-5xl animate-pulse"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Champions 4 Change</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Charity & Fundraising</p>
+                    <p class="text-gray-500 text-xs mb-4">Premium charity events</p>
+                    <button onclick="window.open('champion4change.html', '_blank')" class="view-btn w-full py-2 bg-amber-600 hover:bg-amber-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- LUMIÈRE -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-yellow-500/20 to-amber-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-camera text-yellow-400 text-5xl"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">LUMIÈRE</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Event Photography</p>
+                    <p class="text-gray-500 text-xs mb-4">Premium photography services</p>
+                    <button onclick="window.open('lumiere.html', '_blank')" class="view-btn w-full py-2 bg-yellow-600 hover:bg-yellow-700 rounded-lg text-gray-900 font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Azure Dental -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-sky-500/20 to-blue-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-tooth text-blue-400 text-5xl"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Azure Dental</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Dental Care</p>
+                    <p class="text-gray-500 text-xs mb-4">Professional dental services</p>
+                    <button onclick="window.open('azuredental.html', '_blank')" class="view-btn w-full py-2 bg-sky-600 hover:bg-sky-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Website Portfolio -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-code text-amber-400 text-5xl"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Web Portfolio</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Web Development</p>
+                    <p class="text-gray-500 text-xs mb-4">Premium web design</p>
+                    <button onclick="window.open('websiteportfolio.html', '_blank')" class="view-btn w-full py-2 bg-amber-600 hover:bg-amber-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Aura Heights -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-building text-purple-400 text-5xl"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Aura Heights</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Luxury Living</p>
+                    <p class="text-gray-500 text-xs mb-4">Elevated living spaces</p>
+                    <button onclick="window.open('auraheights.html', '_blank')" class="view-btn w-full py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Glysons Flowershop -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-blossom text-pink-400 text-5xl"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Glysons <i class="fas fa-spa text-pink-400 text-lg"></i></h3>
+                    <p class="text-gray-400 mb-2 text-sm">Flowershop</p>
+                    <p class="text-gray-500 text-xs mb-4">Beautiful flowers</p>
+                    <button onclick="window.open('glysons.html', '_blank')" class="view-btn w-full py-2 bg-pink-600 hover:bg-pink-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dizastanuman Flowershop -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-blossom text-pink-400 text-5xl"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Dizastanuman <i class="fas fa-spa text-pink-400 text-lg"></i></h3>
+                    <p class="text-gray-400 mb-2 text-sm">Flowershop</p>
+                    <p class="text-gray-500 text-xs mb-4">Beautiful flowers</p>
+                    <button onclick="window.open('dizastanuman.html', '_blank')" class="view-btn w-full py-2 bg-pink-600 hover:bg-pink-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Neneng's Flowershop -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-blossom text-pink-400 text-5xl"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Neneng's <i class="fas fa-spa text-pink-400 text-lg"></i></h3>
+                    <p class="text-gray-400 mb-2 text-sm">Flowershop</p>
+                    <p class="text-gray-500 text-xs mb-4">Beautiful flowers</p>
+                    <button onclick="window.open('nenengs.html', '_blank')" class="view-btn w-full py-2 bg-pink-600 hover:bg-pink-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Fitness Nation Cebu -->
+            <div class="card-hover gallery-item">
+                <div class="card-overlay"></div>
+                <div class="h-40 bg-gradient-to-br from-green-500/20 to-blue-500/20 flex items-center justify-center relative z-10">
+                    <i class="fas fa-dumbbell text-green-400 text-5xl animate-pulse"></i>
+                </div>
+                <div class="p-6 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Fitness Nation Cebu</h3>
+                    <p class="text-gray-400 mb-2 text-sm">Health & Fitness</p>
+                    <p class="text-gray-500 text-xs mb-4">Join our fitness community</p>
+                    <button onclick="window.open('fitnessnationcebu.html', '_blank')" class="view-btn w-full py-2 bg-green-600 hover:bg-green-700 rounded-lg text-white font-semibold transition text-sm">
+                        View
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 text-center border-t border-gray-800 mt-12">
+        <p class="text-gray-500 mb-4">© 2026 Genkent Pagnanawon. All rights reserved.</p>
+        <p class="text-gray-600 text-sm">Web Design & Development Showcase</p>
+    </footer>
+
+    <script>
+        // Check if files exist and hide buttons if not
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('button[onclick*="window.open"]').forEach(btn => {
+                const match = btn.getAttribute('onclick').match(/'([^']+)'/);
+                if (match) {
+                    const file = match[1];
+                    fetch(file, {method:'HEAD'})
+                        .then(res => {
+                            if (!res.ok) {
+                                const card = btn.closest('.gallery-item');
+                                if (card) {
+                                    btn.remove();
+                                    const info = document.createElement('p');
+                                    info.textContent = 'Coming soon';
+                                    info.className = 'text-red-400 text-sm mt-2';
+                                    card.querySelector('.p-6').appendChild(info);
+                                }
+                            }
+                        })
+                        .catch(() => {
+                            const card = btn.closest('.gallery-item');
+                            if (card) {
+                                btn.remove();
+                                const info = document.createElement('p');
+                                info.textContent = 'Coming soon';
+                                info.className = 'text-red-400 text-sm mt-2';
+                                card.querySelector('.p-6').appendChild(info);
+                            }
+                        });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
