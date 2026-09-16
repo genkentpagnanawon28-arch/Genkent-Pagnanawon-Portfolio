@@ -1,498 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Genkent Pagnanawon — Freelancer | Cebu, Philippines</title>
-  <meta name="description" content="Professional social media manager with A years of experience in content strategy, community management, and brand growth. Based in Cebu, Philippines.">
+  <meta name="description" content="Professional social media manager with 2+ years of experience in content strategy, community management, and brand growth. Based in Cebu, Philippines.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Humane:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="32x32" href="logo/face.jpgsss">
-  <link rel="icon" type="image/png" sizes="16x16" href="logo/face.jpg">
-  <link rel="favicon-show" sizes="180x180" href="logo/face.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="logo/name logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="logo/name logo.png">
+  <link rel="favicon-show" sizes="180x180" href="logo/name logo.png">
   <style>
-    /* Pendulum Animation Styles */
-    body {
-      background-color: #0d1b2a;
-    }
-    .wrapper {
-      position: absolute;
-      left: 50%;
-      top: 70%;
-      transform: scale(1.5, 1.5) translate(-50%, -50%);
-      animation: change-background 3s infinite linear;
-    }
-    .floor {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 350px;
-      height: 5px;
-      background: #673C63;
-      transform: translate(-50%, -50%);
-      box-shadow: 0px 2px 5px #111;
-      z-index: 2;
-    }
-    .candles {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 250px;
-      height: 150px;
-      transform: translate(-50%, -100%);
-      z-index: 1;
-    }
-    .candle1 {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 35px;
-      height: 100px;
-      background: #fff;
-      border: 3px solid #673C63;
-      border-bottom: 0px;
-      border-radius: 3px;
-      transform-origin: center right;
-      transform: translate(60%, -25%);
-      box-shadow: -2px 0px 0px #95c6f2 inset;
-      animation: expand-body 3s infinite linear;
-    }
-    .candle1__stick, .candle2__stick {
-      position: absolute;
-      left: 50%;
-      top: 0%;
-      width: 3px;
-      height: 15px;
-      background: #673C63;
-      border-radius: 8px;
-      transform: translate(-50%, -100%);
-    }
-    .candle2__stick {
-      height: 12px;
-      transform-origin: bottom center;
-      animation: stick-animation 3s infinite linear;
-    }
-    .candle1__eyes, .candle2__eyes {
-      position: absolute;
-      left: 50%;
-      top: 0%;
-      width: 35px;
-      height: 30px;
-      transform: translate(-50%, 0%);
-    }
-    .candle1__eyes-one {
-      position: absolute;
-      left: 30%;
-      top: 20%;
-      width: 5px;
-      height: 5px;
-      border-radius: 100%;
-      background: #673C63;
-      transform: translate(-70%, 0%);
-      animation: blink-eyes 3s infinite linear;
-    }
-    .candle1__eyes-two {
-      position: absolute;
-      left: 70%;
-      top: 20%;
-      width: 5px;
-      height: 5px;
-      border-radius: 100%;
-      background: #673C63;
-      transform: translate(-70%, 0%);
-      animation: blink-eyes 3s infinite linear;
-    }
-    .candle1__mouth {
-      position: absolute;
-      left: 40%;
-      top: 20%;
-      width: 0px;
-      height: 0px;
-      border-radius: 20px;
-      background: #673C63;
-      transform: translate(-50%, -50%);
-      animation: uff 3s infinite linear;
-    }
-    .candle__smoke-one {
-      position: absolute;
-      left: 30%;
-      top: 50%;
-      width: 30px;
-      height: 3px;
-      background: grey;
-      transform: translate(-50%, -50%);
-      animation: move-left 3s infinite linear;
-    }
-    .candle__smoke-two {
-      position: absolute;
-      left: 30%;
-      top: 40%;
-      width: 10px;
-      height: 10px;
-      border-radius: 10px;
-      background: grey;
-      transform: translate(-50%, -50%);
-      animation: move-top 3s infinite linear;
-    }
-    .candle2 {
-      position: absolute;
-      left: 20%;
-      top: 65%;
-      width: 42px;
-      height: 60px;
-      background: #fff;
-      border: 3px solid #673C63;
-      border-bottom: 0px;
-      border-radius: 3px;
-      transform: translate(60%, -15%);
-      transform-origin: center right;
-      box-shadow: -2px 0px 0px #95c6f2 inset;
-      animation: shake-left 3s infinite linear;
-    }
-    .candle2__eyes-one {
-      position: absolute;
-      left: 30%;
-      top: 50%;
-      width: 5px;
-      height: 5px;
-      display: inline-block;
-      border: 0px solid #673C63;
-      border-radius: 100%;
-      background: #673C63;
-      transform: translate(-80%, 0%);
-      animation: changeto-lower 3s infinite linear;
-    }
-    .candle2__eyes-two {
-      position: absolute;
-      left: 70%;
-      top: 50%;
-      width: 5px;
-      height: 5px;
-      display: inline-block;
-      border: 0px solid #673C63;
-      border-radius: 100%;
-      background: #673C63;
-      transform: translate(-80%, 0%);
-      animation: changeto-greater 3s infinite linear;
-    }
-    .light__wave {
-      position: absolute;
-      top: 35%;
-      left: 35%;
-      width: 75px;
-      height: 75px;
-      border-radius: 100%;
-      z-index: 0;
-      transform: translate(-25%, -50%) scale(2.5, 2.5);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      animation: expand-light 3s infinite linear;
-    }
-    .candle2__fire {
-      position: absolute;
-      top: 50%;
-      left: 40%;
-      display: block;
-      width: 16px;
-      height: 20px;
-      background-color: red;
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      background: #FF9800;
-      transform: translate(-50%, -50%);
-      animation: dance-fire 3s infinite linear;
-    }
-    @keyframes blink-eyes {
-      0%,35% {
-        opacity: 1;
-        transform: translate(-70%, 0%);
-      }
-      36%,39% {
-        opacity: 0;
-        transform: translate(-70%, 0%);
-      }
-      40% {
-        opacity: 1;
-        transform: translate(-70%, 0%);
-      }
-      50%,65% {
-        transform: translate(-140%, 0%);
-      }
-      66% {
-        transform: translate(-70%, 0%);
-      }
-    }
-    @keyframes expand-body {
-      0%,40% {
-        transform: scale(1, 1) translate(60%, -25%);
-      }
-      45%,55% {
-        transform: scale(1.1, 1.1) translate(60%, -28%);
-      }
-      60% {
-        transform: scale(0.89, 0.89) translate(60%, -25%);
-      }
-      65% {
-        transform: scale(1, 1) translate(60%, -25%);
-      }
-      70% {
-        transform: scale(0.95, 0.95) translate(60%, -25%);
-      }
-      75% {
-        transform: scale(1, 1) translate(60%, -25%);
-      }
-    }
-    @keyframes uff {
-      0%,40% {
-        width: 0px;
-        height: 0px;
-      }
-      50%,54% {
-        width: 15px;
-        height: 15px;
-        left: 30%;
-      }
-      59% {
-        width: 5px;
-        height: 5px;
-        left: 20%;
-      }
-      62% {
-        width: 2px;
-        height: 2px;
-        left: 20%;
-      }
-      67% {
-        width: 0px;
-        height: 0px;
-        left: 30%;
-      }
-    }
-    @keyframes change-background {
-      0%,59%,98%,100% {
-        background: #FFF;
-      }
-      61%,97% {
-        background: #000;
-      }
-    }
-    @keyframes move-left {
-      0%,59%,100% {
-        width: 0px;
-        left: 40%;
-      }
-      60% {
-        width: 30px;
-        left: 30%;
-      }
-      68% {
-        width: 0px;
-        left: 20%;
-      }
-    }
-    @keyframes move-top {
-      0%,64%,100% {
-        width: 0px;
-        height: 0px;
-        top: 0%;
-      }
-      65% {
-        width: 10px;
-        height: 10px;
-        top: 40%;
-        left: 40%;
-      }
-      80% {
-        width: 0px;
-        height: 0px;
-        top: 20%;
-      }
-    }
-    @keyframes shake-left {
-      0%,40% {
-        left: 20%;
-        transform: translate(60%, -15%);
-      }
-      50%,54% {
-        left: 20%;
-        transform: translate(60%, -15%);
-      }
-      59% {
-        left: 20%;
-        transform: translate(60%, -15%);
-      }
-      62% {
-        left: 18%;
-        transform: translate(60%, -15%);
-      }
-      65% {
-        left: 21%;
-        transform: translate(60%, -15%);
-      }
-      67% {
-        left: 20%;
-        transform: translate(60%, -15%);
-      }
-      75% {
-        left: 20%;
-        transform: scale(1.15, 0.85) translate(60%, -15%);
-        background: #fff;
-        border-color: #673C63;
-      }
-      91% {
-        left: 20%;
-        transform: scale(1.18, 0.82) translate(60%, -10%);
-        background: #F44336;
-        border-color: #F44336;
-        box-shadow: -2px 0px 0px #F44336 inset;
-      }
-      92% {
-        left: 20%;
-        transform: scale(0.85, 1.15) translate(60%, -15%);
-      }
-      95% {
-        left: 20%;
-        transform: scale(1.05, 0.95) translate(60%, -15%);
-      }
-      97% {
-        left: 20%;
-        transform: scale(1, 1) translate(60%, -15%);
-      }
-    }
-    @keyframes stick-animation {
-      0%,40% {
-        left: 50%;
-        top: 0%;
-        transform: translate(-50%, -100%);
-      }
-      50%,54% {
-        left: 50%;
-        top: 0%;
-        transform: translate(-50%, -100%);
-      }
-      59% {
-        left: 50%;
-        top: 0%;
-        transform: translate(-50%, -100%);
-      }
-      62% {
-        left: 50%;
-        top: 0%;
-        transform: rotateZ(-15deg) translate(-50%, -100%);
-      }
-      65% {
-        left: 50%;
-        top: 0%;
-        transform: rotateZ(15deg) translate(-50%, -100%);
-      }
-      70% {
-        left: 50%;
-        top: 0%;
-        transform: rotateZ(-5deg) translate(-50%, -100%);
-      }
-      72% {
-        left: 50%;
-        top: 0%;
-        transform: rotateZ(5deg) translate(-50%, -100%);
-      }
-      74%,84% {
-        left: 50%;
-        top: 0%;
-        transform: rotateZ(0deg) translate(-50%, -100%);
-      }
-      85% {
-        transform: rotateZ(180deg) translate(0%, 120%);
-      }
-      92% {
-        left: 50%;
-        top: 0%;
-        transform: translate(-50%, -100%);
-      }
-    }
-    @keyframes expand-light {
-      10%,29%,59%,89% {
-        transform: translate(-25%, -50%) scale(0, 0);
-        border: 2px solid rgba(255, 255, 255, 0);
-      }
-      90%,20%,50% {
-        transform: translate(-25%, -50%) scale(1, 1);
-      }
-      95%,96%,26%,27%,56%,57% {
-        transform: translate(-25%, -50%) scale(2, 2);
-        border: 2px solid rgba(255, 255, 255, 0.5);
-      }
-      0%,28%,58%,100% {
-        transform: translate(-25%, -50%) scale(2.5, 2.5);
-        border: 2px solid rgba(255, 255, 255, 0.2);
-      }
-    }
-    @keyframes dance-fire {
-      59%,89% {
-        left: 40%;
-        width: 0px;
-        height: 0px;
-      }
-      90%,0%,7%,15%,23%,31%,39%,47%,55% {
-        left: 40.8%;
-        width: 16px;
-        height: 20px;
-        background: #FFC107;
-      }
-      94%,3%,11%,19%,27%,35%,43%,51%,58% {
-        left: 41.2%;
-        width: 16px;
-        height: 20px;
-        background: #FF9800;
-      }
-    }
-    @keyframes changeto-lower {
-      0%,70%,90% {
-        padding: 0px;
-        display: inline-block;
-        border-radius: 100%;
-        background: #673C63;
-        border-width: 0 0 0 0;
-        border: 0px solid #673C63;
-        transform: translate(-90%, 0%);
-      }
-      71%,89% {
-        background: none;
-        border: solid #673C63;
-        border-radius: 0px;
-        border-width: 0 2px 2px 0;
-        display: inline-block;
-        padding: 1px;
-        float: left;
-        transform-origin: bottom left;
-        transform: rotate(-45deg) translate(-50%, -65%);
-        -webkit-transform: rotate(-45deg) translate(-50%, -65%);
-      }
-    }
-    @keyframes changeto-greater {
-      0%,70%,90% {
-        top: 50%;
-        padding: 0px;
-        display: inline-block;
-        border-radius: 100%;
-        background: #673C63;
-        border-width: 0 0 0 0;
-        border: 0px solid #673C63;
-        transform: translate(-80%, 0%);
-      }
-      71%,89% {
-        top: 30%;
-        background: none;
-        border: solid #673C63;
-        border-radius: 0px;
-        border-width: 0 2px 2px 0;
-        display: inline-block;
-        padding: 1px;
-        float: left;
-        transform-origin: bottom left;
-        transform: rotate(135deg) translate(-80%, 20%);
-        -webkit-transform: rotate(135deg) translate(-80%, 20%);
-      }
-    }
-          
     :root {
       --bg: #0d1b2a;
       --bg-alt: #1b263b;
@@ -539,7 +58,7 @@
       background: rgba(13, 27, 42, 0.95);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      transition: all 0.3s var(--ease);
+      transition: padding 0.3s var(--ease);
     }
 
     .nav-logo {
@@ -547,22 +66,26 @@
       align-items: center;
       gap: 10px;
       text-decoration: none;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease);
     }
 
-    .nav-logo:hover {
-      transform: scale(1.05);
+    @media (hover: hover) and (pointer: fine) {
+      .nav-logo:hover {
+        transform: scale(1.05);
+      }
     }
 
     .nav-logo img {
       height: 80px;
       width: auto;
       filter: drop-shadow(0 0 8px rgba(255, 255, 102, 0.3));
-      transition: all 0.3s var(--ease);
+      transition: filter 0.3s var(--ease);
     }
 
-    .nav-logo:hover img {
-      filter: drop-shadow(0 0 15px rgba(255, 255, 102, 0.5));
+    @media (hover: hover) and (pointer: fine) {
+      .nav-logo:hover img {
+        filter: drop-shadow(0 0 15px rgba(255, 255, 102, 0.5));
+      }
     }
 
     /* Hamburger Menu */
@@ -583,7 +106,7 @@
       height: 3px;
       background: var(--text);
       border-radius: 3px;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
     }
 
     .hamburger.active span:nth-child(1) {
@@ -615,7 +138,7 @@
       gap: 24px;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
     }
 
     .mobile-menu.active {
@@ -629,7 +152,7 @@
       color: var(--text);
       text-decoration: none;
       padding: 12px 24px;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
     }
 
     .mobile-menu a:hover {
@@ -679,7 +202,7 @@
       color: var(--bg) !important;
       border-radius: 8px;
       font-weight: 600;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
     }
 
     .nav-cta:hover {
@@ -821,7 +344,7 @@
       font-weight: 600;
       border-radius: 12px;
       cursor: pointer;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
       text-decoration: none;
       border: none;
     }
@@ -900,7 +423,7 @@
       border: none;
       border-radius: 24px;
       cursor: pointer;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
     }
 
     .video-intro-btn:hover {
@@ -943,7 +466,7 @@
       justify-content: center;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
     }
 
     .video-modal.active {
@@ -1092,7 +615,7 @@
       padding: 40px 32px;
       border-radius: 20px;
       border: 1px solid var(--border);
-      transition: all 0.4s var(--ease);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease), background-color 0.4s var(--ease), opacity 0.4s var(--ease);
       position: relative;
       overflow: hidden;
     }
@@ -1176,7 +699,7 @@
       padding: 40px;
       border-radius: 20px;
       border: 1px solid var(--border);
-      transition: all 0.4s var(--ease);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease), background-color 0.4s var(--ease), opacity 0.4s var(--ease);
       cursor: pointer;
     }
 
@@ -1307,7 +830,7 @@
       background: linear-gradient(90deg, var(--green-dark), var(--green));
       border-radius: 10px;
       width: 0;
-      transition: width 1.2s var(--ease-out);
+      transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     .soft-skills {
@@ -1325,7 +848,7 @@
       border-radius: 12px;
       font-weight: 500;
       color: var(--text);
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
     }
 
     .soft-skill:hover {
@@ -1394,7 +917,7 @@
       border-radius: 50px;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
       box-shadow: 0 10px 30px rgba(255, 255, 102, 0.3);
     }
 
@@ -1452,7 +975,7 @@
       border: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
-      transition: all 0.4s var(--ease);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease), background-color 0.4s var(--ease), opacity 0.4s var(--ease);
       display: block;
     }
 
@@ -1551,7 +1074,7 @@
       overflow: hidden;
       aspect-ratio: 1;
       cursor: pointer;
-      transition: all 0.4s var(--ease);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease), background-color 0.4s var(--ease), opacity 0.4s var(--ease);
     }
 
     .design-item img {
@@ -1604,7 +1127,7 @@
       font-size: 1rem;
       font-weight: 600;
       color: var(--text-muted);
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
     }
 
     .portfolio-tab img {
@@ -1665,7 +1188,7 @@
       overflow: hidden;
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      transition: all 0.4s var(--ease);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease), background-color 0.4s var(--ease), opacity 0.4s var(--ease);
     }
 
     .video-item:hover {
@@ -1700,7 +1223,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
       pointer-events: none;
       opacity: 1;
     }
@@ -1757,7 +1280,7 @@
       overflow: hidden;
       aspect-ratio: 9/16;
       cursor: pointer;
-      transition: all 0.4s var(--ease);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease), background-color 0.4s var(--ease), opacity 0.4s var(--ease);
     }
 
     .website-item img {
@@ -1866,7 +1389,7 @@
       font-size: 0.9rem;
       color: var(--text-muted);
       font-weight: 500;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
     }
 
     .tool-tag:hover {
@@ -1943,6 +1466,35 @@
       margin-bottom: 32px;
     }
 
+    .contact .contact-cta {
+      margin-bottom: 0;
+    }
+
+    .msg-big {
+      font-size: 1.15rem;
+      padding: 18px 42px;
+      border-radius: 999px;
+      box-shadow: 0 12px 28px rgba(242, 80, 53, 0.3);
+    }
+
+    .msg-big:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(242, 80, 53, 0.4);
+    }
+
+    .msg-big svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 640px) {
+      .msg-big {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 24px;
+      }
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1968,7 +1520,7 @@
       border: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
-      transition: all 0.4s var(--ease);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease), background-color 0.4s var(--ease), opacity 0.4s var(--ease);
     }
 
     .contact-card:hover {
@@ -2040,7 +1592,7 @@
     .reveal {
       opacity: 0;
       transform: translateY(40px);
-      transition: all 0.8s var(--ease-out);
+      transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out), border-color 0.6s var(--ease-out), background-color 0.6s var(--ease-out), opacity 0.6s var(--ease-out);
     }
 
     .reveal.active {
@@ -2110,7 +1662,7 @@
       overflow: hidden;
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      transition: all 0.5s var(--ease);
+      transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), border-color 0.5s var(--ease), background-color 0.5s var(--ease), opacity 0.5s var(--ease);
       cursor: pointer;
     }
 
@@ -2201,7 +1753,7 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 20px rgba(255, 255, 102, 0.4);
-      transition: all 0.3s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
     }
 
     .demo-play-icon svg {
@@ -2250,6 +1802,2836 @@
       text-align: center;
     }
 
+    /* Press feedback for interactive elements */
+    .btn:active,
+    .cta-btn:active,
+    .nav-cta:active,
+    .portfolio-tab:active,
+    .video-intro-btn:active,
+    .hamburger:active,
+    .video-modal-close:active {
+      transform: scale(0.97);
+    }
+
+    /* Neutralize hover lifts on touch devices */
+    @media (hover: none) {
+      .service-card:hover,
+      .experience-card:hover,
+      .portfolio-card:hover,
+      .design-item:hover,
+      .website-item:hover,
+      .video-item:hover,
+      .contact-card:hover,
+      .web-demo-card:hover,
+      .soft-skill:hover,
+      .tool-tag:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: var(--border);
+      }
+    }
+
+    /* ===== Inspiration restyle: nav / hero / marquee / services ===== */
+    :root {
+      --insp-primary: #f25035;
+      --insp-dark: #0b0b0b;
+      --insp-bg: #f9f9f9;
+      --insp-gray: #f2f2f2;
+      --insp-muted: #666;
+    }
+
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #eaeaea;
+      padding: 0 5%;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--insp-primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .logo:hover .logo-icon {
+        transform: scale(1.1);
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: var(--insp-dark);
+    }
+
+    .nav-links a:hover {
+      color: var(--insp-primary);
+    }
+
+    .nav-links li.active a {
+      color: var(--insp-primary);
+    }
+
+    .nav-links li.active {
+      border-bottom: 2px solid var(--insp-primary);
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after { display: none; }
+
+    .btn-dark {
+      background: var(--insp-dark);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+    }
+
+    .btn-dark:hover {
+      background: var(--insp-primary);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark:active {
+      transform: scale(0.97);
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--insp-dark);
+      border: 1px solid #ddd;
+      padding: 10px 22px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.2s ease-out, border-color 0.2s ease-out;
+    }
+
+    .btn-light:hover {
+      border-color: var(--insp-primary);
+      color: var(--insp-primary);
+    }
+
+    .btn-light:active {
+      transform: scale(0.97);
+    }
+
+    .hamburger span {
+      background: var(--insp-dark);
+    }
+
+    .mobile-menu {
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    .mobile-menu a {
+      color: var(--insp-dark);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--insp-primary);
+    }
+
+    .mobile-menu .nav-cta {
+      background: var(--insp-primary);
+      color: #fff !important;
+    }
+
+    .mobile-menu .nav-cta:hover {
+      background: var(--insp-dark);
+      color: #fff !important;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      min-height: 0;
+      padding: 60px 5% 0;
+      display: block;
+      background-color: var(--insp-bg);
+      background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .hero::before {
+      display: none;
+    }
+
+    .hero-title-area h4 {
+      color: var(--insp-primary);
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-transform: none;
+      letter-spacing: normal;
+      background: none;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .hero-title-area h4::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--insp-primary);
+    }
+
+    .hero-title-area h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      color: var(--insp-dark);
+    }
+
+    .hero-title-area h1 span {
+      color: var(--insp-primary);
+    }
+
+    .hero-title-area p {
+      color: var(--insp-muted);
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .typewriter-text {
+      color: var(--insp-primary);
+    }
+
+    .cursor {
+      background: var(--insp-primary);
+    }
+
+    .hero-typewriter {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--insp-primary);
+      margin-top: 8px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-end;
+      padding: 0 5%;
+    }
+
+    /* Hero Left */
+    .hero-left {
+      text-align: left;
+      padding-bottom: 40px;
+    }
+
+    .quote-icon {
+      color: var(--insp-primary);
+      font-size: 2.5rem;
+      font-weight: bold;
+      line-height: 0.8;
+    }
+
+    .testimonial-text {
+      color: var(--insp-muted);
+      max-width: 260px;
+      font-size: 0.9rem;
+      margin: 14px 0 24px;
+      line-height: 1.6;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .stat-number {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--insp-primary);
+    }
+
+    .stat-label {
+      color: var(--insp-muted);
+    }
+
+    /* Hero Center */
+    .hero-center {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-name-mobile {
+      display: none;
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--insp-dark);
+      margin: 26px 0 6px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .hero-name-mobile span {
+      color: var(--insp-primary);
+    }
+
+    .arch-bg {
+      background: transparent;
+      width: 350px;
+      height: 400px;
+      border-radius: 175px 175px 0 0;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .arch-bg img {
+      width: 90%;
+      display: block;
+      object-fit: cover;
+      max-height: 100%;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: -20px;
+      z-index: 2;
+      position: relative;
+      background: #fff;
+      padding: 10px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* Hero Right */
+    .hero-right {
+      text-align: right;
+      padding-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .tags {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .tag {
+      background: var(--insp-dark);
+      color: #fff;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .tag.primary {
+      background: var(--insp-primary);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .social-icons span {
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--insp-dark);
+      cursor: pointer;
+      transition: transform 0.2s ease-out, background-color 0.2s ease-out, color 0.2s ease-out;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .social-icons span:hover {
+        background: var(--insp-primary);
+        border-color: var(--insp-primary);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+    }
+
+    .social-icons span:active {
+      transform: scale(0.9);
+    }
+
+    /* Marquee */
+    .marquee-container {
+      background: var(--insp-dark);
+      color: #fff;
+      padding: 20px 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .marquee-content {
+      display: flex;
+      width: max-content;
+      animation: marquee 24s linear infinite;
+    }
+
+    .marquee-group {
+      display: flex;
+      gap: 40px;
+      font-size: 1.5rem;
+      font-weight: 500;
+      padding-right: 40px;
+    }
+
+    .marquee-group .star {
+      color: var(--insp-primary);
+      font-style: normal;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Services */
+    .services {
+      background: var(--insp-bg);
+      padding: 80px 5%;
+    }
+
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    .services-header h4 {
+      color: var(--insp-muted);
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: none;
+      letter-spacing: normal;
+      background: none;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .services-header h4::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--insp-muted);
+    }
+
+    .services-header h2 {
+      font-size: 2.5rem;
+      color: var(--insp-dark);
+    }
+
+    .services-header h2 span {
+      color: var(--insp-primary);
+    }
+
+    .services-header p {
+      color: var(--insp-muted);
+      max-width: 400px;
+      font-size: 0.9rem;
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    .accordion-item {
+      background: #fff;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      padding: 25px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      transition: transform 0.2s ease-out, background-color 0.2s ease-out, color 0.2s ease-out, box-shadow 0.2s ease-out;
+    }
+
+    .accordion-item .title {
+      display: flex;
+      gap: 30px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--insp-dark);
+    }
+
+    .accordion-item .icon {
+      font-size: 1.2rem;
+      color: var(--insp-dark);
+      transition: transform 0.2s ease-out;
+    }
+
+    .accordion-item.active {
+      background: var(--insp-dark);
+      color: #fff;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .accordion-item.active .title {
+      color: #fff;
+    }
+
+    .accordion-item.active .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .accordion-item:not(.active) .header-row {
+      display: contents;
+    }
+
+    .accordion-item.active .icon {
+      background: var(--insp-primary);
+      color: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .active-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .accordion-item:not(.active) .active-content {
+      display: none;
+    }
+
+    .active-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .active-tags span {
+      background: rgba(255,255,255,0.1);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #fff;
+    }
+
+    .active-desc {
+      color: #aaa;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .active-image {
+      width: 100%;
+      height: 200px;
+      background: #333;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .active-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .view-all-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .btn-accent {
+      background: var(--insp-primary);
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+    }
+
+    .btn-accent span {
+      background: #fff;
+      color: var(--insp-primary);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .btn-accent:hover {
+        background: var(--insp-dark);
+        transform: translateY(-2px);
+      }
+    }
+
+    .btn-accent:active {
+      transform: scale(0.97);
+    }
+
+    /* Full-site: apply inspiration light theme, keep content */
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f9f9f9;
+      --text: #0b0b0b;
+      --text-muted: #666;
+      --primary: #f25035;
+      --primary-hover: #d9432b;
+      --accent: #f25035;
+      --accent-hover: #0b0b0b;
+      --border: #e8e8e8;
+      --yellow: #f25035;
+      --yellow-hover: #ff6a51;
+      --green: #e8432a;
+      --green-dark: #c83f28;
+      --card-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      --card-shadow-hover: 0 12px 30px rgba(242, 80, 53, 0.12);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .section-label {
+      background: rgba(242, 80, 53, 0.1);
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, rgba(242,80,53,0.06) 0%, rgba(0,0,0,0.02) 100%);
+    }
+
+    .cta-title {
+      color: var(--text);
+    }
+
+    .cta-btn {
+      background: var(--insp-primary);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(242, 80, 53, 0.25);
+    }
+
+    .cta-btn:hover {
+      background: var(--insp-dark);
+    }
+
+    .btn-primary {
+      background: var(--insp-primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--insp-dark);
+      color: #fff;
+    }
+
+    .btn-outline {
+      border-color: var(--insp-primary);
+      color: var(--insp-primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--insp-primary);
+      color: #fff;
+    }
+
+    .contact-icon {
+      background: linear-gradient(135deg, var(--insp-primary), #c83f28);
+    }
+
+    .contact-card:hover .contact-icon {
+      background: linear-gradient(135deg, var(--insp-dark), #333);
+    }
+
+    .contact-card:hover {
+      border-color: var(--insp-primary);
+    }
+
+    .portfolio-tab.active {
+      background: linear-gradient(135deg, var(--insp-primary), #c83f28);
+      color: #fff;
+    }
+
+    .portfolio-tab:hover:not(.active) {
+      border-color: var(--insp-primary);
+      color: var(--insp-primary);
+    }
+
+    .design-item::after,
+    .website-item::after {
+      background: rgba(242, 80, 53, 0.9);
+    }
+
+    .web-demo-card:hover {
+      border-color: var(--insp-primary);
+      box-shadow: 0 24px 60px rgba(242, 80, 53, 0.15);
+    }
+
+    .browser-bar {
+      background: #f0f0f0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .browser-url {
+      background: rgba(0,0,0,0.06);
+      color: #666;
+    }
+
+    .demo-play-icon {
+      background: rgba(242, 80, 53, 0.95);
+      box-shadow: 0 4px 20px rgba(242, 80, 53, 0.35);
+    }
+
+    .video-play-btn {
+      background: rgba(242, 80, 53, 0.9);
+    }
+
+    .video-play-btn svg {
+      fill: #fff;
+    }
+
+    .video-item:hover .video-play-btn {
+      background: var(--insp-primary);
+    }
+
+    .experience {
+      padding: 100px 5%;
+    }
+
+    /* Portfolio header (inspiration style) */
+    .portfolio-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .portfolio-head-eyebrow {
+      color: var(--insp-muted);
+      font-weight: 500;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: none;
+      letter-spacing: normal;
+      background: none;
+      padding: 0;
+    }
+
+    .portfolio-head-eyebrow .head-line {
+      width: 20px;
+      height: 2px;
+      background: var(--insp-muted);
+      display: inline-block;
+    }
+
+    .portfolio-head-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+      max-width: 600px;
+    }
+
+    .portfolio-head-title span {
+      color: var(--insp-primary);
+    }
+
+    .portfolio-head-title .star {
+      font-size: 1.2rem;
+      vertical-align: super;
+      color: var(--insp-dark);
+      margin-left: 4px;
+    }
+
+    .portfolio-head-sub {
+      color: var(--insp-muted);
+      font-size: 0.95rem;
+      margin-top: 12px;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    .portfolio-head-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      padding: 8px 8px 8px 24px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--insp-dark);
+      text-decoration: none;
+      transition: border-color 0.2s ease-out;
+      white-space: nowrap;
+    }
+
+    .portfolio-head-btn .head-arrow {
+      width: 40px;
+      height: 40px;
+      background: var(--insp-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .portfolio-head-btn .head-arrow svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .portfolio-head-btn:hover {
+        border-color: var(--insp-primary);
+      }
+      .portfolio-head-btn:hover .head-arrow {
+        background: var(--insp-dark);
+      }
+    }
+
+    /* Slim divider marquee */
+    .marquee-slim {
+      padding: 12px 0;
+    }
+
+    .marquee-slim .marquee-group {
+      font-size: 0.9rem;
+      gap: 28px;
+      padding-right: 28px;
+    }
+
+    .marquee-slim .star {
+      font-size: 1rem;
+    }
+
+    /* FAQ section (inspiration style) */
+    .faq-section {
+      background: var(--insp-bg);
+      padding: 100px 5%;
+    }
+
+    .faq-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      transition: background-color 0.25s ease-out, color 0.25s ease-out, box-shadow 0.25s ease-out;
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary .faq-icon {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--insp-muted);
+      transition: transform 0.25s ease-out, color 0.25s ease-out;
+    }
+
+    .faq-item summary .faq-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .faq-item p {
+      color: var(--insp-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      padding-top: 14px;
+    }
+
+    .faq-item[open] {
+      background: var(--insp-primary);
+      box-shadow: 0 12px 30px rgba(242, 80, 53, 0.25);
+    }
+
+    .faq-item[open] summary {
+      color: #fff;
+    }
+
+    .faq-item[open] summary .faq-icon {
+      color: #fff;
+      transform: rotate(45deg);
+    }
+
+    .faq-item[open] p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .faq-side {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .ask-card {
+      background: var(--insp-dark);
+      color: #fff;
+      border-radius: 24px;
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .ask-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--insp-primary);
+      margin-bottom: 20px;
+    }
+
+    .ask-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .ask-card h3 {
+      font-size: 1.25rem;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .ask-card p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    .ask-btn {
+      background: var(--insp-primary);
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.2s ease-out;
+    }
+
+    .phone-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 18px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .phone-card-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(242, 80, 53, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--insp-primary);
+      flex-shrink: 0;
+    }
+
+    .phone-card-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .phone-card p {
+      font-size: 0.75rem;
+      color: var(--insp-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+
+    .phone-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+    }
+
+    .phone-card a {
+      font-size: 0.9rem;
+      color: var(--insp-muted);
+      text-decoration: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .ask-btn:hover {
+        background: #e0432a;
+      }
+      .phone-card a:hover {
+        color: var(--insp-primary);
+      }
+    }
+
+    @media (max-width: 968px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .portfolio-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .portfolio-head-title {
+        font-size: 1.9rem;
+      }
+    }
+
+    /* Shared section headings */
+    .insp-section-head {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .insp-section-head h4 {
+      color: var(--insp-muted);
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-transform: none;
+      letter-spacing: normal;
+      background: none;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .insp-section-head h4 .line {
+      width: 20px;
+      height: 2px;
+      background: var(--insp-muted);
+      display: inline-block;
+    }
+
+    .insp-section-head h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+    }
+
+    .insp-section-head h2 span {
+      color: var(--insp-primary);
+    }
+
+    .insp-section-head h2 .star {
+      font-size: 1.2rem;
+      vertical-align: super;
+      color: var(--insp-dark);
+    }
+
+    .insp-sub {
+      color: var(--insp-muted);
+      max-width: 600px;
+      margin: 14px auto 0;
+    }
+
+    /* Education & Work */
+    .insp-edu-wrap,
+    .insp-about-wrap {
+      max-width: 1100px !important;
+    }
+
+    .insp-edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .insp-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    .insp-card-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 20px;
+      margin-bottom: 8px;
+    }
+
+    .insp-card-head h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+    }
+
+    .insp-circle {
+      width: 48px;
+      height: 48px;
+      background: var(--insp-primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .insp-circle svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .insp-edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .insp-edu-row h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+    }
+
+    .insp-edu-row p {
+      font-size: 0.85rem;
+      color: var(--insp-muted);
+      margin-top: 2px;
+    }
+
+    .insp-date {
+      background: var(--insp-dark);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 5px 14px;
+      border-radius: 50px;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .insp-card hr {
+      border: none;
+      border-top: 1px solid #eee;
+    }
+
+    .insp-achievements {
+      margin-top: 4px;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .insp-achievements li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 0.9rem;
+      color: var(--insp-muted);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .insp-achievements li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--insp-primary);
+    }
+
+    /* Skills / Tools */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .tool-card {
+      background: #ffffff;
+      border: 1px solid #eee;
+      border-radius: 50px 50px 20px 20px;
+      padding: 24px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 190px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      cursor: pointer;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    }
+
+    .tool-icon {
+      width: 64px;
+      height: 64px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      margin-bottom: 12px;
+    }
+
+    .tool-icon img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+    }
+
+    .tool-percent {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+    }
+
+    .tool-name {
+      font-size: 0.8rem;
+      color: var(--insp-muted);
+      text-align: center;
+    }
+
+    .soft-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 48px auto 0;
+      max-width: 700px;
+    }
+
+    .soft-pills span {
+      background: #fff;
+      border: 1px solid #eee;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: var(--insp-dark);
+      font-weight: 500;
+      transition: border-color 0.2s ease-out, color 0.2s ease-out;
+    }
+
+    /* About */
+    .insp-about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .insp-about-left {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .insp-arch {
+      width: 360px;
+      height: 440px;
+      border-radius: 180px 180px 0 0;
+    }
+
+    .about-badge {
+      position: absolute;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-badge.total {
+      top: 24px;
+      left: 0;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .badge-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(242, 80, 53, 0.15);
+      color: var(--insp-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .about-badge .badge-label {
+      font-size: 0.75rem;
+      color: var(--insp-muted);
+      text-align: center;
+    }
+
+    .about-badge .badge-label strong {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--insp-dark);
+    }
+
+    .about-badge.certified {
+      bottom: 24px;
+      left: 0;
+      border-radius: 50px;
+    }
+
+    .about-badge.certified .badge-icon {
+      background: var(--insp-dark);
+      color: var(--insp-primary);
+    }
+
+    .about-badge.certified .badge-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--insp-dark);
+    }
+
+    .insp-about-right h4 {
+      color: var(--insp-dark);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      text-transform: none;
+      letter-spacing: normal;
+      background: none;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .insp-about-right h4 .line {
+      width: 20px;
+      height: 2px;
+      background: var(--insp-dark);
+      display: inline-block;
+    }
+
+    .insp-about-right h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+      margin-bottom: 20px;
+    }
+
+    .insp-about-right h2 span {
+      color: var(--insp-primary);
+    }
+
+    .insp-about-right h2 .star {
+      font-size: 1.2rem;
+      vertical-align: super;
+      color: var(--insp-dark);
+    }
+
+    .insp-about-right p {
+      color: var(--insp-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .insp-about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      border-top: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 24px 0;
+      margin-bottom: 24px;
+    }
+
+    .insp-about-stats h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+    }
+
+    .insp-about-stats p {
+      font-size: 0.75rem;
+      color: var(--insp-muted);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .insp-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .insp-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--insp-dark);
+      text-decoration: none;
+      transition: border-color 0.2s ease-out, color 0.2s ease-out;
+    }
+
+    .pill-icon {
+      width: 30px;
+      height: 30px;
+      background: var(--insp-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .pill-icon svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .insp-tools-row {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .insp-tools-row .tools-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--insp-dark);
+      margin-right: 4px;
+    }
+
+    .insp-tools-row .insp-chip {
+      background: var(--insp-bg);
+      border: 1px solid #e5e5e5;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--insp-muted);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .tool-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      }
+      .soft-pills span:hover {
+        border-color: var(--insp-primary);
+        color: var(--insp-primary);
+      }
+      .insp-pill:hover {
+        border-color: var(--insp-primary);
+        color: var(--insp-primary);
+      }
+    }
+
+    /* Responsive for restyled sections */
+    @media (max-width: 968px) {
+      .hero {
+        padding: 44px 5% 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-grid {
+        display: contents;
+      }
+      .hero-title-area {
+        order: 1;
+        margin-top: 0;
+      }
+      .hero-center {
+        order: 2;
+        margin-top: 44px;
+        gap: 18px;
+      }
+      .hero-typewriter {
+        margin-top: 6px;
+      }
+      .hero-left {
+        order: 3;
+        margin-top: 48px;
+      }
+      .hero-right {
+        order: 4;
+        margin-top: 48px;
+      }
+      .hero-name-mobile {
+        display: block;
+        margin: 0;
+        font-size: clamp(2rem, 8vw, 3rem);
+        white-space: normal;
+        text-wrap: balance;
+        line-height: 1.15;
+      }
+      .hero-title-area h1 {
+        display: none;
+      }
+      .hero-title-area h4 {
+        margin-bottom: 16px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .hero-title-area p {
+        margin: 0 auto;
+        font-size: 1rem;
+        max-width: 440px;
+        line-height: 1.6;
+      }
+      .arch-bg {
+        width: 260px;
+        height: 300px;
+        border-radius: 130px 130px 0 0;
+      }
+      .hero-left, .hero-right {
+        align-items: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 0;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .tags {
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav .btn-dark {
+        display: none;
+      }
+      .mobile-menu .nav-cta {
+        display: inline-block;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-name-mobile {
+        font-size: 2rem;
+        white-space: normal;
+      }
+      .hero-title-area p {
+        font-size: 0.95rem;
+      }
+      .hero-typewriter {
+        font-size: 1rem;
+      }
+      .services {
+        padding: 60px 5%;
+      }
+      .services-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .services-header p {
+        text-align: left;
+      }
+      .active-content {
+        grid-template-columns: 1fr;
+      }
+      .accordion-item {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 968px) {
+      .tools-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .insp-edu-grid {
+        grid-template-columns: 1fr;
+      }
+      .insp-about-wrap {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .insp-about-left {
+        order: -1;
+      }
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .portfolio-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .portfolio-head-title {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .experience,
+      .about,
+      .portfolio,
+      .contact {
+        padding: 70px 5%;
+      }
+      .skills {
+        padding: 70px 5%;
+      }
+      .faq-section {
+        padding: 70px 5%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      .tool-card {
+        min-height: 140px;
+        padding: 18px 8px;
+        border-radius: 36px 36px 16px 16px;
+      }
+      .tool-card .tool-icon {
+        width: 54px;
+        height: 54px;
+      }
+      .tool-card .tool-icon img {
+        width: 28px;
+        height: 28px;
+      }
+      .tool-percent {
+        font-size: 1.25rem;
+      }
+      .insp-section-head {
+        margin-bottom: 40px;
+      }
+      .insp-section-head h2 {
+        font-size: 1.7rem;
+      }
+      .insp-about-right h2 {
+        font-size: 1.7rem;
+      }
+      .insp-about-right p {
+        font-size: 0.9rem;
+      }
+      .insp-about-stats {
+        gap: 12px;
+        padding: 18px 0;
+      }
+      .insp-about-stats h3 {
+        font-size: 1.5rem;
+      }
+      .insp-edu-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .insp-card {
+        padding: 24px;
+      }
+      .insp-card-head h3 {
+        font-size: 1.2rem;
+      }
+      .insp-date {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+      }
+      .cta-title {
+        font-size: 1.5rem;
+      }
+      .insp-arch {
+        width: 250px;
+        height: 320px;
+        border-radius: 125px 125px 0 0;
+      }
+      .about-badge.total {
+        top: 18px;
+        left: 0;
+        scale: 0.9;
+      }
+      .about-badge.certified {
+        bottom: 18px;
+        left: 0;
+        scale: 0.9;
+      }
+      .soft-pills {
+        gap: 10px;
+        margin-top: 36px;
+      }
+      .soft-pills span {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+      }
+      .insp-pills {
+        gap: 10px;
+      }
+      .insp-pill {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+      }
+      .insp-tools-row .insp-chip {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      .faq-section {
+        padding: 60px 5%;
+      }
+      .faq-accordion {
+        gap: 12px;
+      }
+      .faq-item {
+        padding: 16px 18px;
+      }
+      .faq-item summary {
+        font-size: 0.98rem;
+      }
+      .ask-card {
+        padding: 32px 22px;
+      }
+      .phone-card {
+        padding: 16px 18px;
+      }
+      .hero-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: -16px;
+      }
+      .hero-buttons .btn-dark,
+      .hero-buttons .btn-light {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero {
+        padding-top: 36px;
+      }
+      .hero-title-area,
+      .hero-left,
+      .hero-right {
+        margin-top: 40px;
+      }
+      .arch-bg {
+        width: 230px;
+        height: 270px;
+        border-radius: 115px 115px 0 0;
+      }
+      .insp-arch {
+        width: 220px;
+        height: 290px;
+        border-radius: 110px 110px 0 0;
+      }
+      .portfolio-head-title {
+        font-size: 1.6rem;
+      }
+      .insp-about-stats h3 {
+        font-size: 1.3rem;
+      }
+      .tool-card {
+        min-height: 130px;
+      }
+    }
+
+    /* Hamburger + mobile menu polish */
+    .mobile-menu {
+      transform: translateY(-24px);
+      transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0.35s;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .mobile-menu.active {
+      transform: translateY(0);
+    }
+
+    .mobile-menu a {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.35s ease-out, transform 0.35s ease-out, color 0.2s ease-out;
+    }
+
+    .mobile-menu.active a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-menu.active a:nth-child(1) { transition-delay: 0.05s; }
+    .mobile-menu.active a:nth-child(2) { transition-delay: 0.10s; }
+    .mobile-menu.active a:nth-child(3) { transition-delay: 0.15s; }
+    .mobile-menu.active a:nth-child(4) { transition-delay: 0.20s; }
+    .mobile-menu.active a:nth-child(5) { transition-delay: 0.25s; }
+    .mobile-menu.active a:nth-child(6) { transition-delay: 0.30s; }
+
+    .mobile-menu .nav-cta {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 44px;
+      border-radius: 50px;
+    }
+
+    @media (max-width: 968px) {
+      nav {
+        width: 430px;
+        max-width: calc(100% - 20px);
+        height: 70px;
+        margin: 0 auto;
+      }
+      .nav-links {
+        display: none;
+      }
+      nav .btn-dark {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .mobile-menu {
+        display: flex;
+      }
+    }
+
+    /* Pre-page gate */
+    .gate {
+      position: fixed;
+      inset: 0;
+      z-index: 90001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background:
+        radial-gradient(40% 55% at 15% 20%, rgba(242, 80, 53, 0.12), transparent 70%),
+        radial-gradient(45% 60% at 85% 80%, rgba(255, 117, 31, 0.14), transparent 70%),
+        radial-gradient(30% 45% at 80% 15%, rgba(242, 80, 53, 0.1), transparent 70%),
+        #ffffff;
+      opacity: 1;
+      transition: opacity 520ms cubic-bezier(0.23, 1, 0.32, 1), visibility 0s 0s;
+    }
+
+    .gate::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background:
+        radial-gradient(28% 34% at 30% 30%, rgba(242, 80, 53, 0.14), transparent 70%),
+        radial-gradient(26% 32% at 70% 70%, rgba(255, 117, 31, 0.12), transparent 70%);
+      filter: blur(70px);
+      animation: gate-drift 14s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes gate-drift {
+      from { transform: translate3d(-3%, -2%, 0) scale(1); }
+      to   { transform: translate3d(3%, 3%, 0) scale(1.08); }
+    }
+
+    .gate.hidden {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 520ms cubic-bezier(0.23, 1, 0.32, 1), visibility 0s 520ms;
+      pointer-events: none;
+    }
+
+    body.gate-open {
+      overflow: hidden;
+    }
+
+    .gate-card {
+      position: relative;
+      width: 100%;
+      max-width: 660px;
+      padding: 40px 32px 32px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+      border: 1px solid rgba(11, 11, 11, 0.08);
+      box-shadow: 0 24px 70px rgba(11, 11, 11, 0.12);
+      text-align: center;
+    }
+
+    .gate-title {
+      font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--insp-dark);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .gate-sub {
+      color: rgba(11, 11, 11, 0.68);
+      font-size: 1rem;
+      max-width: 420px;
+      margin: 0 auto 28px;
+    }
+
+    .gate-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .gate-btn {
+      appearance: none;
+      border: 1px solid var(--insp-primary);
+      background: var(--insp-primary);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 16px 14px;
+      border-radius: 16px;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0 8px 22px rgba(242, 80, 53, 0.3);
+      transition: transform 160ms ease-out, background 160ms ease-out, border-color 160ms ease-out, box-shadow 160ms ease-out;
+    }
+
+    .gate-btn:focus-visible {
+      outline: 2px solid var(--insp-dark);
+      outline-offset: 2px;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .gate-btn:hover {
+        background: var(--insp-dark);
+        border-color: var(--insp-dark);
+        box-shadow: 0 10px 26px rgba(11, 11, 11, 0.28);
+      }
+    }
+
+    .gate-btn:active {
+      transform: scale(0.97);
+    }
+
+    .gate-btn.pick {
+      background: var(--insp-dark);
+      border-color: var(--insp-dark);
+      color: #fff;
+    }
+
+    .gate::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(72vw, 560px);
+      height: min(72vw, 560px);
+      transform: translate(-50%, -50%);
+      border: 1px dashed rgba(242, 80, 53, 0.25);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: ring-spin 60s linear infinite;
+    }
+
+    @keyframes ring-spin {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .gate-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      animation: gate-fade-up 480ms ease-out both;
+    }
+
+    .gate-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--insp-primary), #ff751f);
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 24px rgba(242, 80, 53, 0.35);
+    }
+
+    .gate-brand-name {
+      text-align: left;
+      font-weight: 700;
+      color: var(--insp-dark);
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+
+    .gate-brand-name small {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--insp-primary);
+    }
+
+    .gate-title {
+      animation: gate-fade-up 480ms ease-out 50ms both;
+    }
+
+    .gate-sub {
+      animation: gate-fade-up 480ms ease-out 100ms both;
+    }
+
+    .gate-grid {
+      animation: gate-fade-up 480ms ease-out 150ms both;
+    }
+
+    .gate-btn {
+      animation: gate-fade-up 440ms ease-out both;
+    }
+
+    .gate-grid .gate-btn:nth-child(1) { animation-delay: 180ms; }
+    .gate-grid .gate-btn:nth-child(2) { animation-delay: 210ms; }
+    .gate-grid .gate-btn:nth-child(3) { animation-delay: 240ms; }
+    .gate-grid .gate-btn:nth-child(4) { animation-delay: 270ms; }
+    .gate-grid .gate-btn:nth-child(5) { animation-delay: 300ms; }
+    .gate-grid .gate-btn:nth-child(6) { animation-delay: 330ms; }
+    .gate-grid .gate-btn:nth-child(7) { animation-delay: 360ms; }
+    .gate-grid .gate-btn:nth-child(8) { animation-delay: 390ms; }
+
+    @keyframes gate-fade-up {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gate-stats {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(11, 11, 11, 0.08);
+      animation: gate-fade-up 480ms ease-out 420ms both;
+    }
+
+    .gate-stats div {
+      min-width: 88px;
+    }
+
+    .gate-stats strong {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--insp-primary);
+    }
+
+    .gate-stats span {
+      font-size: 0.74rem;
+      color: rgba(11, 11, 11, 0.6);
+    }
+
+    .gate-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+      animation: gate-fade-up 480ms ease-out 480ms both;
+    }
+
+    .gate-note > span {
+      font-size: 0.85rem;
+      color: rgba(11, 11, 11, 0.55);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .gate-note > span::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--insp-primary);
+    }
+
+    .gate-skip {
+      appearance: none;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--insp-primary);
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: background 160ms ease-out, transform 160ms ease-out;
+    }
+
+    .gate-skip:active {
+      transform: scale(0.95);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .gate-skip:hover {
+        background: rgba(242, 80, 53, 0.08);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .gate-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 430px) {
+      .gate-card {
+        padding: 28px 18px 22px;
+        border-radius: 22px;
+      }
+      .gate-sub {
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+      }
+      .gate-btn {
+        padding: 14px 8px;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Helperbot */
+    .helperbot {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 700;
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      transform-origin: right bottom;
+      pointer-events: none;
+    }
+
+    .bot-bubble {
+      appearance: none;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--insp-dark);
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 16px 16px 4px 16px;
+      padding: 11px 14px;
+      max-width: 230px;
+      box-shadow: 0 14px 40px rgba(11, 11, 11, 0.16);
+      cursor: pointer;
+      pointer-events: auto;
+      text-align: left;
+      opacity: 0;
+      transform: translateX(14px) scale(0.94);
+      transform-origin: right bottom;
+      transition: opacity 220ms ease-out, transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .valve-open .bot-bubble {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .bot-bubble:active {
+      transform: scale(0.97);
+    }
+
+    .bot-bubble:focus-visible {
+      outline: 2px solid var(--insp-primary);
+      outline-offset: 2px;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .bot-bubble:hover {
+        background: var(--insp-bg);
+      }
+    }
+
+    .bot-fab {
+      appearance: none;
+      pointer-events: auto;
+      width: 54px;
+      height: 54px;
+      padding: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(11, 11, 11, 0.28), 0 3px 8px rgba(11, 11, 11, 0.14);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 160ms ease-out;
+      flex: 0 0 auto;
+    }
+
+    .bot-fab img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bot-fab:active {
+      transform: scale(0.95);
+    }
+
+    .bot-fab:focus-visible {
+      outline: 3px solid var(--insp-primary);
+      outline-offset: 2px;
+    }
+
+    .bot-fab.pulse {
+      animation: bot-pulse 2.2s ease-out infinite;
+    }
+
+    @keyframes bot-pulse {
+      0% { box-shadow: 0 12px 30px rgba(11, 11, 11, 0.28), 0 0 0 0 rgba(242, 80, 53, 0.5); }
+      70% { box-shadow: 0 12px 30px rgba(11, 11, 11, 0.28), 0 0 0 16px rgba(242, 80, 53, 0); }
+      100% { box-shadow: 0 12px 30px rgba(11, 11, 11, 0.28), 0 0 0 0 rgba(242, 80, 53, 0); }
+    }
+
+    .bot-fab.jiggle {
+      animation: fab-jiggle 1.9s ease-in-out infinite;
+    }
+
+    @keyframes fab-jiggle {
+      0%, 100% { transform: rotate(0deg); }
+      20% { transform: rotate(-7deg); }
+      40% { transform: rotate(6deg); }
+      60% { transform: rotate(-4deg); }
+      80% { transform: rotate(2deg); }
+    }
+
+    .valve-open .bot-bubble {
+      animation: bubble-bob 2.6s ease-in-out infinite;
+    }
+
+    @keyframes bubble-bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* Chat panel */
+    .chat-panel {
+      position: fixed;
+      right: 18px;
+      bottom: 84px;
+      z-index: 700;
+      width: 360px;
+      max-width: calc(100% - 24px);
+      height: min(72vh, 560px);
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 22px;
+      box-shadow: 0 24px 70px rgba(11, 11, 11, 0.28);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px) scale(0.97);
+      transform-origin: right bottom;
+      transition: opacity 260ms ease-out, transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+      pointer-events: none;
+    }
+
+    .chat-panel.open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .chat-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--insp-primary);
+      color: #fff;
+    }
+
+    .chat-head .bot-avatar {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      background: #fff;
+    }
+
+    .chat-head .bot-avatar img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chat-head-meta {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+    }
+
+    .chat-head-meta strong {
+      display: block;
+      font-size: 0.98rem;
+    }
+
+    .chat-head-meta span {
+      display: block;
+      font-size: 0.78rem;
+      opacity: 0.9;
+    }
+
+    .chat-close {
+      appearance: none;
+      background: rgba(255, 255, 255, 0.18);
+      border: none;
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 160ms ease-out, background 160ms ease-out;
+    }
+
+    .chat-close:active {
+      transform: scale(0.92);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .chat-close:hover {
+        background: rgba(255, 255, 255, 0.32);
+      }
+    }
+
+    .chat-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: var(--insp-bg);
+    }
+
+    .chat-msg {
+      max-width: 82%;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      animation: msg-in 240ms ease-out both;
+    }
+
+    @keyframes msg-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-msg.bot-msg {
+      align-self: flex-start;
+      background: #fff;
+      color: var(--insp-dark);
+      border: 1px solid #ececec;
+      border-bottom-left-radius: 4px;
+    }
+
+    .chat-msg.user-msg {
+      align-self: flex-end;
+      background: var(--insp-primary);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-typing {
+      display: inline-flex;
+      gap: 5px;
+      align-items: center;
+      padding: 12px 14px;
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+    }
+
+    .chat-typing i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--insp-primary);
+      animation: typing-bounce 1.1s ease-in-out infinite;
+    }
+
+    .chat-typing i:nth-child(2) { animation-delay: 0.15s; }
+    .chat-typing i:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes typing-bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+      30% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    .chat-quick {
+      display: flex;
+      gap: 8px;
+      padding: 10px 14px;
+      overflow-x: auto;
+      background: var(--insp-bg);
+      border-top: 1px solid #eef0f2;
+      scrollbar-width: none;
+    }
+
+    .chat-quick::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chat-quick button {
+      appearance: none;
+      flex: 0 0 auto;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--insp-primary);
+      background: #fff;
+      border: 1px solid rgba(242, 80, 53, 0.35);
+      border-radius: 999px;
+      padding: 7px 13px;
+      cursor: pointer;
+      transition: transform 160ms ease-out, background 160ms ease-out;
+    }
+
+    .chat-quick button:active {
+      transform: scale(0.95);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .chat-quick button:hover {
+        background: rgba(242, 80, 53, 0.08);
+      }
+    }
+
+    .chat-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      background: #fff;
+      border-top: 1px solid #eef0f2;
+    }
+
+    .chat-input-wrap input {
+      flex: 1;
+      min-width: 0;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--insp-dark);
+      background: var(--insp-bg);
+      border: 1px solid #e8e8e8;
+      border-radius: 999px;
+      padding: 10px 16px;
+      outline: none;
+      transition: border-color 160ms ease-out, box-shadow 160ms ease-out;
+    }
+
+    .chat-input-wrap input:focus {
+      border-color: var(--insp-primary);
+      box-shadow: 0 0 0 3px rgba(242, 80, 53, 0.14);
+    }
+
+    .chat-send {
+      appearance: none;
+      flex: 0 0 auto;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--insp-primary);
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      cursor: pointer;
+      transition: transform 160ms ease-out, background 160ms ease-out;
+    }
+
+    .chat-send:active {
+      transform: scale(0.95);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .chat-send:hover {
+        background: var(--insp-dark);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .helperbot {
+        right: 12px;
+        bottom: 12px;
+      }
+      .bot-fab {
+        width: 50px;
+        height: 50px;
+      }
+      .bot-bubble {
+        max-width: 200px;
+        font-size: 0.85rem;
+        padding: 10px 12px;
+      }
+      .chat-panel {
+        left: 12px;
+        right: 12px;
+        bottom: 74px;
+        width: auto;
+        height: min(74vh, 520px);
+      }
+    }
+
+    /* Message platform modal */
+    .msg-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 95000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(11, 11, 11, 0.45);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 240ms ease-out, visibility 0s 240ms;
+    }
+
+    .msg-modal.open {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 240ms ease-out, visibility 0s 0s;
+    }
+
+    .msg-sheet {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 22px;
+      padding: 26px 22px 22px;
+      box-shadow: 0 30px 80px rgba(11, 11, 11, 0.3);
+      text-align: center;
+      transform: translateY(14px) scale(0.96);
+      opacity: 0;
+      transition: transform 280ms cubic-bezier(0.23, 1, 0.32, 1), opacity 240ms ease-out;
+    }
+
+    .msg-modal.open .msg-sheet {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .msg-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: var(--insp-bg);
+      color: var(--insp-dark);
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 160ms ease-out, background 160ms ease-out;
+    }
+
+    .msg-close:active {
+      transform: scale(0.9);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .msg-close:hover {
+        background: rgba(242, 80, 53, 0.1);
+      }
+    }
+
+    .msg-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--insp-dark);
+      margin-bottom: 6px;
+    }
+
+    .msg-sub {
+      color: rgba(11, 11, 11, 0.6);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .msg-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .msg-opt {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px 16px;
+      border-radius: 14px;
+      border: 1px solid #e8e8e8;
+      background: var(--insp-bg);
+      color: var(--insp-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 160ms ease-out, border-color 160ms ease-out, background 160ms ease-out;
+    }
+
+    .msg-opt small {
+      display: block;
+      font-weight: 500;
+      font-size: 0.78rem;
+      color: rgba(11, 11, 11, 0.55);
+    }
+
+    .msg-opt em {
+      font-style: normal;
+      color: var(--insp-primary);
+      font-weight: 700;
+    }
+
+    .msg-opt-icon {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .msg-opt-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .msg-opt-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .msg-opt-facebook .msg-opt-icon { background: #1877f2; }
+    .msg-opt-whatsapp .msg-opt-icon { background: #25d366; }
+    .msg-opt-phone .msg-opt-icon { background: var(--insp-primary); }
+    .msg-opt-gmail .msg-opt-icon { background: #ea4335; }
+
+    .msg-opt:active {
+      transform: scale(0.97);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .msg-opt:hover {
+        background: #fff;
+        border-color: var(--insp-primary);
+      }
+    }
+
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -2260,20 +4642,110 @@
   </style>
 </head>
 <body>
+  <!-- Pre-page: what does the client need? -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Choose a service">
+    <div class="gate-card">
+      <div class="gate-brand">
+        <span class="gate-logo">G</span>
+        <span class="gate-brand-name">Genkent Pagnanawon<small>Freelance Digital Services</small></span>
+      </div>
+      <h2 class="gate-title">What can I help you with?</h2>
+      <p class="gate-sub">Tap the service you need and let's make it happen.</p>
+      <div class="gate-grid">
+        <button class="gate-btn" type="button">Website Creation</button>
+        <button class="gate-btn" type="button">Content Creation</button>
+        <button class="gate-btn" type="button">Video Editing</button>
+        <button class="gate-btn" type="button">Social Media Management</button>
+        <button class="gate-btn" type="button">Graphic Designing</button>
+        <button class="gate-btn" type="button">AI Bot Automation</button>
+        <button class="gate-btn" type="button">Data Entry</button>
+        <button class="gate-btn" type="button">Data Scraping</button>
+      </div>
+      <div class="gate-stats">
+        <div><strong>2+</strong><span>Years Experience</span></div>
+        <div><strong>30+</strong><span>Projects Done</span></div>
+        <div><strong>100%</strong><span>Client Satisfaction</span></div>
+      </div>
+      <div class="gate-note">
+        <span>Free consultation - no pressure</span>
+        <button class="gate-skip" type="button">Just browsing &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kento Bot -->
+  <div class="helperbot" id="helperbot">
+    <button class="bot-bubble" id="helperbotBubble" type="button"><span id="helperbotText">Here's some website sample projects &rarr;</span></button>
+    <button class="bot-fab" id="botFab" type="button" aria-label="Open chat with Kento Bot" aria-expanded="false">
+      <img src="image/helperbot.png" alt="Kento Bot" onerror="this.onerror=null;this.src='logo/name logo.png';">
+    </button>
+  </div>
+
+  <!-- Chat panel -->
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Chat with Kento Bot">
+    <div class="chat-head">
+      <div class="bot-avatar"><img src="image/helperbot.png" alt="" onerror="this.onerror=null;this.src='logo/name logo.png';"></div>
+      <div class="chat-head-meta">
+        <strong>Kento Bot</strong>
+        <span>Genkent's bestfriend - online now</span>
+      </div>
+      <button class="chat-close" id="chatClose" type="button" aria-label="Close chat">&times;</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-quick" id="chatQuick">
+      <button type="button" data-q="What services does Genkent offer?">Services</button>
+      <button type="button" data-q="Tell me about his experience">Experience</button>
+      <button type="button" data-q="Show me sample projects">Projects</button>
+      <button type="button" data-q="How do I contact Genkent?">Contact</button>
+      <button type="button" data-q="How much is a website?">Pricing</button>
+    </div>
+    <form class="chat-input-wrap" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Ask me anything about Genkent..." autocomplete="off" aria-label="Message Kento Bot">
+      <button class="chat-send" type="submit" aria-label="Send message">Send</button>
+    </form>
+  </div>
+
+  <!-- Message platform modal -->
+  <div class="msg-modal" id="msgModal" role="dialog" aria-modal="true" aria-label="Choose a platform">
+    <div class="msg-sheet">
+      <button class="msg-close" id="msgClose" type="button" aria-label="Close">&times;</button>
+      <h3 class="msg-title">Where should we talk?</h3>
+      <p class="msg-sub">Pick a platform - message me instantly.</p>
+      <div class="msg-list">
+        <a class="msg-opt msg-opt-facebook" href="https://www.facebook.com/KenKentGpag" target="_blank" rel="noopener noreferrer">
+          <span class="msg-opt-icon"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span>
+          <span class="msg-opt-main">Facebook<small>@KenKentGpag</small></span><em>&rarr;</em>
+        </a>
+        <a class="msg-opt msg-opt-whatsapp" href="https://wa.me/639704632150" target="_blank" rel="noopener noreferrer">
+          <span class="msg-opt-icon"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span>
+          <span class="msg-opt-main">WhatsApp<small>+63 970 463 2150</small></span><em>&rarr;</em>
+        </a>
+        <a class="msg-opt msg-opt-phone" href="tel:+639704632150">
+          <span class="msg-opt-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>
+          <span class="msg-opt-main">Phone Number<small>+63 970 463 2150</small></span><em>&rarr;</em>
+        </a>
+        <a class="msg-opt msg-opt-gmail" href="mailto:genkentpagnanawon28@gmail.com">
+          <span class="msg-opt-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+          <span class="msg-opt-main">Gmail<small>genkentpagnanawon28@gmail.com</small></span><em>&rarr;</em>
+        </a>
+      </div>
+    </div>
+  </div>
   <!-- Navigation -->
   <nav>
-    <a href="#" class="nav-logo">
-      <img src="logo/name logo.png" alt="Genkent Logo">
+    <a href="#home" class="logo">
+      <div class="logo-icon">G</div> Genkent.
     </a>
     <ul class="nav-links">
+      <li class="active"><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="nav-cta">Contact Me</a></li>
     </ul>
-    <button class="hamburger" aria-label="Toggle menu">
+    <a href="#contact" class="btn-dark">Contact Me</a>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -2291,25 +4763,22 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-badge">Available for Work</div>
-        <h1>Genkent Pagnanawon</h1>
-        <div class="hero-role">
-          <span class="typewriter-text" id="typewriter"></span><span class="cursor"></span>
-        </div>
-        <p class="hero-desc">A highly talented, detail-oriented professional with A years of experience in fast-paced virtual environments. I help brands grow their online presence through strategic social media management and engaging content.</p>
-        <div class="hero-btns">
-          <a href="#contact" class="btn btn-primary">
-            <span>Let's Work Together</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#portfolio" class="btn btn-outline">View My Work</a>
-        </div>
+  <section class="hero" id="home">
+    <div class="hero-title-area">
+      <h4>Hello There!</h4>
+      <h1>I'm <span>Genkent Pagnanawon</span></h1>
+      <p>Freelancer based in Cebu, Philippines</p>
+      <h2 class="hero-typewriter"><span class="typewriter-text" id="typewriter"></span><span class="cursor"></span></h2>
+    </div>
+
+    <div class="hero-grid">
+      <!-- Left Side -->
+      <div class="hero-left">
+        <div class="quote-icon">"</div>
+        <p class="testimonial-text">A detail-oriented freelancer helping brands grow their online presence with strategic content and authentic community engagement.</p>
         <div class="hero-stats">
           <div class="stat">
-            <div class="stat-number" data-target="1" data-suffix="+">0+</div>
+            <div class="stat-number" data-target="2" data-suffix="+">0+</div>
             <div class="stat-label">Years Experience</div>
           </div>
           <div class="stat">
@@ -2322,136 +4791,287 @@
           </div>
         </div>
       </div>
-      <div class="hero-photo">
-        <div class="hero-photo-frame">
 
-          <div class="wrapper">
-            <div class="candles">
-              <div class="light__wave"></div>
-              <div class="candle1">
-                <div class="candle1__body">
-                  <div class="candle1__eyes">
-                    <span class="candle1__eyes-one"></span>
-                    <span class="candle1__eyes-two"></span>
-                  </div>
-                  <div class="candle1__mouth"></div>
-                </div>
-                <div class="candle1__stick"></div>
-              </div>
-              <div class="candle2">
-                <div class="candle2__body">
-                  <div class="candle2__eyes">
-                    <div class="candle2__eyes-one"></div>
-                    <div class="candle2__eyes-two"></div>
-                  </div>
-                </div>
-                <div class="candle2__stick"></div>
-              </div>
-              <div class="candle2__fire"></div>
-              <div class="sparkles-one"></div>
-              <div class="sparkles-two"></div>
-              <div class="candle__smoke-one"></div>
-              <div class="candle__smoke-two"></div>
-            </div>
-            <div class="floor"></div>
-          </div>
+      <!-- Center Side (Portrait) -->
+      <div class="hero-center">
+        <div class="arch-bg">
+          <img src="image/1-cutout.png" alt="Genkent Pagnanawon" onerror="this.onerror=null;this.src='logo/name logo.png';">
+        </div>
+        <h1 class="hero-name-mobile" aria-hidden="true">I'm <span>Genkent Pagnanawon</span></h1>
+        <div class="hero-buttons">
+          <a href="#portfolio" class="btn-dark">Portfolio &rarr;</a>
+          <button type="button" class="btn-light msg-open" id="msgTrigger">Message Me</button>
+        </div>
+      </div>
 
-          
+      <!-- Right Side -->
+      <div class="hero-right">
+        <div class="tags">
+          <span class="tag">Social Media</span>
+          <span class="tag primary">Meta Automation</span>
+          <span class="tag">Content Creation</span>
+          <span class="tag primary">Website Design</span>
+          <span class="tag">Video Editing</span>
+        </div>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/KenKentGpag" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><span>f</span></a>
+          <a href="https://www.instagram.com/genkent.webdev/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><span>in</span></a>
+          <a href="https://t.me/Paldohahaha" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><span>tg</span></a>
+          <a href="https://github.com/genkentpagnanawon28-arch" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><span>gh</span></a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Marquee -->
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <div class="marquee-group">
+        <span>Social Media Management <em class="star">✦</em></span>
+        <span>Content Creation <em class="star">✦</em></span>
+        <span>Community Management <em class="star">✦</em></span>
+        <span>Brand Strategy <em class="star">✦</em></span>
+        <span>Analytics &amp; Reporting <em class="star">✦</em></span>
+        <span>Automation Setup <em class="star">✦</em></span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span>Social Media Management <em class="star">✦</em></span>
+        <span>Content Creation <em class="star">✦</em></span>
+        <span>Community Management <em class="star">✦</em></span>
+        <span>Brand Strategy <em class="star">✦</em></span>
+        <span>Analytics &amp; Reporting <em class="star">✦</em></span>
+        <span>Automation Setup <em class="star">✦</em></span>
+      </div>
+    </div>
+  </div>
 
   <!-- Services Section -->
   <section class="services" id="services">
-    <div class="section-container">
-      <div class="section-header reveal">
-        <span class="section-label">What I Do</span>
-        <h2 class="section-title">Services I Offer</h2>
-        <p class="section-subtitle">Comprehensive digital solutions to help your brand thrive in the online space.</p>
+    <div class="services-inner">
+      <div class="services-header">
+        <div>
+          <h4>My Specialization</h4>
+          <h2><span>Services</span> I Provide</h2>
+        </div>
+        <p>Comprehensive digital solutions to help your brand thrive in the online space.</p>
       </div>
-      <div class="services-grid">
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+
+      <div class="services-accordion">
+        <!-- Item 1 (Expanded) -->
+        <div class="accordion-item active">
+          <div class="header-row">
+            <div class="title"><span>01.</span> Social Media Management</div>
+            <div class="icon">&nearr;</div>
           </div>
-          <h3>Social Media Management</h3>
-          <p>Strategic planning and execution of social media campaigns across multiple platforms to maximize reach and engagement.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <div class="active-content">
+            <div>
+              <div class="active-tags">
+                <span>Content Calendar</span><span>Multi-Platform Strategy</span><span>Campaign Planning</span><span>Engagement</span>
+              </div>
+              <p class="active-desc">Strategic planning and execution of social media campaigns across multiple platforms to maximize reach and engagement.</p>
+            </div>
+            <div class="active-image">
+              <img src="website/moshitech.png" alt="Social Media Management">
+            </div>
           </div>
-          <h3>Content Creation</h3>
-          <p>Eye-catching graphics, engaging copy, and compelling visual content tailored to your brand's unique voice and audience.</p>
         </div>
-        <div class="service-card reveal reveal-delay-3">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+
+        <!-- Item 2 -->
+        <div class="accordion-item">
+          <div class="header-row">
+            <div class="title"><span>02.</span> Content Creation</div>
+            <div class="icon">&nearr;</div>
           </div>
-          <h3>Community Management</h3>
-          <p>Building and nurturing online communities through authentic engagement, timely responses, and meaningful interactions.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <div class="active-content">
+            <div>
+              <div class="active-tags">
+                <span>Graphic Design</span><span>Copywriting</span><span>Visuals</span><span>Brand Voice</span>
+              </div>
+              <p class="active-desc">Eye-catching graphics, engaging copy, and compelling visual content tailored to your brand's unique voice and audience.</p>
+            </div>
+            <div class="active-image">
+              <img src="sample%20works/sample%20designs/website%20content%20design.jpg" alt="Content Creation">
+            </div>
           </div>
-          <h3>Brand Strategy</h3>
-          <p>Developing cohesive brand guidelines and strategies that resonate with your target audience and drive business growth.</p>
         </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+
+        <!-- Item 3 -->
+        <div class="accordion-item">
+          <div class="header-row">
+            <div class="title"><span>03.</span> Community Management</div>
+            <div class="icon">&nearr;</div>
           </div>
-          <h3>Analytics & Reporting</h3>
-          <p>Data-driven insights and comprehensive reports to track performance and optimize your social media strategy.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-3">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          <div class="active-content">
+            <div>
+              <div class="active-tags">
+                <span>Engagement</span><span>Response Handling</span><span>Community Building</span><span>Brand Advocacy</span>
+              </div>
+              <p class="active-desc">Building and nurturing online communities through authentic engagement, timely responses, and meaningful interactions.</p>
+            </div>
+            <div class="active-image">
+              <img src="sample%20works/sample%20designs/afecionado.jpg" alt="Community Management">
+            </div>
           </div>
-          <h3>Automation Setup</h3>
-          <p>Streamline your social media workflows with smart automation tools for scheduling, posting, and engagement.</p>
         </div>
+
+        <!-- Item 4 -->
+        <div class="accordion-item">
+          <div class="header-row">
+            <div class="title"><span>04.</span> Brand Strategy</div>
+            <div class="icon">&nearr;</div>
+          </div>
+          <div class="active-content">
+            <div>
+              <div class="active-tags">
+                <span>Brand Guidelines</span><span>Identity</span><span>Positioning</span><span>Growth Strategy</span>
+              </div>
+              <p class="active-desc">Developing cohesive brand guidelines and strategies that resonate with your target audience and drive business growth.</p>
+            </div>
+            <div class="active-image">
+              <img src="sample%20works/sample%20designs/9%20(5).png" alt="Brand Strategy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="accordion-item">
+          <div class="header-row">
+            <div class="title"><span>05.</span> Analytics &amp; Reporting</div>
+            <div class="icon">&nearr;</div>
+          </div>
+          <div class="active-content">
+            <div>
+              <div class="active-tags">
+                <span>Performance Tracking</span><span>Insights</span><span>Reports</span><span>Optimization</span>
+              </div>
+              <p class="active-desc">Data-driven insights and comprehensive reports to track performance and optimize your social media strategy.</p>
+            </div>
+            <div class="active-image">
+              <img src="website/optipulse.png" alt="Analytics & Reporting">
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="accordion-item">
+          <div class="header-row">
+            <div class="title"><span>06.</span> Automation Setup</div>
+            <div class="icon">&nearr;</div>
+          </div>
+          <div class="active-content">
+            <div>
+              <div class="active-tags">
+                <span>Scheduling</span><span>Workflows</span><span>CRM Tools</span><span>Bots</span>
+              </div>
+              <p class="active-desc">Streamline your social media workflows with smart automation tools for scheduling, posting, and engagement.</p>
+            </div>
+            <div class="active-image">
+              <img src="website/Gym%20Funnel%20Website.png" alt="Automation Setup">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-all-btn">
+        <a href="#portfolio" class="btn-accent">View All Services <span>&rarr;</span></a>
       </div>
     </div>
   </section>
 
+  <div class="marquee-container marquee-slim">
+    <div class="marquee-content">
+      <div class="marquee-group">
+        <span>Social Media Management</span><span class="star">✦</span>
+        <span>Content Creation</span><span class="star">✦</span>
+        <span>Community Building</span><span class="star">✦</span>
+        <span>Campaign Planning</span><span class="star">✦</span>
+        <span>Lead Generation</span><span class="star">✦</span>
+        <span>Web Design</span><span class="star">✦</span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span>Social Media Management</span><span class="star">✦</span>
+        <span>Content Creation</span><span class="star">✦</span>
+        <span>Community Building</span><span class="star">✦</span>
+        <span>Campaign Planning</span><span class="star">✦</span>
+        <span>Lead Generation</span><span class="star">✦</span>
+        <span>Web Design</span><span class="star">✦</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Experience Section -->
   <section class="experience" id="experience">
-    <div class="section-container">
-      <div class="section-header reveal">
-        <span class="section-label">My Journey</span>
-        <h2 class="section-title">Work Experience</h2>
-        <p class="section-subtitle">A track record of delivering results for clients across various industries.</p>
+    <div class="section-container insp-edu-wrap">
+      <div class="insp-section-head reveal">
+        <h4><span class="line"></span> Education &amp; Work</h4>
+        <h2>Things Ive <span>Done</span> So Far <span class="star">✦</span></h2>
+        <p class="insp-sub">A track record of delivering results for clients across various industries.</p>
       </div>
-      <div class="experience-grid">
-        <div class="experience-card reveal reveal-delay-1">
-          <div class="experience-header">
-            <div>
-              <h3>SNL Media</h3>
-              <span class="experience-date">Jul 2022 – Mar 2024</span>
+      <div class="insp-edu-grid">
+        <div class="insp-card reveal reveal-delay-1">
+          <div class="insp-card-head">
+            <div class="insp-circle">
+              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
             </div>
+            <h3>Work Experience</h3>
           </div>
-          <ul>
+          <div class="insp-edu-row">
+            <div>
+              <h4>SNL Media</h4>
+              <p>Social Media Manager &amp; Content Producer</p>
+            </div>
+            <span class="insp-date">Jul 2022 - Mar 2024</span>
+          </div>
+          <ul class="insp-achievements">
             <li>Ensured timeline adherence so production and operations stayed on schedule</li>
             <li>Planned and executed business campaigns and design productions</li>
             <li>Supervised social media posting and handled community engagement</li>
             <li>Penetrated markets for potential leads and collaborators</li>
           </ul>
-        </div>
-        <div class="experience-card reveal reveal-delay-2">
-          <div class="experience-header">
+          <hr>
+          <div class="insp-edu-row">
             <div>
-              <h3>E-Media Philippines</h3>
-              <span class="experience-date">Feb 2020 – Apr 2021</span>
+              <h4>E-Media Philippines</h4>
+              <p>Content Creator</p>
             </div>
+            <span class="insp-date">Feb 2020 - Apr 2021</span>
           </div>
-          <ul>
+          <ul class="insp-achievements">
             <li>Created content for social media platforms and submitted weekly/monthly reports</li>
             <li>Planned and implemented post interventions to expand audience reach</li>
             <li>Supervised social media posting and engaged with the online community</li>
           </ul>
+        </div>
+        <div class="insp-card reveal reveal-delay-2">
+          <div class="insp-card-head">
+            <div class="insp-circle">
+              <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3>Education</h3>
+          </div>
+          <div class="insp-edu-row">
+            <div>
+              <h4>Mohon National Senior High School</h4>
+              <p>TVL ICT - Computer Systems Servicing</p>
+            </div>
+            <span class="insp-date">Senior High</span>
+          </div>
+          <hr>
+          <div class="insp-edu-row">
+            <div>
+              <h4>Mohon Elementary School</h4>
+              <p>Primary Education</p>
+            </div>
+            <span class="insp-date">Elementary</span>
+          </div>
+          <hr>
+          <div class="insp-edu-row">
+            <div>
+              <h4>Self-Taught &amp; Online Courses</h4>
+              <p>Web Development, Digital Marketing, Data Scraping</p>
+            </div>
+            <span class="insp-date">Continuous</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2460,128 +5080,71 @@
   <!-- Skills Section -->
   <section class="skills" id="skills">
     <div class="section-container">
-      <div class="section-header reveal">
-        <span class="section-label">My Expertise</span>
-        <h2 class="section-title">Skills & Tools</h2>
-        <p class="section-subtitle">A combination of technical proficiency and soft skills that drive results.</p>
+      <div class="insp-section-head reveal">
+        <h4><span class="line"></span> My Expertise</h4>
+        <h2>My <span>Favorite</span> Tools <span class="star">✦</span></h2>
+        <p class="insp-sub">A combination of technical proficiency and soft skills that drive results.</p>
       </div>
-      <div class="skills-grid">
-        <div class="skills-col reveal reveal-delay-1">
-          <h3>
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            Technical Skills
-          </h3>
-          <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">
-                <img src="https://img.icons8.com/color/48/canva.png" alt="Canva">
-                Canva
-              </span>
-              <span class="skill-percent">80%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+      <div class="tools-grid">
+        <div class="tool-card reveal reveal-delay-1">
+          <div class="tool-icon">
+            <img src="https://img.icons8.com/color/48/canva.png" alt="Canva">
           </div>
-          <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">
-                <img src="https://img.icons8.com/color/48/microsoft-office-2019.png" alt="MS Office">
-                Microsoft Office
-              </span>
-              <span class="skill-percent">74%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="74"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">
-                <img src="https://img.icons8.com/fluency/48/code.png" alt="Web Dev">
-                Web Development
-              </span>
-              <span class="skill-percent">90%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">
-                <img src="https://img.icons8.com/fluency/48/database.png" alt="Data">
-                Data Scraping
-              </span>
-              <span class="skill-percent">80%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">
-                <img src="https://img.icons8.com/color/48/meta.png" alt="Meta">
-                Meta Automation
-              </span>
-              <span class="skill-percent">70%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">
-                <img src="https://img.icons8.com/fluency/48/paint-palette.png" alt="Design">
-                Graphic Designing
-              </span>
-              <span class="skill-percent">60%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">
-                <img src="https://img.icons8.com/fluency/48/video-editing.png" alt="Video">
-                Video Editing
-              </span>
-              <span class="skill-percent">60%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
-          </div>
+          <div class="tool-percent">80%</div>
+          <div class="tool-name">Canva</div>
         </div>
-        <div class="skills-col reveal reveal-delay-2">
-          <h3>
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            Soft Skills
-          </h3>
-          <div class="soft-skills">
-            <div class="soft-skill">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Quick Learner
-            </div>
-            <div class="soft-skill">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Communication
-            </div>
-            <div class="soft-skill">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Consistency
-            </div>
-            <div class="soft-skill">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Attention to Detail
-            </div>
-            <div class="soft-skill">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Commitment
-            </div>
-            <div class="soft-skill">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Time Management
-            </div>
-            <div class="soft-skill">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Organization
-            </div>
-            <div class="soft-skill">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Responsibility
-            </div>
+        <div class="tool-card reveal reveal-delay-1">
+          <div class="tool-icon">
+            <img src="https://img.icons8.com/color/48/microsoft-office-2019.png" alt="MS Office">
           </div>
+          <div class="tool-percent">74%</div>
+          <div class="tool-name">Microsoft Office</div>
         </div>
+        <div class="tool-card reveal reveal-delay-2">
+          <div class="tool-icon">
+            <img src="https://img.icons8.com/fluency/48/code.png" alt="Web Dev">
+          </div>
+          <div class="tool-percent">90%</div>
+          <div class="tool-name">Web Development</div>
+        </div>
+        <div class="tool-card reveal reveal-delay-2">
+          <div class="tool-icon">
+            <img src="https://img.icons8.com/fluency/48/database.png" alt="Data">
+          </div>
+          <div class="tool-percent">80%</div>
+          <div class="tool-name">Data Scraping</div>
+        </div>
+        <div class="tool-card reveal reveal-delay-3">
+          <div class="tool-icon">
+            <img src="https://img.icons8.com/color/48/meta.png" alt="Meta">
+          </div>
+          <div class="tool-percent">70%</div>
+          <div class="tool-name">Meta Automation</div>
+        </div>
+        <div class="tool-card reveal reveal-delay-3">
+          <div class="tool-icon">
+            <img src="https://img.icons8.com/fluency/48/paint-palette.png" alt="Design">
+          </div>
+          <div class="tool-percent">60%</div>
+          <div class="tool-name">Graphic Designing</div>
+        </div>
+        <div class="tool-card reveal reveal-delay-3">
+          <div class="tool-icon">
+            <img src="https://img.icons8.com/fluency/48/video-editing.png" alt="Video">
+          </div>
+          <div class="tool-percent">60%</div>
+          <div class="tool-name">Video Editing</div>
+        </div>
+      </div>
+      <div class="soft-pills reveal">
+        <span>Quick Learner</span>
+        <span>Communication</span>
+        <span>Consistency</span>
+        <span>Attention to Detail</span>
+        <span>Commitment</span>
+        <span>Time Management</span>
+        <span>Organization</span>
+        <span>Responsibility</span>
       </div>
     </div>
   </section>
@@ -2590,7 +5153,7 @@
   <section class="cta-section" id="cta">
     <div class="section-container">
       <div class="cta-content">
-        <h2 class="cta-title">SAMPLE WEBSITES?</h2>
+        <h2 class="cta-title">Want to see sample websites?</h2>
         <a href="test website/index.html" class="cta-btn" target="_blank" rel="noopener noreferrer">
           <span>Let's Go</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -2599,13 +5162,40 @@
     </div>
   </section>
 
+  <div class="marquee-container marquee-slim">
+    <div class="marquee-content">
+      <div class="marquee-group">
+        <span>Graphic Design</span><span class="star">✦</span>
+        <span>Video Editing</span><span class="star">✦</span>
+        <span>Data Scraping</span><span class="star">✦</span>
+        <span>Meta Automation</span><span class="star">✦</span>
+        <span>Website Development</span><span class="star">✦</span>
+        <span>Social Media Ads</span><span class="star">✦</span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span>Graphic Design</span><span class="star">✦</span>
+        <span>Video Editing</span><span class="star">✦</span>
+        <span>Data Scraping</span><span class="star">✦</span>
+        <span>Meta Automation</span><span class="star">✦</span>
+        <span>Website Development</span><span class="star">✦</span>
+        <span>Social Media Ads</span><span class="star">✦</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Portfolio Section -->
   <section class="portfolio" id="portfolio">
     <div class="section-container">
-      <div class="section-header reveal">
-        <span class="section-label">My Work</span>
-        <h2 class="section-title">Sample Portfolio</h2>
-        <p class="section-subtitle">Documents and deliverables from social media management, content planning, and community engagement.</p>
+      <div class="portfolio-head reveal">
+        <div>
+          <h4 class="portfolio-head-eyebrow"><span class="head-line"></span> My Portfolio</h4>
+          <h2 class="portfolio-head-title">Let's Have a <span>Look at My Portfolio</span> <span class="star">✦</span></h2>
+          <p class="portfolio-head-sub">Documents and deliverables from social media management, content planning, and community engagement.</p>
+        </div>
+        <a href="test website/index.html" class="portfolio-head-btn" target="_blank" rel="noopener noreferrer">
+          Sample Websites
+          <div class="head-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </a>
       </div>
       <div class="portfolio-grid">
         <a href="sample%20works/Content%20Calendar%202024.xlsx" class="portfolio-card reveal reveal-delay-1" target="_blank" download>
@@ -2939,56 +5529,132 @@
 
   <!-- About Section -->
   <section class="about" id="about">
-    <div class="section-container">
-      <div class="about-content">
-        <div class="about-text reveal">
-          <h3>About Me</h3>
-          <p>I'm Genkent Pagnanawon, a freelance professional based in Cebu, Philippines. I specialize in helping brands grow their online presence through strategic social media management, engaging content creation, and authentic community building.</p>
-          <p>With over 2 years of experience in fast-paced virtual environments, I've developed a keen eye for what works in the ever-evolving digital landscape.</p>
-          
-          <ul class="about-list">
-            <li>
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Planning and executing social media campaigns
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Supervising posting schedules and content calendars
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Engaging with communities and managing responses
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Supporting lead generation and brand awareness
-            </li>
-          </ul>
-
-          <div class="about-tools">
-            <h4>Tools I Use</h4>
-            <div class="tools-list">
-              <span class="tool-tag">TikTok</span>
-              <span class="tool-tag">Instagram</span>
-              <span class="tool-tag">Facebook</span>
-              <span class="tool-tag">Canva</span>
-              <span class="tool-tag">CRM Tools</span>
-              <span class="tool-tag">Analytics</span>
-            </div>
+    <div class="section-container insp-about-wrap">
+      <div class="insp-about-left reveal">
+        <div class="arch-bg insp-arch">
+          <img src="image/1-cutout.png" alt="Genkent Pagnanawon" onerror="this.onerror=null;this.src='logo/name logo.png';">
+        </div>
+        <div class="about-badge total">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span class="badge-label">Total Projects<br><strong>30+</strong></span>
+        </div>
+        <div class="about-badge certified">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="badge-label">Available for Work</span>
+        </div>
+      </div>
+      <div class="insp-about-right reveal reveal-delay-2">
+        <h4><span class="line"></span> About Me</h4>
+        <h2>Who is <span>Genkent Pagnanawon?</span> <span class="star">✦</span></h2>
+        <p>I'm a freelance professional based in Cebu, Philippines. I help brands grow their online presence through strategic social media management, engaging content creation, and authentic community building. With over 2 years of experience in fast-paced virtual environments, I've developed a keen eye for what works in the ever-evolving digital landscape.</p>
+        <div class="insp-about-stats">
+          <div>
+            <h3>2+</h3>
+            <p>Years Experience</p>
+          </div>
+          <div>
+            <h3>30+</h3>
+            <p>Projects Done</p>
+          </div>
+          <div>
+            <h3>100%</h3>
+            <p>Client Satisfaction</p>
           </div>
         </div>
-        <div class="about-education reveal reveal-delay-2">
-          <h4>
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
-            Education
-          </h4>
-          <div class="edu-item">
-            <div class="edu-label">Secondary</div>
-            <div class="edu-name">Mohon National Senior High School TVL ICT-CSS</div>
+        <div class="insp-pills">
+          <a href="tel:+639704632150" class="insp-pill">
+            <div class="pill-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            +63 970 463 2150
+          </a>
+          <a href="mailto:genkentpagnanawon28@gmail.com" class="insp-pill">
+            <div class="pill-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            genkentpagnanawon28@gmail.com
+          </a>
+        </div>
+        <div class="insp-tools-row">
+          <span class="tools-label">Tools I Use:</span>
+          <span class="insp-chip">TikTok</span>
+          <span class="insp-chip">Instagram</span>
+          <span class="insp-chip">Facebook</span>
+          <span class="insp-chip">Canva</span>
+          <span class="insp-chip">CRM Tools</span>
+          <span class="insp-chip">Analytics</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="faq-wrap">
+      <div class="insp-section-head reveal">
+        <h4><span class="line"></span> FAQs</h4>
+        <h2>Questions? <span>Look here</span> <span class="star">✦</span></h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-accordion">
+          <details class="faq-item" open>
+            <summary>
+              Are you available for freelance or contract work?
+              <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </summary>
+            <p>Yes! I'm currently accepting new freelance projects for social media management, content creation, and website development. Reach out anytime and I'll respond quickly.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              What services do you offer?
+              <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </summary>
+            <p>Social media management, content creation, community building, campaign planning, graphic design, video editing, meta automation, data scraping, and complete website development.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              What tools do you use in your workflow?
+              <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </summary>
+            <p>Canva, Microsoft Office, Instagram, Facebook, TikTok, CRM tools, analytics platforms, and a modern web development stack tailored to each client's needs.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              Can you handle both social media and website development?
+              <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </summary>
+            <p>Absolutely. I plan social media campaigns and content calendars, and I also design and launch complete websites for small businesses — from landing pages to full e-commerce stores.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              How do I get started working with you?
+              <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </summary>
+            <p>Send me a message on any of my social channels or use the contact button on this page. We'll discuss your goals, timeline, and scope, then I'll send a clear proposal.</p>
+          </details>
+        </div>
+        <div class="faq-side">
+          <div class="ask-card">
+            <div class="ask-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <h3>You have different<br>questions? Ask Away!</h3>
+            <p>Your Questions, My Answers. Quick Responses Guaranteed.</p>
+            <a href="https://t.me/Paldohahaha" class="ask-btn" target="_blank" rel="noopener noreferrer">Contact Me</a>
           </div>
-          <div class="edu-item">
-            <div class="edu-label">Primary</div>
-            <div class="edu-name">Mohon Elementary School</div>
+          <div class="phone-card">
+            <div class="phone-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <p>Your Vision, My Craft</p>
+              <h4>Available 24/7</h4>
+              <a href="tel:+639704632150">+63 970 463 2150</a>
+            </div>
           </div>
         </div>
       </div>
@@ -3001,40 +5667,10 @@
       <div class="contact-cta reveal">
         <h2>Let's Work Together</h2>
         <p>Ready to elevate your brand's social media presence? I'm here to help you achieve your digital marketing goals.</p>
-        <a href="mailto:pagnanawongenkent@gmail.com" class="btn btn-primary">
-          <span>Get In Touch</span>
+        <button type="button" class="btn btn-primary msg-big msg-open">
+          <span>Message Me</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <div class="contact-grid">
-        <a href="https://www.facebook.com/genkentwebdev" class="contact-card reveal reveal-delay-1" target="_blank">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </div>
-          <span class="label">Facebook</span>
-          <span class="value">Profile</span>
-        </a>
-        <a href="https://www.instagram.com/genkent.webdev/?hl=en" class="contact-card reveal reveal-delay-2" target="_blank">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="#0d1b2a"/><circle cx="17.5" cy="6.5" r="1.5" fill="#0d1b2a"/></svg>
-          </div>
-          <span class="label">Instagram</span>
-          <span class="value">@genkentwebdev</span>
-        </a>
-        <a href="https://t.me/" class="contact-card reveal reveal-delay-3" target="_blank">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </div>
-          <span class="label">Telegram</span>
-          <span class="value">@Paldohahaha</span>
-        </a>
-        <a href="tel:+639704632150" class="contact-card reveal reveal-delay-4">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <span class="label">Phone</span>
-          <span class="value">0970-463-2150</span>
-        </a>
+        </button>
       </div>
     </div>
   </section>
@@ -3049,7 +5685,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2024 Genkent Pagnanawon · Cebu, Philippines</p>
+    <p>© 2026 Genkent Pagnanawon · Cebu, Philippines</p>
   </footer>
 
   <script>
@@ -3292,21 +5928,277 @@
     // Hamburger Menu
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-menu a');
 
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-    });
+    function closeMobileMenu() {
+      if (!hamburger || !mobileMenu) return;
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
 
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('active');
+        hamburger.classList.toggle('active', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileMenu();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 968) closeMobileMenu();
+      });
+    }
+
+    // Services Accordion
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        accordionItems.forEach(acc => acc.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
       });
     });
+  // Pre-page gate
+    const gate = document.getElementById('gate');
+    if (gate) {
+      document.body.classList.add('gate-open');
+      const dismissGate = () => {
+        document.body.classList.remove('gate-open');
+        gate.classList.add('hidden');
+      };
+      gate.querySelectorAll('.gate-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const choice = btn.textContent.trim();
+          btn.classList.add('pick');
+          setTimeout(dismissGate, 180);
+          if (choice.toLowerCase() === 'website creation') {
+            setTimeout(() => showHelperbot({ text: "Here's some website sample projects →", action: 'portfolio', duration: 7000 }), 760);
+          } else {
+            setTimeout(() => showHelperbot({ text: "If you need help press me", action: 'chat' }), 760);
+          }
+        });
+      });
+      window.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !gate.classList.contains('hidden')) dismissGate();
+      });
+      const skipGate = gate.querySelector('.gate-skip');
+      if (skipGate) skipGate.addEventListener('click', dismissGate);
+    }
+
+    // Helperbot sneaky bubble
+    const helperbot = document.getElementById('helperbot');
+    const helperBubble = document.getElementById('helperbotBubble');
+    const helperText = document.getElementById('helperbotText');
+    const botFab = document.getElementById('botFab');
+    let helperTimer = null;
+    function showHelperbot(opts = {}) {
+      helperText.textContent = opts.text || "If you need help press me";
+      helperbot.classList.add('valve-open');
+      botFab.classList.add('jiggle');
+      botFab.classList.add('pulse');
+      clearTimeout(helperTimer);
+      if (opts.duration) helperTimer = setTimeout(hideHelperbotBubble, opts.duration);
+      helperBubble.onclick = () => {
+        hideHelperbotBubble();
+        if (opts.action === 'portfolio') {
+          const target = document.getElementById('portfolio');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          openChat();
+        }
+      };
+    }
+    function hideHelperbotBubble() {
+      helperbot.classList.remove('valve-open');
+      botFab.classList.remove('jiggle');
+      botFab.classList.remove('pulse');
+    }
+
+    // Chat panel & bestfriend brain
+    const chatPanel = document.getElementById('chatPanel');
+    const chatBody = document.getElementById('chatBody');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatClose = document.getElementById('chatClose');
+    const chatQuick = document.getElementById('chatQuick');
+
+    const INTENTS = [
+      { keys: ['hello','hi','hey','kamusta','how are you','good morning','good afternoon','good evening'], reply: "Heyy! I'm Kento Bot, Genkent's bestfriend. I know basically everything about him, so ask me anything - services, projects, experience, or how to reach him." },
+      { keys: ['who is genkent','about genkent','about him','tell me about genkent','what do you know','introduce him'], reply: "Genkent Pagnanawon is a freelance digital creator and web developer based in Cebu, Philippines. He does website creation, content creation, video editing, social media management, graphic design, AI bot automation, data entry and data scraping. And I'm his bestfriend, so I know him best!" },
+      { keys: ['services','offer','what can he do','hire','capab','special'], reply: "Here's what he brings: Website Creation, Content Creation, Video Editing, Social Media Management, Graphic Designing, AI Bot Automation, Data Entry, and Data Scraping. What are you leaning toward?" },
+      { keys: ['website','websites','site','web design','web dev'], reply: "He builds clean, modern, responsive websites. When you land on this page, make sure to pick 'Website Creation' on the welcome screen - a bubble pops up with 'some website sample projects' that takes you straight to them!" },
+      { keys: ['sample','samples','portfolio','project','projects','work'], reply: "He has 30+ projects done plus a folder of sample websites you can browse. Scroll down to the Portfolio section, or check the 'test website' folder - he's got demos for real businesses too!" },
+      { keys: ['experience','work','job','company','employment'], reply: "He was at SNL Media (July 2022 - March 2024) and E-Media Philippines (Feb 2020 - April 2021) before that. Add 2+ years of freelance projects on top - he's been grinding!" },
+      { keys: ['education','school','study','college','degree','strand'], reply: "He finished ICT - CSS under the Technical-Vocational-Livelihood track at Mohon National Senior High School, and Mohon Elementary before that. The rest? Self-taught and online courses - that's his real school." },
+      { keys: ['contact','email','phone','number','reach','social','facebook','instagram','telegram','github','message','communicate'], reply: "Easy! Email: genkentpagnanawon28@gmail.com, Phone: +63 970 463 2150, Facebook: @KenKentGpag, Instagram: @genkent.webdev, Telegram: @Paldohahaha, GitHub: genkentpagnanawon28-arch. He replies fast!" },
+      { keys: ['price','pricing','cost','rate','fee','how much','budget','quote'], reply: "It depends on the project size - a landing page is different from a full e-commerce build. Message him on Telegram (@Paldohahaha) and he'll shoot you a fair quote based on your needs." },
+      { keys: ['available','availability','free','busy','schedule','hours','open'], reply: "He responds fast and is basically available 24/7 for messages. During a project, he keeps you updated the whole way - no ghosting, I promise." },
+      { keys: ['stay','location','where','cebu','philippines','based','live'], reply: "Cebu, Philippines! He works with clients from anywhere in the world though - timezone differences don't scare him." },
+      { keys: ['handsome','pogi','gwapo','cute','pretty','good looking','attractive','hot','sexy'], reply: "Yes! Obviously. He's my bestfriend, so of course he's handsome - inside and out. So now, how can I help you today, beautiful creature?" },
+      { keys: ['happy','favorite','hobby','free time','personality','fun','tell me more about him'], reply: "Between you and me? He's obsessed with design and tech, works late, and cares a lot about getting small details right. I'm his bestfriend, so I say that with love." },
+      { keys: ['ai','bot','chatbot','helperbot','kento','who are you','your name'], reply: "I'm Kento Bot - Genkent built and trained me on everything about him, so I'm like his bestfriend who never forgets a detail. Ask me anything about him - I even speak Tagalog and Bisaya!" },
+      { keys: ['thank','thanks','appreciate','great','awesome','cool','nice'], reply: "Anytime! That's exactly what bestfriends are for. Come back if you need anything else." },
+      { keys: ['bye','goodbye','see you','later','thank you so much'], reply: "Take care! Say hi to Genkent for me. I'll be right here if you ever need me again." }
+    ];
+    const TAG_INTENTS = [
+      { keys: ['kamusta','kumusta','hello','hi','hey'], reply: "Kumusta, kaibigan! Ako si Kento Bot - matalik na kaibigan ni Genkent. Ano ang kailangan mo? Website, content, video, o iba pang serbisyo?" },
+      { keys: ['salamat','thanks','thank'], reply: "Walang anuman! Yan ang trabaho ng bestfriend. May iba ka pa bang itatanong tungkol kay Genkent?" },
+      { keys: ['website','web','site','portfolio','sample'], reply: "Gumagawa si Genkent ng magaganda at modernong websites! Gusto mo bang may makita kang sample projects? Pumunta ka lang sa Portfolio dito sa page." },
+      { keys: ['magkano','price','pricing','gastos'], reply: "Depende sa laki ng proyekto, kaibigan! I-message mo lang si genkent sa Telegram (@Paldohahaha) para sa tamang presyo." },
+      { keys: ['contact','email','phone','facebook','instagram','telegram','number','socmed'], reply: "Eto na! Email: genkentpagnanawon28@gmail.com, Telepono: +63 970 463 2150, Facebook: @KenKentGpag, Instagram: @genkent.webdev, Telegram: @Paldohahaha. Mabilis siya mag-reply!" }
+    ];
+    const BIS_INTENTS = [
+      { keys: ['kumusta','kamusta','hello','hi','hey'], reply: "Kumusta, higala! Ako si Kento Bot - suod nga bestfriend ni Genkent. Unsa imong kinahanglan? Website, content, video, o laing serbisyo?" },
+      { keys: ['salamat','thanks','thank'], reply: "Okay ra! Mao na ang trabaho sa bestfriend. Naa pa kay laing pangutana?" },
+      { keys: ['website','web','site','portfolio','sample'], reply: "Naghimo si Genkent og nindot ug moderno nga mga website! Ganahan ka makakita og sample projects? Adto lang sa Portfolio." },
+      { keys: ['pila','magkano','presyo','price'], reply: "Depende sa kadako sa proyekto, higala! PM lang ni Genkent sa Telegram (@Paldohahaha) para sa ensaktong presyo." },
+      { keys: ['contact','email','phone','facebook','instagram','telegram','number','socmed'], reply: "Ania siya! Email: genkentpagnanawon28@gmail.com, Telepono: +63 970 463 2150, Facebook: @KenKentGpag, Instagram: @genkent.webdev, Telegram: @Paldohahaha. Kugihan ni siya mo-reply!" }
+    ];
+    const STOP = new Set(['the','and','you','your','this','that','what','why','how','when','where','who','which','with','from','have','has','are','was','were','will','would','can','could','should','just','really','like','know','want','need','there','here','because','then','some','any','but','not','our','their','thing','things','about','dont','does','did','got','get','ask','asking','tell']);
+    const PICK = arr => arr[Math.floor(Math.random() * arr.length)];
+
+    function detectLang(text) {
+      const filWords = ['kamusta','kumusta','salamat','opo','po ba','ano','bakit','saan','kasi','gusto','magkano','maganda','gwapo','ayaw','hindi','talaga','kaibigan','pakiusap','puhon','paano','kailan','pwede','kaniya','marami'];
+      const bisWords = ['unsa','asa','kinsa','pila','nindot','mahal','tabang','dili','maayo','buot','ganahan','kanang','higala','kaayo','diay','uba','anhi'];
+      let sB = 0, sF = 0;
+      bisWords.forEach(w => { if (new RegExp('(^|[^a-z])' + w + '(\\W|$)', 'i').test(text)) sB++; });
+      filWords.forEach(w => { if (new RegExp('(^|[^a-z])' + w + '(\\W|$)', 'i').test(text)) sF++; });
+      if (sB && sB >= sF) return 'bis';
+      if (sF) return 'fil';
+      return 'en';
+    }
+
+    function echoTopic(text) {
+      const words = text.toLowerCase().replace(/[^a-z\s]/g, ' ').split(/\s+/).filter(w => w.length > 3 && !STOP.has(w));
+      const uniq = [...new Set(words)].slice(0, 2);
+      return uniq.length ? uniq.join(' and ') : null;
+    }
+
+    function smartFallback(text, lang) {
+      const t = text.toLowerCase();
+      if (lang === 'fil') {
+        return "Naintindihan kita, kaibigan! Kahit ano pa 'yan, mahalaga sa akin na marinig ka - positibo lang lagi tayo. Kung tungkol kay Genkent o sa kanyang mga serbisyo ang tanong mo, heto lang ako para sumagot!";
+      }
+      if (lang === 'bis') {
+        return "Nakasabot ko, higala! Bisan unsa pa na, importante nga nadunggan tika - positive vibes lang ta kanunay. Kung mahitungod kang Genkent o sa iyang mga serbisyo, ania ra ko para motubag!";
+      }
+      const sad = /(sad|bad|upset|problem|worry|worried|stress|stressed|tired|sakit|kapoy|fail|struggl|hard day|not okay|difficult)/.test(t);
+      if (sad) {
+        return PICK([
+          "Aww, sorry to hear that, friend. Sending you the bestfriend energy - Genkent and I are here for you! Tell me more, I'm all ears.",
+          "Hey, it's okay to feel that way sometimes. You're doing better than you think! If it helps, remember Genkent can fix websites while I fix moods - positive vibes coming your way."
+        ]);
+      }
+      const topic = echoTopic(text);
+      return "I love this energy, friend! I'm catching every single word you're saying" + (topic ? " - sounds like we're chatting about " + topic + ", and honestly? I'm all in" : "") + ". You've got a positive soul right here. If it's about Genkent's services or projects, keep it coming - I've got answers!";
+    }
+
+    function botReply(text) {
+      const t = text.toLowerCase();
+      const lang = detectLang(text);
+      const intentSets = lang === 'fil' ? [TAG_INTENTS, INTENTS] : (lang === 'bis' ? [BIS_INTENTS, INTENTS] : [INTENTS]);
+      for (const set of intentSets) {
+        for (const intent of set) {
+          for (const k of intent.keys) {
+            if (new RegExp('(^|[^a-z0-9])' + k + '([^a-z0-9]|$)').test(t)) return intent.reply;
+          }
+        }
+      }
+      return smartFallback(text, lang);
+    }
+
+    function addMsg(text, who) {
+      const div = document.createElement('div');
+      div.className = 'chat-msg ' + who + '-msg';
+      div.textContent = text;
+      chatBody.appendChild(div);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    let chatStarted = false;
+    function openChat() {
+      hideHelperbotBubble();
+      chatPanel.classList.add('open');
+      botFab.setAttribute('aria-expanded', 'true');
+      if (!chatStarted) {
+        chatStarted = true;
+        addMsg("Heyy! I'm Kento Bot, Genkent's bestfriend. Ask me anything about him - services, projects, experience, or how to reach him. I also speak Tagalog and Bisaya!", 'bot');
+      }
+      setTimeout(() => chatInput.focus(), 320);
+    }
+    function closeChat() {
+      chatPanel.classList.remove('open');
+      botFab.setAttribute('aria-expanded', 'false');
+    }
+    function userSend(text) {
+      const q = text.trim();
+      if (!q || chatPanel.classList.contains('typing')) return;
+      addMsg(q, 'user');
+      chatInput.value = '';
+      chatPanel.classList.add('typing');
+      const typing = document.createElement('div');
+      typing.className = 'chat-typing';
+      for (let i = 0; i < 3; i++) typing.appendChild(document.createElement('i'));
+      chatBody.appendChild(typing);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      setTimeout(() => {
+        typing.remove();
+        chatPanel.classList.remove('typing');
+        addMsg(botReply(q), 'bot');
+      }, 700);
+    }
+
+    botFab.addEventListener('click', () => {
+      if (chatPanel.classList.contains('open')) {
+        closeChat();
+      } else {
+        openChat();
+      }
+    });
+    chatClose.addEventListener('click', closeChat);
+    chatForm.addEventListener('submit', e => {
+      e.preventDefault();
+      userSend(chatInput.value);
+    });
+    chatQuick.addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (b) userSend(b.dataset.q);
+    });
+
+    // Message platform modal
+    const msgModal = document.getElementById('msgModal');
+    const msgOpenBtns = document.querySelectorAll('.msg-open');
+    const msgClose = document.getElementById('msgClose');
+    function closeMsgModal() {
+      if (msgModal) msgModal.classList.remove('open');
+    }
+    if (msgModal && msgOpenBtns.length) {
+      msgOpenBtns.forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          msgModal.classList.add('open');
+        });
+      });
+      msgClose.addEventListener('click', closeMsgModal);
+      msgModal.addEventListener('click', e => {
+        if (e.target === msgModal) closeMsgModal();
+      });
+      msgModal.querySelectorAll('.msg-opt').forEach(o => {
+        o.addEventListener('click', closeMsgModal);
+      });
+      window.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeMsgModal();
+      });
+    }
   </script>
 </body>
 </html>

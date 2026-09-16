@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oliver Scott - Portfolio</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f25035',
+                        dark: '#0b0b0b',
+                        graybg: '#f9f9f9',
+                        lightgray: '#f0f0f0'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #f9f9f9; }
+        .arch-shape {
+            border-radius: 200px 200px 0 0;
+        }
+        .tool-card {
+            border-radius: 50px 50px 20px 20px;
+        }
+        .grid-bg {
+            background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        /* Custom Accordion hiding default marker */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="font-sans text-dark antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center py-5 px-8 bg-white border-b border-gray-200">
+        <div class="font-bold text-xl flex items-center gap-2">
+            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm">O</div> 
+            Oliver.
+        </div>
+        <ul class="hidden md:flex gap-8 text-sm font-medium text-gray-500">
+            <li class="text-primary border-b-2 border-primary pb-1 cursor-pointer">Home</li>
+            <li class="hover:text-primary cursor-pointer transition-colors">Services</li>
+            <li class="hover:text-primary cursor-pointer transition-colors">About</li>
+            <li class="hover:text-primary cursor-pointer transition-colors">Projects</li>
+            <li class="hover:text-primary cursor-pointer transition-colors">Blogs</li>
+            <li class="hover:text-primary cursor-pointer transition-colors">Testimonials</li>
+        </ul>
+        <button class="bg-dark text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gray-800 transition">Contact Me</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="grid-bg pt-16 pb-0 px-8 relative">
+        <div class="max-w-6xl mx-auto text-center mb-12">
+            <h4 class="text-primary font-medium flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-primary"></span> Hello There!
+            </h4>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">I'm <span class="text-primary">Oliver Scott</span><span class="text-2xl align-top">✦</span></h1>
+            <p class="text-gray-500 text-lg">Product Designer based in USA</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-end relative z-10">
+            <!-- Left -->
+            <div class="pb-12 hidden md:block">
+                <div class="text-primary text-5xl font-serif leading-none mb-2">“</div>
+                <p class="text-gray-500 text-sm max-w-[250px] mb-8">Oliver's Remarkable Design Transformed Our Website - Highly Recommended!</p>
+                <div class="flex -space-x-3 mb-3">
+                    <img class="w-10 h-10 rounded-full border-2 border-white bg-gray-300" src="https://via.placeholder.com/40" alt="user">
+                    <img class="w-10 h-10 rounded-full border-2 border-white bg-gray-300" src="https://via.placeholder.com/40" alt="user">
+                    <img class="w-10 h-10 rounded-full border-2 border-white bg-gray-300" src="https://via.placeholder.com/40" alt="user">
+                </div>
+                <h5 class="font-bold"><span class="text-primary">150+</span> Reviews (4.9 of 5)</h5>
+                <p class="text-xs text-gray-400">Reviews from Valued Clients</p>
+            </div>
+
+            <!-- Center -->
+            <div class="flex flex-col items-center relative">
+                <!-- Arch Image placeholder -->
+                <div class="bg-primary w-[320px] h-[380px] arch-shape overflow-hidden flex items-end justify-center">
+                    <img src="https://via.placeholder.com/300x400/f25035/ffffff?text=Oliver" alt="Oliver" class="w-[90%]">
+                </div>
+                <!-- Action Buttons -->
+                <div class="flex gap-4 bg-white p-3 rounded-full shadow-xl -mt-8 relative z-20">
+                    <button class="bg-dark text-white px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2">Portfolio <i class="fa-solid fa-arrow-right text-primary bg-white/20 p-1 rounded-full text-xs"></i></button>
+                    <button class="bg-white border border-gray-200 text-dark px-6 py-3 rounded-full text-sm font-medium">Hire Me</button>
+                </div>
+            </div>
+
+            <!-- Right -->
+            <div class="pb-12 hidden md:flex flex-col items-end gap-12">
+                <div class="flex flex-col items-end gap-3">
+                    <span class="bg-dark text-white text-xs px-4 py-1.5 rounded-full">Prototype</span>
+                    <div class="flex gap-2">
+                        <span class="text-primary text-lg">✦</span>
+                        <span class="bg-primary text-white text-xs px-4 py-1.5 rounded-full">Dashboard</span>
+                    </div>
+                    <span class="bg-dark text-white text-xs px-4 py-1.5 rounded-full">Mobile App Design</span>
+                    <div class="flex gap-2">
+                        <span class="bg-primary text-white text-xs px-4 py-1.5 rounded-full">Design System</span>
+                        <span class="bg-dark text-white text-xs px-4 py-1.5 rounded-full">Website Design</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 text-gray-400 text-sm">
+                    <span class="text-xs font-medium">Follow Us On</span>
+                    <a href="#" class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-dark hover:bg-gray-100"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-dark hover:bg-gray-100"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-dark hover:bg-gray-100"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-dark hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="bg-dark text-white py-5 overflow-hidden flex whitespace-nowrap">
+        <div class="flex gap-12 items-center animate-[pulse_3s_ease-in-out_infinite] font-medium text-xl">
+            <span>Website Design</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Dashboard</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Wireframe</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>User Research</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Website Design</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Dashboard</span>
+        </div>
+    </div>
+
+    <!-- About Me Section -->
+    <section class="py-24 px-8 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <!-- Left: Image -->
+        <div class="relative flex justify-center">
+            <div class="bg-primary w-[380px] h-[450px] arch-shape overflow-hidden flex items-end justify-center relative">
+                <img src="https://via.placeholder.com/350x450/f25035/ffffff?text=Oliver+About" alt="Oliver Pointing" class="w-[90%]">
+            </div>
+            <!-- Floating Badges -->
+            <div class="absolute top-10 left-0 bg-white p-4 rounded-2xl shadow-xl flex flex-col items-center gap-2">
+                <div class="w-10 h-10 bg-primary/20 text-primary rounded-full flex items-center justify-center"><i class="fa-solid fa-users"></i></div>
+                <div class="text-xs text-gray-500 text-center">Total Customer<br><strong class="text-dark text-lg">450+</strong></div>
+            </div>
+            <div class="absolute bottom-10 left-10 bg-white px-5 py-3 rounded-full shadow-xl flex items-center gap-3">
+                <i class="fa-solid fa-certificate text-dark text-xl"></i>
+                <span class="text-sm font-semibold">Certified Product Designer</span>
+            </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div>
+            <h4 class="text-dark font-medium flex items-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-dark"></span> About Me
+            </h4>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Who is <span class="text-primary">Oliver Scott?</span> <span class="text-2xl align-top">✦</span></h2>
+            <p class="text-gray-500 text-sm mb-10 leading-relaxed max-w-md">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+
+            <div class="grid grid-cols-3 gap-6 mb-10 border-b border-gray-200 pb-10">
+                <div>
+                    <h3 class="text-3xl font-bold mb-1">750+</h3>
+                    <p class="text-xs text-gray-400">Project Completed</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-1">25+</h3>
+                    <p class="text-xs text-gray-400">Industry Covered</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-1">16+</h3>
+                    <p class="text-xs text-gray-400">Years of Experience</p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-4">
+                <a href="#" class="flex items-center gap-3 bg-white border border-gray-200 px-5 py-3 rounded-full text-sm font-medium hover:border-primary transition">
+                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-phone"></i></div>
+                    (000) 000-0000
+                </a>
+                <a href="#" class="flex items-center gap-3 bg-white border border-gray-200 px-5 py-3 rounded-full text-sm font-medium hover:border-primary transition">
+                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-envelope"></i></div>
+                    example@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Favorite Tools Section -->
+    <section class="py-20 px-8 bg-white text-center">
+        <h4 class="text-dark font-medium flex items-center justify-center gap-3 mb-4">
+            <span class="w-8 h-[2px] bg-dark"></span> My Favorite Tools
+        </h4>
+        <h2 class="text-4xl font-bold mb-16">Design Tools That <span class="text-primary italic font-serif font-medium">Power My Work</span><span class="text-2xl align-top">✦</span></h2>
+
+        <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
+            <!-- Tool Card 1 -->
+            <div class="bg-graybg p-6 w-[140px] tool-card flex flex-col items-center justify-between h-[200px] shadow-sm hover:-translate-y-2 transition-transform cursor-pointer">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4 text-2xl text-purple-500"><i class="fa-brands fa-figma"></i></div>
+                <div class="text-2xl font-bold mb-1">98%</div>
+                <div class="text-xs text-gray-400">Figma</div>
+            </div>
+            <!-- Tool Card 2 -->
+            <div class="bg-graybg p-6 w-[140px] tool-card flex flex-col items-center justify-between h-[200px] shadow-sm hover:-translate-y-2 transition-transform cursor-pointer">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4 text-2xl text-yellow-500"><i class="fa-solid fa-gem"></i></div>
+                <div class="text-2xl font-bold mb-1">92%</div>
+                <div class="text-xs text-gray-400">Sketch</div>
+            </div>
+            <!-- Tool Card 3 -->
+            <div class="bg-graybg p-6 w-[140px] tool-card flex flex-col items-center justify-between h-[200px] shadow-sm hover:-translate-y-2 transition-transform cursor-pointer">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4 text-2xl text-blue-500"><i class="fa-brands fa-neos"></i></div>
+                <div class="text-2xl font-bold mb-1">90%</div>
+                <div class="text-xs text-gray-400">Photoshop</div>
+            </div>
+            <!-- Tool Card 4 -->
+            <div class="bg-graybg p-6 w-[140px] tool-card flex flex-col items-center justify-between h-[200px] shadow-sm hover:-translate-y-2 transition-transform cursor-pointer">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4 text-2xl text-indigo-700"><i class="fa-solid fa-clapperboard"></i></div>
+                <div class="text-2xl font-bold mb-1">85%</div>
+                <div class="text-xs text-gray-400">After Effects</div>
+            </div>
+            <!-- Tool Card 5 -->
+            <div class="bg-graybg p-6 w-[140px] tool-card flex flex-col items-center justify-between h-[200px] shadow-sm hover:-translate-y-2 transition-transform cursor-pointer">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4 text-2xl text-pink-500">S</div>
+                <div class="text-2xl font-bold mb-1">90%</div>
+                <div class="text-xs text-gray-400">Storybook</div>
+            </div>
+            <!-- Tool Card 6 -->
+            <div class="bg-graybg p-6 w-[140px] tool-card flex flex-col items-center justify-between h-[200px] shadow-sm hover:-translate-y-2 transition-transform cursor-pointer">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4 text-2xl text-red-500"><i class="fa-brands fa-invision"></i></div>
+                <div class="text-2xl font-bold mb-1">95%</div>
+                <div class="text-xs text-gray-400">InVision</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider Marquee -->
+    <div class="bg-dark text-white py-4 overflow-hidden flex whitespace-nowrap text-sm">
+        <div class="flex gap-12 items-center font-medium">
+            <span>Website Design</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Dashboard</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Wireframe</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>User Research</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Website Design</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Dashboard</span>
+        </div>
+    </div>
+
+    <!-- Education & Work Section -->
+    <section class="py-24 px-8 max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <h4 class="text-dark font-medium flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-dark"></span> Education & Work
+            </h4>
+            <h2 class="text-4xl font-bold">My <span class="text-primary italic font-serif font-medium">Education</span> & Work <span class="text-primary italic font-serif font-medium">Experience</span><span class="text-2xl align-top">✦</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Education Column -->
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <div class="flex items-center gap-4 border-b border-gray-100 pb-6 mb-6">
+                    <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3 class="text-2xl font-bold">Education</h3>
+                </div>
+                
+                <div class="flex flex-col gap-6">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Harmony Institute</h4>
+                            <p class="text-sm text-gray-500">Master in Visual Arts</p>
+                        </div>
+                        <span class="bg-dark text-white text-xs px-4 py-1.5 rounded-full">2012 - 2014</span>
+                    </div>
+                    <hr class="border-gray-100">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Aurora Academy</h4>
+                            <p class="text-sm text-gray-500">Bachelor in Visual Arts</p>
+                        </div>
+                        <span class="bg-dark text-white text-xs px-4 py-1.5 rounded-full">2008 - 2012</span>
+                    </div>
+                    <hr class="border-gray-100">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Crystalbrook</h4>
+                            <p class="text-sm text-gray-500">High School</p>
+                        </div>
+                        <span class="bg-dark text-white text-xs px-4 py-1.5 rounded-full">1996 - 2008</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Experience Column -->
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <div class="flex items-center gap-4 border-b border-gray-100 pb-6 mb-6">
+                    <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3 class="text-2xl font-bold">Work Experience</h3>
+                </div>
+                
+                <div class="flex flex-col gap-6">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Insightlancer</h4>
+                            <p class="text-sm text-gray-500">Senior Product Designer</p>
+                        </div>
+                        <span class="bg-dark text-white text-xs px-4 py-1.5 rounded-full">2018 - 2025</span>
+                    </div>
+                    <hr class="border-gray-100">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Self-Employed</h4>
+                            <p class="text-sm text-gray-500">Visual Artist</p>
+                        </div>
+                        <span class="bg-dark text-white text-xs px-4 py-1.5 rounded-full">2016 - 2018</span>
+                    </div>
+                    <hr class="border-gray-100">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">KG Graphics Studio</h4>
+                            <p class="text-sm text-gray-500">Web Designer</p>
+                        </div>
+                        <span class="bg-dark text-white text-xs px-4 py-1.5 rounded-full">2014 - 2016</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider Marquee -->
+    <div class="bg-dark text-white py-4 overflow-hidden flex whitespace-nowrap text-sm">
+        <div class="flex gap-12 items-center font-medium">
+            <span>Website Design</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Dashboard</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Wireframe</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>User Research</span> <i class="fa-solid fa-star-of-life text-primary"></i>
+            <span>Website Design</span>
+        </div>
+    </div>
+
+    <!-- Portfolio Header & Snippet (From images) -->
+    <section class="py-24 px-8 max-w-6xl mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h4 class="text-dark font-medium flex items-center gap-3 mb-4">
+                    <span class="w-8 h-[2px] bg-dark"></span> My Portfolio
+                </h4>
+                <h2 class="text-4xl font-bold">Let's Have a <span class="text-primary italic font-serif font-medium">Look at My Portfolio</span><span class="text-2xl align-top">✦</span></h2>
+            </div>
+            <button class="bg-white border border-gray-200 pl-6 pr-2 py-2 rounded-full text-sm font-medium flex items-center gap-4 hover:border-primary">
+                View All Projects <div class="w-8 h-8 bg-primary rounded-full text-white flex items-center justify-center"><i class="fa-solid fa-arrow-right"></i></div>
+            </button>
+        </div>
+        
+        <!-- Portfolio Item Concept -->
+        <div class="bg-white rounded-3xl p-4 shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8">
+            <div class="w-full md:w-1/2 rounded-2xl overflow-hidden bg-gray-200">
+                <img src="https://via.placeholder.com/600x400/e0e0e0/555555?text=Recipe+App+Screenshots" alt="Portfolio Image" class="w-full h-full object-cover">
+            </div>
+            <div class="w-full md:w-1/2 p-4 md:p-8 flex flex-col justify-center">
+                <h3 class="text-3xl font-bold mb-4">Recipe App - <span class="text-primary italic font-serif font-medium">Food Recipe<br>Mobile App Solution</span></h3>
+                <p class="text-gray-500 text-sm mb-8 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                
+                <div class="flex flex-col gap-4">
+                    <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                        <span class="text-gray-500 text-sm font-medium">Client</span>
+                        <span class="font-semibold text-sm">Ava Mitchell</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                        <span class="text-gray-500 text-sm font-medium">Duration</span>
+                        <span class="font-semibold text-sm">4 Months</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-3">
+                        <span class="text-gray-500 text-sm font-medium">Country</span>
+                        <span class="font-semibold text-sm">United States</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="py-24 px-8 max-w-6xl mx-auto bg-graybg">
+        <div class="text-center mb-16">
+            <h4 class="text-dark font-medium flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-dark"></span> FAQs
+            </h4>
+            <h2 class="text-4xl font-bold">Questions? <span class="text-primary italic font-serif font-medium">Look here</span><span class="text-2xl align-top">✦</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Accordion Left -->
+            <div class="md:col-span-2 flex flex-col gap-4">
+                <!-- Inactive Accordion -->
+                <details class="bg-white rounded-2xl p-5 shadow-sm cursor-pointer group">
+                    <summary class="flex justify-between items-center font-bold text-lg outline-none">
+                        Are you available for freelance or contract design work?
+                        <i class="fa-solid fa-plus text-gray-400 group-open:hidden"></i>
+                        <i class="fa-solid fa-minus text-gray-400 hidden group-open:block"></i>
+                    </summary>
+                    <p class="mt-4 text-gray-500 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                </details>
+                
+                <!-- Active Accordion (Mocked styling via standard div since html `<details>` doesn't transition colors easily without JS) -->
+                <div class="bg-primary text-white rounded-2xl p-5 shadow-lg cursor-pointer">
+                    <div class="flex justify-between items-center font-bold text-lg">
+                        What industries do you specialize in?
+                        <i class="fa-solid fa-minus text-white/70"></i>
+                    </div>
+                    <p class="mt-4 text-white/90 text-sm leading-relaxed">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eiusmod tempor incididunt ut labore...
+                    </p>
+                </div>
+
+                <!-- More inactive -->
+                <details class="bg-white rounded-2xl p-5 shadow-sm cursor-pointer group">
+                    <summary class="flex justify-between items-center font-bold text-lg outline-none">
+                        What design tools do you use in your workflow?
+                        <i class="fa-solid fa-plus text-gray-400 group-open:hidden"></i>
+                    </summary>
+                </details>
+                <details class="bg-white rounded-2xl p-5 shadow-sm cursor-pointer group">
+                    <summary class="flex justify-between items-center font-bold text-lg outline-none">
+                        Can I view full case studies or detailed project breakdowns?
+                        <i class="fa-solid fa-plus text-gray-400 group-open:hidden"></i>
+                    </summary>
+                </details>
+                <details class="bg-white rounded-2xl p-5 shadow-sm cursor-pointer group">
+                    <summary class="flex justify-between items-center font-bold text-lg outline-none">
+                        How do I navigate through your portfolio projects?
+                        <i class="fa-solid fa-plus text-gray-400 group-open:hidden"></i>
+                    </summary>
+                </details>
+                <details class="bg-white rounded-2xl p-5 shadow-sm cursor-pointer group">
+                    <summary class="flex justify-between items-center font-bold text-lg outline-none">
+                        Can I download your resume/CV for information?
+                        <i class="fa-solid fa-plus text-gray-400 group-open:hidden"></i>
+                    </summary>
+                </details>
+            </div>
+
+            <!-- Contact Cards Right -->
+            <div class="flex flex-col gap-6">
+                <!-- Ask Away Card -->
+                <div class="bg-dark text-white rounded-3xl p-8 flex flex-col items-center text-center shadow-lg h-full justify-center">
+                    <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center text-2xl text-primary mb-6">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">You have different<br>questions? Ask Away!</h3>
+                    <p class="text-gray-400 text-sm mb-8">Your Questions, My Answers. Quick Responses Guaranteed.</p>
+                    <button class="bg-primary text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-orange-600 transition w-full">Contact Us</button>
+                </div>
+                
+                <!-- Phone Card -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-center gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Your Vision, My Craft</p>
+                        <h4 class="font-bold text-lg">Available 24/7</h4>
+                        <p class="text-sm text-gray-500">(000) 000-0000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
